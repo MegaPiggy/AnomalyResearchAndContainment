@@ -26,6 +26,16 @@ namespace Jam5Entry
             // Get the New Horizons API and load configs
             NewHorizons = ModHelper.Interaction.TryGetModApi<INewHorizons>("xen.NewHorizons");
             NewHorizons.LoadConfigs(this);
+            NewHorizons.GetStarSystemLoadedEvent().AddListener(s =>
+            {
+                if (s == "Jam5")
+                {
+                    var room = NewHorizons.GetPlanet("MegaPiggy_Mod_Platform").transform.Find("Sector/PlatformRoot/Room");
+                    var door = room.transform.Find("Door");
+                    var interact = room.transform.Find("Button/Interact");
+                    interact.gameObject.AddComponent<Jam4JokeEntry.Button>().door = door;
+                }
+            });
 
             new Harmony("MegaPiggy.Jam5Entry").PatchAll(Assembly.GetExecutingAssembly());
 
