@@ -1,5 +1,5 @@
 ﻿<Project>
   <PropertyGroup>
-    <OutputPath>$(AppData)/OuterWildsModManager/OWML/Mods/SBtT.MiniSystemTest</OutputPath>
+    <OutputPath>$(AppData)/OuterWildsModManager/OWML/Mods/MegaPiggy.Jam5Entry</OutputPath>
   </PropertyGroup>
 </Project>
