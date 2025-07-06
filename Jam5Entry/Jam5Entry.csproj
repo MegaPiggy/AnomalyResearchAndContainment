@@ -23,7 +23,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MiniSystemTest.csproj.user" />
+    <Content Include="Jam5Entry.csproj.user" />
   </ItemGroup>
   <ItemGroup>
     <None Include="planets\**\*.*">
@@ -44,8 +44,5 @@
     <None Include="title-screen.json" Condition="Exists('title-screen.json')">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="planets\shiplog\" />
   </ItemGroup>
 </Project>

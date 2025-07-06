@@ -3,11 +3,11 @@ using HarmonyLib;
 using OWML.Common;
 using OWML.ModHelper;
 
-namespace MiniSystemTest
+namespace Jam5Entry
 {
-    public class MiniSystemTest : ModBehaviour
+    public class Jam5Entry : ModBehaviour
     {
-        public static MiniSystemTest Instance;
+        public static Jam5Entry Instance;
         public INewHorizons NewHorizons;
 
         public void Awake()
@@ -21,13 +21,13 @@ namespace MiniSystemTest
         public void Start()
         {
             // Starting here, you'll have access to OWML's mod helper.
-            ModHelper.Console.WriteLine($"My mod {nameof(MiniSystemTest)} is loaded!", MessageType.Success);
+            ModHelper.Console.WriteLine($"My mod {nameof(Jam5Entry)} is loaded!", MessageType.Success);
 
             // Get the New Horizons API and load configs
             NewHorizons = ModHelper.Interaction.TryGetModApi<INewHorizons>("xen.NewHorizons");
             NewHorizons.LoadConfigs(this);
 
-            new Harmony("SBtT.MiniSystemTest").PatchAll(Assembly.GetExecutingAssembly());
+            new Harmony("MegaPiggy.Jam5Entry").PatchAll(Assembly.GetExecutingAssembly());
 
             // Example of accessing game code.
             OnCompleteSceneLoad(OWScene.TitleScreen, OWScene.TitleScreen); // We start on title screen

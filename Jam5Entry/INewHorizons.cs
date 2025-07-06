@@ -5,7 +5,7 @@ using OWML.Common;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace MiniSystemTest
+namespace Jam5Entry
 {
     public interface INewHorizons
     {

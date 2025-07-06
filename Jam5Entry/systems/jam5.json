@@ -2,11 +2,11 @@
   "$schema": "https://raw.githubusercontent.com/xen-42/outer-wilds-new-horizons/main/NewHorizons/Schemas/star_system_schema.json",
   "name": "Jam5",
   "initialReveal": [
-    "AUTHOR_MOD_SYSTEM_EXPLORE_FACT"
+    "MEGAPIGGY_MOD_SYSTEM_EXPLORE_FACT"
   ],
   "curiosities": [
     {
-      "id": "AUTHOR_MOD_CURIOSITY",
+      "id": "MEGAPIGGY_MOD_CURIOSITY",
       "color": {
         "r": 240,
         "g": 150,
@@ -23,7 +23,7 @@
   ],
   "entryPositions": [
     {
-      "id": "AUTHOR_MOD_SYSTEM_ROOT",
+      "id": "MEGAPIGGY_MOD_SYSTEM_ROOT",
       "position": {
         "x": 0,
         "y": 0
