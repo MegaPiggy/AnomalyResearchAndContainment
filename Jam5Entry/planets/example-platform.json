@@ -10,10 +10,27 @@
     "details": [
       {
         "rename": "PlatformRoot",
+        "keepLoaded": true,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 60
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "rename": "RoomRoot",
+        "parentPath": "Sector/PlatformRoot",
+        "isRelativeToParent": true,
+        "keepLoaded": true,
         "position": {
           "x": 0,
           "y": 2.5,
-          "z": 60
+          "z": 0
         },
         "rotation": {
           "x": 0,
@@ -24,7 +41,7 @@
       {
         "assetBundle": "planets/room",
         "path": "Assets/Room.prefab",
-        "parentPath": "Sector/PlatformRoot",
+        "parentPath": "Sector/PlatformRoot/RoomRoot",
         "isRelativeToParent": true,
         "keepLoaded": true,
         "position": {
@@ -39,12 +56,14 @@
   "Volumes": {
     "creditsVolume": [
       {
-        "parentPath": "Sector/PlatformRoot",
+        "parentPath": "Sector/PlatformRoot/RoomRoot",
         "isRelativeToParent": true,
         "radius": 6,
-        "creditsType": "kazoo",
         "deathType": "meditation",
-        "gameOverText": "You escaped the box.",
+        "gameOver": {
+          "creditsType": "kazoo",
+          "text": "You escaped the box."
+        },
         "position": {
           "x": 10,
           "y": 0,
@@ -67,7 +86,7 @@
   "Spawn": {
     "playerSpawnPoints": [
       {
-        "parentPath": "Sector/PlatformRoot",
+        "parentPath": "Sector/PlatformRoot/RoomRoot",
         "isRelativeToParent": true,
         "startWithSuit": true,
         "position": {
