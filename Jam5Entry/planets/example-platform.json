@@ -51,6 +51,17 @@
           "z": 0
         }
       }
+    ],
+    "audioVolumes": [
+      {
+        "parentPath": "Sector/PlatformRoot",
+        "isRelativeToParent": true,
+        "audio": "planets/Castaways_Redone.wav",
+        "loop": true,
+        "track": "music",
+        "radius": 12,
+        "randomizePlayhead": true
+      }
     ]
   },
   "Spawn": {
