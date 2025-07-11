@@ -1,6 +1,6 @@
 <AstroObjectEntry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/shiplog_schema.xsd">
-  <ID>VERDANT_BEACON</ID>
+  <ID>Verdant Beacon</ID>
 
   <Entry>
     <ID>VERDANT_BEACON_ROOT</ID>
