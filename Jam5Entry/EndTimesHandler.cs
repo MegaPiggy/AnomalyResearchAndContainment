@@ -11,6 +11,7 @@ namespace Jam5Entry
 {
     public static class EndTimesHandler
     {
+        public static bool initialized = false;
         public static AudioType audioType;
         public static AudioType normalAudioType;
         public static OWAudioSource endTimesSource;
@@ -22,10 +23,16 @@ namespace Jam5Entry
 
         public static void Initialize()
         {
+            initialized = false;
             LoadAudio();
 
-            endTimesSource = Locator.GetGlobalMusicController()._endTimesSource;
-            normalAudioType = endTimesSource.audioLibraryClip;
+            Delay.RunWhen(() => Locator.GetGlobalMusicController() != null, () =>
+            {
+                endTimesSource = Locator.GetGlobalMusicController()._endTimesSource;
+                normalAudioType = endTimesSource.audioLibraryClip;
+                Assign();
+                initialized = true;
+            });
         }
 
         public static void Assign()
@@ -36,6 +43,19 @@ namespace Jam5Entry
         public static void Unassign()
         {
             endTimesSource.AssignAudioLibraryClip(normalAudioType);
+        }
+
+        public class CustomEndTimesVolume : EffectVolume
+        {
+            public override void OnEffectVolumeEnter(GameObject hitObj)
+            {
+                throw new NotImplementedException();
+            }
+
+            public override void OnEffectVolumeExit(GameObject hitObj)
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

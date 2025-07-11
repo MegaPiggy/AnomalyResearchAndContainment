@@ -1,47 +1,96 @@
 {
-  "$schema": "https://raw.githubusercontent.com/xen-42/outer-wilds-new-horizons/main/NewHorizons/Schemas/star_system_schema.json",
-  "name": "Jam5",
-  "initialReveal": [
-    "ARC_DOME_R1"
-  ],
-  "curiosities": [
-    {
-      "id": "MEGAPIGGY_MOD_CURIOSITY",
-      "color": {
-        "r": 240,
-        "g": 150,
-        "b": 150,
-        "a": 255
-      },
-      "highlightColor": {
-        "r": 240,
-        "g": 180,
-        "b": 180,
-        "a": 255
-      }
-    }
-  ],
-  "entryPositions": [
-    {
-      "id": "MEGAPIGGY_MOD_SYSTEM_ROOT",
-      "position": {
-        "x": 0,
-        "y": 0
-      }
-    },
-    {
-      "id": "MEGAPIGGY_PLANET_EXPLORE_FACT",
-      "position": {
-        "x": 0,
-        "y": -50
-      }
-    },
-    {
-      "id": "ANOMALY_STATION_EXPLORE_FACT",
-      "position": {
-        "x": 0,
-        "y": -100
-      }
-    }
-  ]
+    "$schema": "https://raw.githubusercontent.com/xen-42/outer-wilds-new-horizons/main/NewHorizons/Schemas/star_system_schema.json",
+    "name": "Jam5",
+    "initialReveal": [
+        "ARC_WARP_PLATFORM_R1"
+    ],
+    "curiosities": [
+        {
+            "id": "ARC_STATION",
+            "color": {
+                "r": 45,
+                "g": 191,
+                "b": 75,
+                "a": 255
+            },
+            "highlightColor": {
+                "r": 140,
+                "g": 255,
+                "b": 200,
+                "a": 255
+            }
+        }
+    ],
+    "entryPositions": [
+        {
+            "id": "ARC_WARP_PLATFORM",
+            "position": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "id": "VERDANT_BEACON_ROOT",
+            "position": {
+                "x": -200,
+                "y": -50
+            }
+        },
+        {
+            "id": "EMERALD_REVERIE_ROOT",
+            "position": {
+                "x": -100,
+                "y": -50
+            }
+        },
+        {
+            "id": "ARC_OBSERVATION_DOME",
+            "position": {
+                "x": 0,
+                "y": -50
+            }
+        },
+        {
+            "id": "ARC_ELEVATOR_ROOM",
+            "position": {
+                "x": 0,
+                "y": -100
+            }
+        },
+        {
+            "id": "ARC_ECHO_CELL",
+            "position": {
+                "x": -100,
+                "y": -100
+            }
+        },
+        {
+            "id": "ARC_RUNIC_WALL",
+            "position": {
+                "x": -200,
+                "y": -100
+            }
+        },
+        {
+            "id": "ARC_PRISM_VAULT",
+            "position": {
+                "x": 100,
+                "y": -100
+            }
+        },
+        {
+            "id": "ARC_POLARIZER_LOCK",
+            "position": {
+                "x": 200,
+                "y": -100
+            }
+        },
+        {
+            "id": "ARC_FINAL_ROOM",
+            "position": {
+                "x": 0,
+                "y": -150
+            }
+        }
+    ]
 }

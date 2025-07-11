@@ -31,6 +31,26 @@
             }
         ]
     },
+    "Volumes": {
+        "revealVolumes": [
+            {
+                "radius": 125,
+                "revealFor": "player",
+                "revealOn": "enter",
+                "reveals": [
+                    "ARC_WARP_PLATFORM_R1"
+                ]
+            },
+            {
+                "radius": 125,
+                "revealFor": "probe",
+                "revealOn": "snapshot",
+                "reveals": [
+                    "ARC_WARP_PLATFORM_R1"
+                ]
+            }
+        ]
+    },
     "ShipLog": {
         "xmlFile": "planets/shiplog/Platform.xml"
     }

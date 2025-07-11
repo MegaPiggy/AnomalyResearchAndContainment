@@ -10,7 +10,7 @@
 
     <RumorFact>
       <ID>ARC_OBSERVATION_DOME_R1</ID>
-      <SourceID>ARC_WARP_PLATFORM_X1</SourceID>
+      <SourceID>ARC_WARP_PLATFORM</SourceID>
       <Text>A domed chamber with panoramic views of space. It contains a warp receiver and a path leading deeper into the station.</Text>
     </RumorFact>
 
@@ -24,6 +24,28 @@
     </ExploreFact>
   </Entry>
 
+  <!-- Elevator Room -->
+  <Entry>
+    <ID>ARC_ELEVATOR_ROOM</ID>
+    <Name>Elevator Chamber</Name>
+    <Curiosity>ARC_STATION</Curiosity>
+
+    <RumorFact>
+      <ID>ARC_ELEVATOR_ROOM_R1</ID>
+      <SourceID>ARC_OBSERVATION_DOME</SourceID>
+      <Text>The central chamber contains an inactive elevator pad.</Text>
+    </RumorFact>
+
+    <ExploreFact>
+      <ID>ARC_ELEVATOR_ROOM_X1</ID>
+      <Text>It seems to require four anomaly keys to function.</Text>
+    </ExploreFact>
+    <ExploreFact>
+      <ID>ARC_ELEVATOR_ROOM_X2</ID>
+      <Text>Once the anomaly keys were gathered, the elevator activated and lowered me to a sealed chamber below the station.</Text>
+    </ExploreFact>
+  </Entry>
+
   <!-- Echo Cell -->
   <Entry>
     <ID>ARC_ECHO_CELL</ID>
@@ -32,7 +54,7 @@
 
     <RumorFact>
       <ID>ARC_ECHO_CELL_R1</ID>
-      <SourceID>ARC_OBSERVATION_DOME_X2</SourceID>
+      <SourceID>ARC_OBSERVATION_DOME</SourceID>
       <RumorName>Echoing Chamber</RumorName>
       <RumorNamePriority>1</RumorNamePriority>
       <Text>Nomai notes hint at a chamber where sound loops back unnaturally.</Text>
@@ -62,7 +84,7 @@
 
     <RumorFact>
       <ID>ARC_RUNIC_WALL_R1</ID>
-      <SourceID>ARC_OBSERVATION_DOME_X2</SourceID>
+      <SourceID>ARC_OBSERVATION_DOME</SourceID>
       <RumorName>Wall of Symbols</RumorName>
       <RumorNamePriority>1</RumorNamePriority>
       <Text>A log fragment refers to "shifting glyphs that hide the path to knowledge." The Nomai seemed fascinated with this anomaly.</Text>
@@ -92,7 +114,7 @@
 
     <RumorFact>
       <ID>ARC_PRISM_VAULT_R1</ID>
-      <SourceID>ARC_OBSERVATION_DOME_X2</SourceID>
+      <SourceID>ARC_OBSERVATION_DOME</SourceID>
       <RumorName>Crystal Light Room</RumorName>
       <RumorNamePriority>1</RumorNamePriority>
       <Text>One chamber is said to contain crystals that bend light to reveal hidden truths.</Text>
@@ -122,7 +144,7 @@
 
     <RumorFact>
       <ID>ARC_POLARIZER_LOCK_R1</ID>
-      <SourceID>ARC_OBSERVATION_DOME_X2</SourceID>
+      <SourceID>ARC_OBSERVATION_DOME</SourceID>
       <RumorName>Magnetic Lock Room</RumorName>
       <RumorNamePriority>1</RumorNamePriority>
       <Text>Nomai records warn of magnetic interference disrupting normal instrumentation. They sealed the anomaly behind mechanical locks.</Text>
@@ -144,28 +166,6 @@
     </ExploreFact>
   </Entry>
 
-  <!-- Elevator Room -->
-  <Entry>
-    <ID>ARC_ELEVATOR_ROOM</ID>
-    <Name>Elevator Chamber</Name>
-    <Curiosity>ARC_STATION</Curiosity>
-
-    <RumorFact>
-      <ID>ARC_ELEVATOR_ROOM_R1</ID>
-      <SourceID>ARC_OBSERVATION_DOME_X1</SourceID>
-      <Text>The central chamber contains an inactive elevator pad.</Text>
-    </RumorFact>
-
-    <ExploreFact>
-      <ID>ARC_ELEVATOR_ROOM_X1</ID>
-      <Text>It seems to require four anomaly keys to function.</Text>
-    </ExploreFact>
-    <ExploreFact>
-      <ID>ARC_ELEVATOR_ROOM_X2</ID>
-      <Text>Once the anomaly keys were gathered, the elevator activated and lowered me to a sealed chamber below the station.</Text>
-    </ExploreFact>
-  </Entry>
-
   <!-- Final Room -->
   <Entry>
     <ID>ARC_FINAL_ROOM</ID>
@@ -174,7 +174,7 @@
 
     <RumorFact>
       <ID>ARC_FINAL_ROOM_R1</ID>
-      <SourceID>ARC_ELEVATOR_ROOM_R1</SourceID>
+      <SourceID>ARC_ELEVATOR_ROOM</SourceID>
       <RumorName>Lower Room</RumorName>
       <RumorNamePriority>1</RumorNamePriority>
       <Text>The elevator seems to lead to lower floor.</Text>

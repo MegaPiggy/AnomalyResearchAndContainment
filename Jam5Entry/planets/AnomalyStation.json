@@ -60,8 +60,144 @@
                 "audio": "planets/Castaways_Redone.wav",
                 "loop": true,
                 "track": "music",
+                "radius": 125
+            },
+            {
+                "isRelativeToParent": true,
+                "audio": "planets/TheNomai_Redone.wav",
+                "priority": 2,
+                "loop": true,
+                "track": "music",
+                "shape": {
+                    "type": "cylinder",
+                    "radius": 25,
+                    "height": 25
+                },
+                "position": {
+                    "x": 0,
+                    "y": 31.4,
+                    "z": 71.8
+                }
+            },
+            {
+                "isRelativeToParent": true,
+                "audio": "planets/TheNomai_Redone.wav",
+                "priority": 2,
+                "loop": true,
+                "track": "music",
+                "shape": {
+                    "type": "cylinder",
+                    "radius": 25,
+                    "height": 25
+                },
+                "position": {
+                    "x": 71.8,
+                    "y": 31.4,
+                    "z": 0
+                }
+            },
+            {
+                "isRelativeToParent": true,
+                "audio": "planets/TheNomai_Redone.wav",
+                "priority": 2,
+                "loop": true,
+                "track": "music",
+                "shape": {
+                    "type": "cylinder",
+                    "radius": 25,
+                    "height": 25
+                },
+                "position": {
+                    "x": 0,
+                    "y": 31.4,
+                    "z": -71.8
+                }
+            },
+            {
+                "isRelativeToParent": true,
+                "audio": "planets/TheNomai_Redone.wav",
+                "priority": 2,
+                "loop": true,
+                "track": "music",
+                "shape": {
+                    "type": "cylinder",
+                    "radius": 25,
+                    "height": 25
+                },
+                "position": {
+                    "x": -71.8,
+                    "y": 31.4,
+                    "z": 0
+                }
+            },
+            {
+                "isRelativeToParent": true,
+                "audio": "planets/TheNomai_Redone.wav",
+                "priority": 2,
+                "loop": true,
+                "track": "music",
+                "shape": {
+                    "type": "cylinder",
+                    "radius": 33.5,
+                    "height": 30
+                },
+                "position": {
+                    "x": 0,
+                    "y": 1,
+                    "z": 0
+                }
+            }
+        ],
+        "fluidVolumes": [
+            {
                 "radius": 125,
-                "randomizePlayhead": true
+                "type": "air",
+                "layer": 5,
+                "priority": 0,
+                "density": 1.2,
+                "allowShipAutoroll": false,
+                "disableOnStart": false
+            }
+        ],
+        "oxygenVolumes": [
+            {
+                "radius": 125,
+                "playRefillAudio": true,
+                "treeVolume": true
+            }
+        ],
+        "revealVolumes": [
+            {
+                "radius": 125,
+                "revealFor": "player",
+                "revealOn": "enter",
+                "reveals": [
+                    "ARC_WARP_PLATFORM_X1",
+                    "ARC_OBSERVATION_DOME_R1"
+                ]
+            },
+            {
+                "radius": 125,
+                "revealFor": "probe",
+                "revealOn": "snapshot",
+                "reveals": [
+                    "ARC_WARP_PLATFORM_X1",
+                    "ARC_OBSERVATION_DOME_R1"
+                ]
+            }
+        ],
+        "reverbVolumes": [
+            {
+                "shape": {
+                    "type": "cylinder",
+                    "radius": 33.5,
+                    "height": 30
+                },
+                "position": {
+                    "x": 0,
+                    "y": 1,
+                    "z": 0
+                }
             }
         ],
         "forces": {
