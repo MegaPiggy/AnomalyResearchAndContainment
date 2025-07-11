@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/xen-42/outer-wilds-new-horizons/main/NewHorizons/Schemas/star_system_schema.json",
   "name": "Jam5",
   "initialReveal": [
-    "MEGAPIGGY_MOD_SYSTEM_EXPLORE_FACT"
+    "ARC_DOME_R1"
   ],
   "curiosities": [
     {
@@ -27,6 +27,20 @@
       "position": {
         "x": 0,
         "y": 0
+      }
+    },
+    {
+      "id": "MEGAPIGGY_PLANET_EXPLORE_FACT",
+      "position": {
+        "x": 0,
+        "y": -50
+      }
+    },
+    {
+      "id": "ANOMALY_STATION_EXPLORE_FACT",
+      "position": {
+        "x": 0,
+        "y": -100
       }
     }
   ]

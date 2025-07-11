@@ -45,4 +45,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="NewHorizons">
+      <HintPath>$(ModsPath)/xen.NewHorizons/NewHorizons.dll</HintPath>
+    </Reference>
+    <Reference Include="ModJam5">
+      <HintPath>$(ModsPath)/xen-42.ModJam5/ModJam5.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>

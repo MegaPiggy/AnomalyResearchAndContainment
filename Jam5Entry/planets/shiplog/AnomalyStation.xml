@@ -1,0 +1,196 @@
+<AstroObjectEntry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/shiplog_schema.xsd">
+  <ID>ARC_STATION</ID>
+
+  <!-- Observation Dome -->
+  <Entry>
+    <ID>ARC_OBSERVATION_DOME</ID>
+    <Name>Observation Dome</Name>
+    <Curiosity>ARC_STATION</Curiosity>
+
+    <RumorFact>
+      <ID>ARC_OBSERVATION_DOME_R1</ID>
+      <SourceID>ARC_WARP_PLATFORM_X1</SourceID>
+      <Text>A domed chamber with panoramic views of space. It contains a warp receiver and a path leading deeper into the station.</Text>
+    </RumorFact>
+
+    <ExploreFact>
+      <ID>ARC_OBSERVATION_DOME_X1</ID>
+      <Text>A terminal in the dome mentions a dormant elevator system requiring multiple anomaly keys to activate.</Text>
+    </ExploreFact>
+    <ExploreFact>
+      <ID>ARC_OBSERVATION_DOME_X2</ID>
+      <Text>A computer in the dome lists four anomaly chambers connected to the station’s ring corridor. Each chamber is said to contain a key that powers the elevator system.</Text>
+    </ExploreFact>
+  </Entry>
+
+  <!-- Echo Cell -->
+  <Entry>
+    <ID>ARC_ECHO_CELL</ID>
+    <Name>Echo Cell</Name>
+    <Curiosity>ARC_STATION</Curiosity>
+
+    <RumorFact>
+      <ID>ARC_ECHO_CELL_R1</ID>
+      <SourceID>ARC_OBSERVATION_DOME_X2</SourceID>
+      <RumorName>Echoing Chamber</RumorName>
+      <RumorNamePriority>1</RumorNamePriority>
+      <Text>Nomai notes hint at a chamber where sound loops back unnaturally.</Text>
+    </RumorFact>
+    <RumorFact>
+      <ID>ARC_ECHO_CELL_R2</ID>
+      <RumorName>Echo Cell</RumorName>
+      <RumorNamePriority>2</RumorNamePriority>
+      <Text>The Nomai referred to it as the Echo Cell.</Text>
+    </RumorFact>
+
+    <ExploreFact>
+      <ID>ARC_ECHO_CELL_X1</ID>
+      <Text>This room is acoustically engineered. I hear phantom sounds repeating my movements back at me, delayed and distorted.</Text>
+    </ExploreFact>
+    <ExploreFact>
+      <ID>ARC_ECHO_CELL_X2</ID>
+      <Text>Solving the sound puzzle in this chamber unlocked an energy node. It appears to power part of the central station.</Text>
+    </ExploreFact>
+  </Entry>
+
+  <!-- Runic Wall -->
+  <Entry>
+    <ID>ARC_RUNIC_WALL</ID>
+    <Name>Runic Wall</Name>
+    <Curiosity>ARC_STATION</Curiosity>
+
+    <RumorFact>
+      <ID>ARC_RUNIC_WALL_R1</ID>
+      <SourceID>ARC_OBSERVATION_DOME_X2</SourceID>
+      <RumorName>Wall of Symbols</RumorName>
+      <RumorNamePriority>1</RumorNamePriority>
+      <Text>A log fragment refers to "shifting glyphs that hide the path to knowledge." The Nomai seemed fascinated with this anomaly.</Text>
+    </RumorFact>
+    <RumorFact>
+      <ID>ARC_RUNIC_WALL_R2</ID>
+      <RumorName>Runic Wall</RumorName>
+      <RumorNamePriority>2</RumorNamePriority>
+      <Text>The Nomai referred to it as the Runic Wall.</Text>
+    </RumorFact>
+
+    <ExploreFact>
+      <ID>ARC_RUNIC_WALL_X1</ID>
+      <Text>The walls are covered in shifting glyphs. Photographing certain symbols in order reveals hidden pathways.</Text>
+    </ExploreFact>
+    <ExploreFact>
+      <ID>ARC_RUNIC_WALL_X2</ID>
+      <Text>Solving the glyph puzzle triggered a release of another anomaly key.</Text>
+    </ExploreFact>
+  </Entry>
+
+  <!-- Prism Vault -->
+  <Entry>
+    <ID>ARC_PRISM_VAULT</ID>
+    <Name>Prism Vault</Name>
+    <Curiosity>ARC_STATION</Curiosity>
+
+    <RumorFact>
+      <ID>ARC_PRISM_VAULT_R1</ID>
+      <SourceID>ARC_OBSERVATION_DOME_X2</SourceID>
+      <RumorName>Crystal Light Room</RumorName>
+      <RumorNamePriority>1</RumorNamePriority>
+      <Text>One chamber is said to contain crystals that bend light to reveal hidden truths.</Text>
+    </RumorFact>
+    <RumorFact>
+      <ID>ARC_PRISM_VAULT_R2</ID>
+      <RumorName>Prism Vault</RumorName>
+      <RumorNamePriority>2</RumorNamePriority>
+      <Text>The Nomai referred to it as the Prism Vault.</Text>
+    </RumorFact>
+
+    <ExploreFact>
+      <ID>ARC_PRISM_VAULT_X1</ID>
+      <Text>This chamber contains reflective crystals that redirect energy beams. Light and shadow interact with sensors in the room.</Text>
+    </ExploreFact>
+    <ExploreFact>
+      <ID>ARC_PRISM_VAULT_X2</ID>
+      <Text>Aligning the prisms to redirect beams to all sensors unlocked another anomaly key.</Text>
+    </ExploreFact>
+  </Entry>
+
+  <!-- Polarizer Lock -->
+  <Entry>
+    <ID>ARC_POLARIZER_LOCK</ID>
+    <Name>Polarizer Lock</Name>
+    <Curiosity>ARC_STATION</Curiosity>
+
+    <RumorFact>
+      <ID>ARC_POLARIZER_LOCK_R1</ID>
+      <SourceID>ARC_OBSERVATION_DOME_X2</SourceID>
+      <RumorName>Magnetic Lock Room</RumorName>
+      <RumorNamePriority>1</RumorNamePriority>
+      <Text>Nomai records warn of magnetic interference disrupting normal instrumentation. They sealed the anomaly behind mechanical locks.</Text>
+    </RumorFact>
+    <RumorFact>
+      <ID>ARC_POLARIZER_LOCK_R2</ID>
+      <RumorName>Polarizer Lock</RumorName>
+      <RumorNamePriority>2</RumorNamePriority>
+      <Text>The Nomai referred to it as the Polarizer Lock.</Text>
+    </RumorFact>
+
+    <ExploreFact>
+      <ID>ARC_POLARIZER_LOCK_X1</ID>
+      <Text>Magnetic fields interfere with probe signals in this room. I had to align rotating machines using only visual feedback.</Text>
+    </ExploreFact>
+    <ExploreFact>
+      <ID>ARC_POLARIZER_LOCK_X2</ID>
+      <Text>Completing the sequence released the final anomaly key for the elevator pad.</Text>
+    </ExploreFact>
+  </Entry>
+
+  <!-- Elevator Room -->
+  <Entry>
+    <ID>ARC_ELEVATOR_ROOM</ID>
+    <Name>Elevator Chamber</Name>
+    <Curiosity>ARC_STATION</Curiosity>
+
+    <RumorFact>
+      <ID>ARC_ELEVATOR_ROOM_R1</ID>
+      <SourceID>ARC_OBSERVATION_DOME_X1</SourceID>
+      <Text>The central chamber contains an inactive elevator pad.</Text>
+    </RumorFact>
+
+    <ExploreFact>
+      <ID>ARC_ELEVATOR_ROOM_X1</ID>
+      <Text>It seems to require four anomaly keys to function.</Text>
+    </ExploreFact>
+    <ExploreFact>
+      <ID>ARC_ELEVATOR_ROOM_X2</ID>
+      <Text>Once the anomaly keys were gathered, the elevator activated and lowered me to a sealed chamber below the station.</Text>
+    </ExploreFact>
+  </Entry>
+
+  <!-- Final Room -->
+  <Entry>
+    <ID>ARC_FINAL_ROOM</ID>
+    <Name>Containment Chamber</Name>
+    <Curiosity>ARC_STATION</Curiosity>
+
+    <RumorFact>
+      <ID>ARC_FINAL_ROOM_R1</ID>
+      <SourceID>ARC_ELEVATOR_ROOM_R1</SourceID>
+      <RumorName>Lower Room</RumorName>
+      <RumorNamePriority>1</RumorNamePriority>
+      <Text>The elevator seems to lead to lower floor.</Text>
+    </RumorFact>
+
+    <ExploreFact>
+      <ID>ARC_FINAL_ROOM_X1</ID>
+      <Text>This massive chamber contains a single anomaly: a cube suspended in stasis fields, humming with faint power.</Text>
+    </ExploreFact>
+    <ExploreFact>
+      <ID>ARC_FINAL_ROOM_X2</ID>
+      <Text>A log left by a Nomai researcher warns of activating the containment field. They refer to it only as "Object 003 – The Box."</Text>
+    </ExploreFact>
+    <ExploreFact>
+      <ID>ARC_FINAL_ROOM_X3</ID>
+      <Text>Interacting with the containment controls ends the loop early, returning me to the beginning of the cycle.</Text>
+    </ExploreFact>
+  </Entry>
+</AstroObjectEntry>

@@ -1,5 +1,6 @@
 ﻿<Project>
   <PropertyGroup>
-    <OutputPath>$(AppData)/OuterWildsModManager/OWML/Mods/MegaPiggy.Jam5Entry</OutputPath>
+    <ModsPath>$(AppData)/OuterWildsModManager/OWML/Mods</ModsPath>
+    <OutputPath>$(ModsPath)/MegaPiggy.Jam5Entry</OutputPath>
   </PropertyGroup>
 </Project>

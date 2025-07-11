@@ -1,0 +1,18 @@
+<AstroObjectEntry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/shiplog_schema.xsd">
+  <ID>EMERALD_REVERIE</ID>
+
+  <Entry>
+    <ID>EMERALD_REVERIE_ROOT</ID>
+    <Name>Emerald Reverie</Name>
+    <Curiosity>ARC_STATION</Curiosity>
+    <IgnoreMoreToExplore/>
+
+    <ExploreFact>
+      <ID>EMERALD_REVERIE_FACT</ID>
+      <Text>A lonely planet in orbit around the green star. From a distance, it appears calm and featureless. No signals or structures are detectable on its surface.</Text>
+    </ExploreFact>
+
+  </Entry>
+
+</AstroObjectEntry>

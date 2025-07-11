@@ -1,0 +1,44 @@
+ManifestFileVersion: 0
+CRC: 2689675866
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d10fd59d4379eaaa4eb499be104c2948
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 16927d2cc4b64d6d6b7fb81151dca364
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3eeadab5ab8180f8ee482463115a69f2, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/AnomalyResearch/DualConnector.prefab
+- Assets/AnomalyResearch/DualConnectorWithRoom.prefab
+- Assets/AnomalyResearch/LampArray.prefab
+- Assets/AnomalyResearch/AnomalyResearch.prefab
+- Assets/AnomalyResearch/Prefab_NOM_Lamp_Glow_Diamond_Wall_Blue.prefab
+- Assets/AnomalyResearch/AnomalyRoom.prefab
+Dependencies: []

@@ -1,0 +1,57 @@
+﻿{
+    "$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
+    "name": "Emerald Reverie",
+    "starSystem": "Jam5",
+    "Base": {
+        "surfaceSize": 125,
+        "surfaceGravity": 6
+    },
+    "Orbit": {
+        "primaryBody": "Verdant Beacon",
+        "semiMajorAxis": 1500,
+        "inclination": 22.5
+    },
+    "HeightMap": {
+        "minHeight": 110,
+        "maxHeight": 120,
+        "heightMap": "planets/toxicheight.png",
+        "textureMap": "planets/toxictexture.png"
+    },
+    "Atmosphere": {
+        "size": 125,
+        "atmosphereSunIntensity": 0.5,
+        "hasOxygen": true,
+        "atmosphereTint": {
+            "r": 45,
+            "g": 191,
+            "b": 75
+        },
+        "clouds": {
+            "cloudsPrefab": "transparent",
+            "texturePath": "planets/toxicclouds.png",
+            "innerCloudRadius": 125,
+            "outerCloudRadius": 130,
+            "rotationSpeed": 5
+        }
+    },
+    "AmbientLights": [
+        {
+            "innerRadius": 130,
+            "outerRadius": 140,
+            "tint": {
+                "r": 70,
+                "g": 250,
+                "b": 180,
+                "a": 255
+            },
+            "intensity": 0.2
+        }
+    ],
+    "ShipLog": {
+        "xmlFile": "planets/shiplog/EmeraldReverie.xml",
+        "spriteFolder": "planets/shiplog/sprites"
+    },
+    "MapMarker": {
+        "enabled": true
+    }
+}
