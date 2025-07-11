@@ -15,6 +15,17 @@
         "alignmentAxis": { "y": 1 }
     },
     "Props": {
+        "signals": [
+            {
+                "frequency": "Anomaly Echoes",
+                "name": "The Box",
+                "audio": "planets/Signal.wav",
+                "identificationRadius": 10,
+                "detectionRadius": 26,
+                "onlyAudibleToScope": false,
+                "sourceRadius": 2
+            }
+        ],
         "warpReceivers": [
             {
                 "frequency": "AnomalyStation",
