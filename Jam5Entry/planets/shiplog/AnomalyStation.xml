@@ -2,6 +2,27 @@
                  xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/shiplog_schema.xsd">
   <ID>Anomaly Station</ID>
 
+  <!-- Anomaly Station -->
+  <Entry>
+    <ID>ARC_STATION</ID>
+    <Name>Anomaly Station</Name>
+    <Curiosity>ARC_STATION</Curiosity>
+    <IsCuriosity/>
+
+    <RumorFact>
+      <ID>ARC_STATION_R1</ID>
+      <SourceID>ARC_WARP_PLATFORM</SourceID>
+      <RumorName>Space Station</RumorName>
+      <RumorNamePriority>1</RumorNamePriority>
+      <Text>A space station orbiting a planet around a green star.</Text>
+    </RumorFact>
+    
+    <ExploreFact>
+      <ID>ARC_STATION_X1</ID>
+      <Text>This space station is a Nomai anomaly research facility orbiting a planet named Emerald Reverie around a green star called Verdant Beacon.</Text>
+    </ExploreFact>
+  </Entry>
+
   <!-- Observation Dome -->
   <Entry>
     <ID>ARC_OBSERVATION_DOME</ID>
@@ -10,7 +31,7 @@
 
     <RumorFact>
       <ID>ARC_OBSERVATION_DOME_R1</ID>
-      <SourceID>ARC_WARP_PLATFORM</SourceID>
+      <SourceID>ARC_STATION</SourceID>
       <Text>A domed chamber with panoramic views of space. It contains a warp receiver and a path leading deeper into the station.</Text>
     </RumorFact>
 

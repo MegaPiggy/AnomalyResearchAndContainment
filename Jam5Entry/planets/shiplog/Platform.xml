@@ -7,7 +7,6 @@
     <ID>ARC_WARP_PLATFORM</ID>
     <Name>Station Warp Platform</Name>
     <Curiosity>ARC_STATION</Curiosity>
-    <IsCuriosity/>
 
     <RumorFact>
       <ID>ARC_WARP_PLATFORM_R1</ID>
@@ -19,10 +18,6 @@
     <ExploreFact>
       <ID>ARC_WARP_PLATFORM_X1</ID>
       <Text>The warp transmitter connects the central station's platform to a space station.</Text>
-    </ExploreFact>
-    <ExploreFact>
-      <ID>ARC_WARP_PLATFORM_X2</ID>
-      <Text>The warp transmitter connects to a Nomai anomaly research facility orbiting a planet named Emerald Reverie around the green star called Verdant Beacon.</Text>
     </ExploreFact>
   </Entry>
 

@@ -26,70 +26,77 @@
             "id": "ARC_WARP_PLATFORM",
             "position": {
                 "x": 0,
+                "y": 100
+            }
+        },
+        {
+            "id": "ARC_STATION",
+            "position": {
+                "x": 0,
                 "y": 0
             }
         },
         {
             "id": "VERDANT_BEACON_ROOT",
             "position": {
-                "x": -200,
-                "y": -50
+                "x": -500,
+                "y": 0
             }
         },
         {
             "id": "EMERALD_REVERIE_ROOT",
             "position": {
-                "x": -100,
-                "y": -50
+                "x": -250,
+                "y": 0
             }
         },
         {
             "id": "ARC_OBSERVATION_DOME",
             "position": {
                 "x": 0,
-                "y": -50
+                "y": -100
             }
         },
         {
             "id": "ARC_ELEVATOR_ROOM",
             "position": {
                 "x": 0,
-                "y": -100
+                "y": -200
             }
         },
         {
             "id": "ARC_ECHO_CELL",
             "position": {
-                "x": -100,
-                "y": -100
+                "x": -250,
+                "y": -200
             }
         },
         {
             "id": "ARC_RUNIC_WALL",
             "position": {
-                "x": -200,
-                "y": -100
+                "x": -500,
+                "y": -200
             }
         },
         {
             "id": "ARC_PRISM_VAULT",
             "position": {
-                "x": 100,
-                "y": -100
+                "x": 250,
+                "y": -200
             }
         },
         {
             "id": "ARC_POLARIZER_LOCK",
             "position": {
-                "x": 200,
-                "y": -100
+                "x": 500,
+                "y": -200
             }
         },
         {
             "id": "ARC_FINAL_ROOM",
             "position": {
                 "x": 0,
-                "y": -150
+                "y": -300
             }
         }
     ]

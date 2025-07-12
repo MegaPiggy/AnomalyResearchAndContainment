@@ -92,15 +92,17 @@
                 "rename": "AnomalyBattery",
                 "assetBundle": "planets/anomalyresearch.rem",
                 "path": "Assets/AnomalyResearch/Battery.prefab",
+                "position": {
+                    "x": 5,
+                    "y": 50,
+                    "z": 20
+                },
                 "item": {
                     "name": "Battery",
                     "itemType": "AnomalyBattery",
                     "colliderRadius": 0,
                     "colliderIsTrigger": false,
                     "droppable": true,
-                    "holdRotation": {
-                        "y": 90
-                    },
                     "dropOffset": {
                         "x": 0,
                         "y": 0.71875,
@@ -147,12 +149,20 @@
                 "rename": "AnomalyKey",
                 "assetBundle": "planets/anomalyresearch.rem",
                 "path": "Assets/AnomalyResearch/Key.prefab",
+                "position": {
+                    "x": -5,
+                    "y": 50,
+                    "z": 20
+                },
                 "item": {
                     "name": "Key",
                     "itemType": "AnomalyKey",
                     "colliderRadius": 0,
                     "colliderIsTrigger": false,
                     "droppable": true,
+                    "holdRotation": {
+                        "y": 90
+                    },
                     "dropOffset": {
                         "x": 0.125,
                         "y": 0,
@@ -189,12 +199,12 @@
                 "shape": {
                     "type": "cylinder",
                     "radius": 25,
-                    "height": 25
+                    "height": 20
                 },
                 "position": {
                     "x": 0,
-                    "y": 31.4,
-                    "z": 71.8
+                    "y": 31.5,
+                    "z": 72.53
                 }
             },
             {
@@ -206,11 +216,11 @@
                 "shape": {
                     "type": "cylinder",
                     "radius": 25,
-                    "height": 25
+                    "height": 20
                 },
                 "position": {
-                    "x": 71.8,
-                    "y": 31.4,
+                    "x": 72.53,
+                    "y": 31.5,
                     "z": 0
                 }
             },
@@ -223,12 +233,12 @@
                 "shape": {
                     "type": "cylinder",
                     "radius": 25,
-                    "height": 25
+                    "height": 20
                 },
                 "position": {
                     "x": 0,
-                    "y": 31.4,
-                    "z": -71.8
+                    "y": 31.5,
+                    "z": -72.53
                 }
             },
             {
@@ -240,11 +250,11 @@
                 "shape": {
                     "type": "cylinder",
                     "radius": 25,
-                    "height": 25
+                    "height": 20
                 },
                 "position": {
-                    "x": -71.8,
-                    "y": 31.4,
+                    "x": -72.53,
+                    "y": 31.5,
                     "z": 0
                 }
             },
@@ -291,6 +301,7 @@
                 "revealOn": "enter",
                 "reveals": [
                     "ARC_WARP_PLATFORM_X1",
+                    "ARC_STATION_R1",
                     "ARC_OBSERVATION_DOME_R1"
                 ]
             },
@@ -300,6 +311,7 @@
                 "revealOn": "snapshot",
                 "reveals": [
                     "ARC_WARP_PLATFORM_X1",
+                    "ARC_STATION_R1",
                     "ARC_OBSERVATION_DOME_R1"
                 ]
             }
@@ -348,5 +360,17 @@
     },
     "MapMarker": {
         "enabled": true
+    },
+    "Spawn": {
+        "playerSpawnPoints": [
+            {
+                "isDefault": true,
+                "position": {
+                    "x": -4,
+                    "y": 50,
+                    "z": 6
+                }
+            }
+        ]
     }
 }
