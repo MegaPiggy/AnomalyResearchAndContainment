@@ -12,7 +12,7 @@
     "Star": {
         "stellarDeathType": "none",
         "size": 300,
-        "solarLuminosity": 1,
+        "solarLuminosity": 0.25,
         "lightTint": {
             "r": 140,
             "g": 255,
