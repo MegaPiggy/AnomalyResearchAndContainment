@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2689675866
+CRC: 3993956718
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d10fd59d4379eaaa4eb499be104c2948
+    Hash: 82a7966bb804cb705732b241b0046caa
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 16927d2cc4b64d6d6b7fb81151dca364
+    Hash: 762c9aea9b8208ffd0bb773e1a97185a
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -27,18 +27,28 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 64
   Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
 - Class: 108
   Script: {instanceID: 0}
 - Class: 114
   Script: {fileID: 11500000, guid: 3eeadab5ab8180f8ee482463115a69f2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0cfd736a3952486c93e9a5d8f58c79c3, type: 3}
 - Class: 115
+  Script: {instanceID: 0}
+- Class: 136
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/AnomalyResearch/DualConnector.prefab
 - Assets/AnomalyResearch/DualConnectorWithRoom.prefab
 - Assets/AnomalyResearch/LampArray.prefab
+- Assets/AnomalyResearch/Battery.prefab
+- Assets/AnomalyResearch/BatterySlot.prefab
 - Assets/AnomalyResearch/AnomalyResearch.prefab
 - Assets/AnomalyResearch/Prefab_NOM_Lamp_Glow_Diamond_Wall_Blue.prefab
+- Assets/AnomalyResearch/KeyPanel.prefab
 - Assets/AnomalyResearch/AnomalyRoom.prefab
+- Assets/AnomalyResearch/Key.prefab
 Dependencies: []

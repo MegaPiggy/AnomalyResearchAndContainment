@@ -61,6 +61,113 @@
                     "y": 0,
                     "z": 0
                 }
+            },
+            {
+                "rename": "BatterySlot",
+                "assetBundle": "planets/anomalyresearch.rem",
+                "path": "Assets/AnomalyResearch/BatterySlot.prefab",
+                "parentPath": "Sector/Root",
+                "isRelativeToParent": true,
+                "position": {
+                    "x": 5,
+                    "y": 48.2,
+                    "z": 30
+                },
+                "rotation": { "y": 90 }
+            },
+            {
+                "rename": "ItemSocket",
+                "parentPath": "Sector/Root/BatterySlot/SocketRoot",
+                "isRelativeToParent": true,
+                "itemSocket": {
+                    "itemType": "AnomalyBattery",
+                    "insertCondition": "ActivateAnomalyStation",
+                    "clearInsertConditionOnRemoval": true,
+                    "isRelativeToParent": true,
+                    "colliderRadius": 1,
+                    "interactRange": 2
+                }
+            },
+            {
+                "rename": "AnomalyBattery",
+                "assetBundle": "planets/anomalyresearch.rem",
+                "path": "Assets/AnomalyResearch/Battery.prefab",
+                "item": {
+                    "name": "Battery",
+                    "itemType": "AnomalyBattery",
+                    "colliderRadius": 0,
+                    "colliderIsTrigger": false,
+                    "droppable": true,
+                    "holdRotation": {
+                        "y": 90
+                    },
+                    "dropOffset": {
+                        "x": 0,
+                        "y": 0.71875,
+                        "z": 0
+                    },
+                    "dropNormal": {
+                        "x": 0,
+                        "y": 1,
+                        "z": 0
+                    },
+                    "pickupAudio": "ToolItemWarpCorePickUp",
+                    "dropAudio": "ToolItemWarpCoreDrop",
+                    "socketAudio": "ToolItemWarpCoreInsert",
+                    "unsocketAudio": "ToolItemWarpCoreRemove"
+                }
+            },
+            {
+                "rename": "KeyPanel",
+                "assetBundle": "planets/anomalyresearch.rem",
+                "path": "Assets/AnomalyResearch/KeyPanel.prefab",
+                "parentPath": "Sector/Root",
+                "isRelativeToParent": true,
+                "position": {
+                    "x": -5,
+                    "y": 48.2,
+                    "z": 30
+                },
+                "rotation": { "y": 90 }
+            },
+            {
+                "rename": "ItemSocket",
+                "parentPath": "Sector/Root/KeyPanel/Slot",
+                "isRelativeToParent": true,
+                "itemSocket": {
+                    "itemType": "AnomalyKey",
+                    "insertCondition": "AnomalyKeyInserted",
+                    "clearInsertConditionOnRemoval": true,
+                    "isRelativeToParent": true,
+                    "colliderRadius": 1,
+                    "interactRange": 2
+                }
+            },
+            {
+                "rename": "AnomalyKey",
+                "assetBundle": "planets/anomalyresearch.rem",
+                "path": "Assets/AnomalyResearch/Key.prefab",
+                "item": {
+                    "name": "Key",
+                    "itemType": "AnomalyKey",
+                    "colliderRadius": 0,
+                    "colliderIsTrigger": false,
+                    "droppable": true,
+                    "dropOffset": {
+                        "x": 0.125,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "dropNormal": {
+                        "x": 1,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "pickupAudio": "ToolItemSharedStonePickUp",
+                    "dropAudio": "ToolItemSharedStoneDrop",
+                    "socketAudio": "NomaiHologramActivate",
+                    "unsocketAudio": "NomaiHologramDeactivate"
+                }
             }
         ]
     },
