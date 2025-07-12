@@ -16,7 +16,7 @@
 
     <ExploreFact>
       <ID>ARC_OBSERVATION_DOME_X1</ID>
-      <Text>A terminal in the dome mentions a dormant elevator system requiring multiple anomaly keys to activate.</Text>
+      <Text>A computer in the dome mentions a dormant elevator system requiring multiple anomaly keys to activate.</Text>
     </ExploreFact>
     <ExploreFact>
       <ID>ARC_OBSERVATION_DOME_X2</ID>
