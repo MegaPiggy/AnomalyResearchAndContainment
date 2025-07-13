@@ -21,14 +21,16 @@
         "details": [
             {
                 "rename": "Ruin",
+                "keepLoaded": true,
                 "assetBundle": "planets/anomalyresearch.rem",
                 "path": "Assets/AnomalyResearch/Ruin.prefab",
                 "isRelativeToParent": true,
                 "position": {
                     "x": 0,
-                    "y": 130,
+                    "y": 113,
                     "z": 0
-                }
+                },
+                "scale": 0.5
             }
         ]
     },
