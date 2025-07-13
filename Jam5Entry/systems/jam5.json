@@ -51,6 +51,13 @@
             }
         },
         {
+            "id": "EMERALD_REVERIE_STRUCTURE",
+            "position": {
+                "x": -250,
+                "y": -200
+            }
+        },
+        {
             "id": "ARC_OBSERVATION_DOME",
             "position": {
                 "x": 0,

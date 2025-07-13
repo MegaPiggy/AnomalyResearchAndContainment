@@ -163,7 +163,8 @@
                 "revealFor": "player",
                 "revealOn": "enter",
                 "reveals": [
-                    "EMERALD_REVERIE_X1"
+                    "EMERALD_REVERIE_X1",
+                    "EMERALD_REVERIE_STRUCTURE_X1"
                 ]
             }
         ]
