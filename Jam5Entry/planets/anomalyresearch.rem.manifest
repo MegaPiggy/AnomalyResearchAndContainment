@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2966305970
+CRC: 214119291
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4d5ca4d02717ca85f76cc9dececea4f1
+    Hash: 3953aff0d0ca4143cbfcb43a2a12898d
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 762c9aea9b8208ffd0bb773e1a97185a
+    Hash: e027bd95ca4a38e009de8ba725e9e146
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -29,13 +29,27 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 65
   Script: {instanceID: 0}
+- Class: 82
+  Script: {instanceID: 0}
 - Class: 108
   Script: {instanceID: 0}
 - Class: 114
+  Script: {fileID: 11500000, guid: fbb2498122f7e23a2e87544333cb528f, type: 3}
+- Class: 114
+  Script: {fileID: -1273601072, guid: 15778464d8f29d14eab5bb1b103b6439, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ae101e74c1ac7ac7f3867d7e18597ede, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 3eeadab5ab8180f8ee482463115a69f2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0053d129d589d30957bcc3b1958fc878, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2145ed3a866d4bd5a94d98ee05d0fa4f, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 0cfd736a3952486c93e9a5d8f58c79c3, type: 3}
 - Class: 115
+  Script: {instanceID: 0}
+- Class: 135
   Script: {instanceID: 0}
 - Class: 136
   Script: {instanceID: 0}
@@ -48,6 +62,7 @@ Assets:
 - Assets/AnomalyResearch/BatterySlot.prefab
 - Assets/AnomalyResearch/AnomalyResearch.prefab
 - Assets/AnomalyResearch/Prefab_NOM_Lamp_Glow_Diamond_Wall_Blue.prefab
+- Assets/AnomalyResearch/ElevatorPad.prefab
 - Assets/AnomalyResearch/KeyPanel.prefab
 - Assets/AnomalyResearch/AnomalyRoom.prefab
 - Assets/AnomalyResearch/Key.prefab
