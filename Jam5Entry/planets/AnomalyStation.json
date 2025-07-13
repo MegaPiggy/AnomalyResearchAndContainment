@@ -356,7 +356,10 @@
     ],
     "ShipLog": {
         "xmlFile": "planets/shiplog/AnomalyStation.xml",
-        "spriteFolder": "planets/shiplog/sprites"
+        "spriteFolder": "planets/shiplog/sprites",
+        "mapMode": {
+            "revealedSprite": "planets/shiplog/mapmode/AnomalyStation.png"
+        }
     },
     "MapMarker": {
         "enabled": true

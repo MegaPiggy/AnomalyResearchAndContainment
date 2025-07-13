@@ -46,7 +46,10 @@
     },
     "ShipLog": {
         "xmlFile": "planets/shiplog/VerdantBeacon.xml",
-        "spriteFolder": "planets/shiplog/sprites"
+        "spriteFolder": "planets/shiplog/sprites",
+        "mapMode": {
+            "revealedSprite": "planets/shiplog/mapmode/VerdantBeacon.png"
+        }
     },
     "MapMarker": {
         "enabled": true

@@ -42,6 +42,7 @@ namespace Jam5Entry
         private float _initElevatorTime;
         private Floor targetFloor;
         private bool _busy;
+        private bool _deactivated;
 
         public Vector3 GetFloorPos(Floor floor)
         {
@@ -113,6 +114,7 @@ namespace Jam5Entry
 
         public void AttachPlayerAndStartElevator()
         {
+            if (_busy || _deactivated) return;
             AttachPlayer();
             StartElevator();
         }
@@ -124,7 +126,7 @@ namespace Jam5Entry
 
         private void StartElevator()
         {
-            if (_busy) return;
+            if (_busy || _deactivated) return;
             _busy = true;
             enabled = true;
             targetFloor = floor == Floor.Top ? Floor.Bottom : Floor.Top;
@@ -189,11 +191,13 @@ namespace Jam5Entry
 
         public void EnableElevator()
         {
+            _deactivated = false;
             ChangePromptText((UITextType)TranslationHandler.AddUI("Use Elevator", false), true);
         }
 
         public void DisableElevator()
         {
+            _deactivated = true;
             ChangePromptText((UITextType)TranslationHandler.AddUI("Elevator Not Activated", false), false);
         }
     }

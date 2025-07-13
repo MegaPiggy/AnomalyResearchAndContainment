@@ -17,6 +17,21 @@
         "heightMap": "planets/toxicheight.png",
         "textureMap": "planets/toxictexture.png"
     },
+    "Props": {
+        "details": [
+            {
+                "rename": "Ruin",
+                "assetBundle": "planets/anomalyresearch.rem",
+                "path": "Assets/AnomalyResearch/Ruin.prefab",
+                "isRelativeToParent": true,
+                "position": {
+                    "x": 0,
+                    "y": 130,
+                    "z": 0
+                }
+            }
+        ]
+    },
     "Atmosphere": {
         "size": 125,
         "atmosphereSunIntensity": 0.5,
@@ -49,7 +64,10 @@
     ],
     "ShipLog": {
         "xmlFile": "planets/shiplog/EmeraldReverie.xml",
-        "spriteFolder": "planets/shiplog/sprites"
+        "spriteFolder": "planets/shiplog/sprites",
+        "mapMode": {
+            "revealedSprite": "planets/shiplog/mapmode/EmeraldReverie.png"
+        }
     },
     "MapMarker": {
         "enabled": true
