@@ -76,19 +76,6 @@
                 "rotation": { "y": 90 }
             },
             {
-                "rename": "ItemSocket",
-                "parentPath": "Sector/Root/BatterySlot/SocketRoot",
-                "isRelativeToParent": true,
-                "itemSocket": {
-                    "itemType": "AnomalyBattery",
-                    "insertCondition": "ActivateAnomalyStation",
-                    "clearInsertConditionOnRemoval": true,
-                    "isRelativeToParent": true,
-                    "colliderRadius": 1,
-                    "interactRange": 2
-                }
-            },
-            {
                 "rename": "AnomalyBattery",
                 "assetBundle": "planets/anomalyresearch.rem",
                 "path": "Assets/AnomalyResearch/Battery.prefab",
@@ -120,6 +107,19 @@
                 }
             },
             {
+                "rename": "ItemSocket",
+                "parentPath": "Sector/Root/BatterySlot/SocketRoot",
+                "isRelativeToParent": true,
+                "itemSocket": {
+                    "itemType": "AnomalyBattery",
+                    "insertCondition": "ActivateAnomalyStation",
+                    "clearInsertConditionOnRemoval": true,
+                    "isRelativeToParent": true,
+                    "colliderRadius": 1,
+                    "interactRange": 2
+                }
+            },
+            {
                 "rename": "KeyPanel",
                 "assetBundle": "planets/anomalyresearch.rem",
                 "path": "Assets/AnomalyResearch/KeyPanel.prefab",
@@ -131,19 +131,6 @@
                     "z": 30
                 },
                 "rotation": { "y": 90 }
-            },
-            {
-                "rename": "ItemSocket",
-                "parentPath": "Sector/Root/KeyPanel/Slot",
-                "isRelativeToParent": true,
-                "itemSocket": {
-                    "itemType": "AnomalyKey",
-                    "insertCondition": "AnomalyKeyInserted",
-                    "clearInsertConditionOnRemoval": true,
-                    "isRelativeToParent": true,
-                    "colliderRadius": 1,
-                    "interactRange": 2
-                }
             },
             {
                 "rename": "AnomalyKey",
@@ -177,6 +164,19 @@
                     "dropAudio": "ToolItemSharedStoneDrop",
                     "socketAudio": "NomaiHologramActivate",
                     "unsocketAudio": "NomaiHologramDeactivate"
+                }
+            },
+            {
+                "rename": "ItemSocket",
+                "parentPath": "Sector/Root/KeyPanel/Slot",
+                "isRelativeToParent": true,
+                "itemSocket": {
+                    "itemType": "AnomalyKey",
+                    "insertCondition": "AnomalyKeyInserted",
+                    "clearInsertConditionOnRemoval": true,
+                    "isRelativeToParent": true,
+                    "colliderRadius": 1,
+                    "interactRange": 2
                 }
             }
         ]
