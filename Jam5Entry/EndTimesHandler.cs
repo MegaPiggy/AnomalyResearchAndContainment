@@ -14,7 +14,6 @@ namespace Jam5Entry
         public static bool initialized = false;
         public static AudioType audioType;
         public static AudioType normalAudioType;
-        public static OWAudioSource endTimesSource;
 
         public static void LoadAudio()
         {
@@ -28,20 +27,25 @@ namespace Jam5Entry
 
             Delay.RunWhen(() => Locator.GetGlobalMusicController() != null, () =>
             {
-                endTimesSource = Locator.GetGlobalMusicController()._endTimesSource;
-                normalAudioType = endTimesSource.audioLibraryClip;
+                normalAudioType = Locator.GetGlobalMusicController()._endTimesSource.audioLibraryClip;
                 initialized = true;
             });
         }
 
         public static void Assign()
         {
-            endTimesSource.AssignAudioLibraryClip(audioType);
+            Locator.GetGlobalMusicController()._endTimesSource.AssignAudioLibraryClip(audioType);
         }
 
         public static void Unassign()
         {
-            endTimesSource.AssignAudioLibraryClip(normalAudioType);
+            Locator.GetGlobalMusicController()._endTimesSource.AssignAudioLibraryClip(normalAudioType);
+        }
+
+        public static void FadeOut()
+        {
+            Locator.GetGlobalMusicController()._playingEndTimes = false;
+            Locator.GetGlobalMusicController()._endTimesSource.FadeOut(0.5f, OWAudioSource.FadeOutCompleteAction.STOP, 0f);
         }
 
         public class CustomEndTimesVolume : EffectVolume
@@ -52,6 +56,7 @@ namespace Jam5Entry
                 {
                     Jam5Entry.Instance.ModHelper.Console.WriteLine("Assigning custom end times");
                     Assign();
+                    FadeOut();
                 }
             }
 
@@ -61,6 +66,7 @@ namespace Jam5Entry
                 {
                     Jam5Entry.Instance.ModHelper.Console.WriteLine("Unassigning custom end times");
                     Unassign();
+                    FadeOut();
                 }
             }
         }
