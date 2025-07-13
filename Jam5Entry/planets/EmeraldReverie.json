@@ -31,6 +31,140 @@
                     "z": 0
                 },
                 "scale": 0.5
+            },
+            {
+                "rename": "Crate",
+                "assetBundle": "planets/anomalyresearch.rem",
+                "path": "Assets/AnomalyResearch/Crate.prefab",
+                "isRelativeToParent": true,
+                "position": {
+                    "x": 5.772495,
+                    "y": 114.2005,
+                    "z": 3.763022
+                },
+                "rotation": {
+                    "y": 225
+                }
+            },
+            {
+                "rename": "Crate",
+                "assetBundle": "planets/anomalyresearch.rem",
+                "path": "Assets/AnomalyResearch/Crate.prefab",
+                "isRelativeToParent": true,
+                "position": {
+                    "x": 5.487438,
+                    "y": 114.2005,
+                    "z": -3.671948
+                },
+                "rotation": {
+                    "y": 315
+                }
+            },
+            {
+                "rename": "Crate",
+                "assetBundle": "planets/anomalyresearch.rem",
+                "path": "Assets/AnomalyResearch/Crate.prefab",
+                "isRelativeToParent": true,
+                "position": {
+                    "x": -5.302471,
+                    "y": 114.2005,
+                    "z": -2.166453
+                },
+                "rotation": {
+                    "y": 45
+                }
+            },
+            {
+                "rename": "Crate",
+                "assetBundle": "planets/anomalyresearch.rem",
+                "path": "Assets/AnomalyResearch/Crate.prefab",
+                "isRelativeToParent": true,
+                "position": {
+                    "x": -4.095337,
+                    "y": 114.2006,
+                    "z": 3.771953
+                },
+                "rotation": {
+                    "y": 135
+                }
+            },
+            {
+                "rename": "Crate",
+                "assetBundle": "planets/anomalyresearch.rem",
+                "path": "Assets/AnomalyResearch/Crate.prefab",
+                "isRelativeToParent": true,
+                "position": {
+                    "x": -1.113956,
+                    "y": 114.2005,
+                    "z": 5.297753
+                },
+                "rotation": {
+                    "y": 90
+                }
+            },
+            {
+                "rename": "AnomalyBattery",
+                "assetBundle": "planets/anomalyresearch.rem",
+                "path": "Assets/AnomalyResearch/Battery.prefab",
+                "position": {
+                    "x": -5,
+                    "y": 114.475,
+                    "z": 1
+                },
+                "rotation": { "z": 90 },
+                "item": {
+                    "name": "Battery",
+                    "itemType": "AnomalyBattery",
+                    "colliderRadius": 0,
+                    "colliderIsTrigger": false,
+                    "droppable": true,
+                    "dropOffset": {
+                        "x": 0,
+                        "y": 0.71875,
+                        "z": 0
+                    },
+                    "dropNormal": {
+                        "x": 0,
+                        "y": 1,
+                        "z": 0
+                    },
+                    "pickupAudio": "ToolItemWarpCorePickUp",
+                    "dropAudio": "ToolItemWarpCoreDrop",
+                    "socketAudio": "ToolItemWarpCoreInsert",
+                    "unsocketAudio": "ToolItemWarpCoreRemove"
+                }
+            }
+        ]
+    },
+    "Volumes": {
+        "audioVolumes": [
+            {
+                "isRelativeToParent": true,
+                "audio": "planets/TheNomai_Redone.wav",
+                "priority": 2,
+                "loop": true,
+                "track": "music",
+                "radius": 30,
+                "position": {
+                    "x": 0,
+                    "y": 113,
+                    "z": 0
+                }
+            }
+        ],
+        "revealVolumes": [
+            {
+                "radius": 30,
+                "position": {
+                    "x": 0,
+                    "y": 113,
+                    "z": 0
+                },
+                "revealFor": "player",
+                "revealOn": "enter",
+                "reveals": [
+                    "EMERALD_REVERIE_X1"
+                ]
             }
         ]
     },

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 505526056
+CRC: 889023270
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0502512e394e5ac31e7bf1af175e1928
+    Hash: 651cb0f78d1d4fbd92b63d50bdbe038b
   TypeTreeHash:
     serializedVersion: 2
     Hash: 0f83dfebdd20223e3c400ef6ed2a38d2
@@ -101,6 +101,7 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
+- Assets/AnomalyResearch/Crate.prefab
 - Assets/AnomalyResearch/DualConnector.prefab
 - Assets/AnomalyResearch/DualConnectorWithRoom.prefab
 - Assets/AnomalyResearch/LampArray.prefab

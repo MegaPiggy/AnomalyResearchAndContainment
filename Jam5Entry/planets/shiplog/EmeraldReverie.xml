@@ -10,19 +10,20 @@
 
     <RumorFact>
       <ID>EMERALD_REVERIE_R1</ID>
+      <RumorName>Lonely Planet</RumorName>
       <Text>A lonely planet in orbit around the green star. From a distance, it appears calm and featureless.</Text>
     </RumorFact>
     <RumorFact>
       <ID>EMERALD_REVERIE_R2</ID>
       <SourceID>ARC_STATION</SourceID>
-      <Text>A computer on the space station mentions there is an abandoned facility on the surface that contains a battery.</Text>
+      <RumorName>Battery Location</RumorName>
+      <Text>A computer on the space station mentions there is an abandoned facility on the planet's surface that contains a battery.</Text>
     </RumorFact>
 
     <ExploreFact>
       <ID>EMERALD_REVERIE_X1</ID>
-      <Text></Text>
+      <Text>There is indeed an abandoned Nomai structure on the planet’s surface. It is dark, but a functional battery rests between supply crates.</Text>
     </ExploreFact>
 
   </Entry>
-
 </AstroObjectEntry>
