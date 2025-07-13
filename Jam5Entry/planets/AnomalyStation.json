@@ -162,8 +162,8 @@
                     },
                     "pickupAudio": "ToolItemSharedStonePickUp",
                     "dropAudio": "ToolItemSharedStoneDrop",
-                    "socketAudio": "NomaiHologramActivate",
-                    "unsocketAudio": "NomaiHologramDeactivate"
+                    "socketAudio": "ToolItemSharedStoneInsert",
+                    "unsocketAudio": "ToolItemSharedStoneRemove"
                 }
             },
             {
