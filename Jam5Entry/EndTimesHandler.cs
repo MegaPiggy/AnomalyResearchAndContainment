@@ -30,7 +30,6 @@ namespace Jam5Entry
             {
                 endTimesSource = Locator.GetGlobalMusicController()._endTimesSource;
                 normalAudioType = endTimesSource.audioLibraryClip;
-                Assign();
                 initialized = true;
             });
         }
@@ -49,12 +48,20 @@ namespace Jam5Entry
         {
             public override void OnEffectVolumeEnter(GameObject hitObj)
             {
-                throw new NotImplementedException();
+                if (hitObj.CompareTag("PlayerDetector"))
+                {
+                    Jam5Entry.Instance.ModHelper.Console.WriteLine("Assigning custom end times");
+                    Assign();
+                }
             }
 
             public override void OnEffectVolumeExit(GameObject hitObj)
             {
-                throw new NotImplementedException();
+                if (hitObj.CompareTag("PlayerDetector"))
+                {
+                    Jam5Entry.Instance.ModHelper.Console.WriteLine("Unassigning custom end times");
+                    Unassign();
+                }
             }
         }
     }

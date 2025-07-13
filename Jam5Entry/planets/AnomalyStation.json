@@ -22,7 +22,7 @@
                 "audio": "planets/Signal.wav",
                 "identificationRadius": 10,
                 "detectionRadius": 26,
-                "onlyAudibleToScope": false,
+                "onlyAudibleToScope": true,
                 "sourceRadius": 2
             }
         ],

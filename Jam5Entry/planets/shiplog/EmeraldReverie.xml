@@ -8,9 +8,19 @@
     <Curiosity>ARC_STATION</Curiosity>
     <IgnoreMoreToExplore/>
 
+    <RumorFact>
+      <ID>EMERALD_REVERIE_R1</ID>
+      <Text>A lonely planet in orbit around the green star. From a distance, it appears calm and featureless.</Text>
+    </RumorFact>
+    <RumorFact>
+      <ID>EMERALD_REVERIE_R2</ID>
+      <SourceID>ARC_STATION</SourceID>
+      <Text>A computer on the space station mentions there is an abandoned facility on the surface that contains a battery.</Text>
+    </RumorFact>
+
     <ExploreFact>
-      <ID>EMERALD_REVERIE_FACT</ID>
-      <Text>A lonely planet in orbit around the green star. From a distance, it appears calm and featureless. No signals or structures are detectable on its surface.</Text>
+      <ID>EMERALD_REVERIE_X1</ID>
+      <Text></Text>
     </ExploreFact>
 
   </Entry>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NewHorizons.Handlers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,6 +41,7 @@ namespace Jam5Entry
         private int _playerKillTriggerCount;
         private float _initElevatorTime;
         private Floor targetFloor;
+        private bool _busy;
 
         public Vector3 GetFloorPos(Floor floor)
         {
@@ -66,7 +68,6 @@ namespace Jam5Entry
             targetFloor = floor;
             SetElevatorPadPos(GetFloorPos(floor));
             _interactVolume.OnPressInteract += OnPressInteract;
-            _owAudioSourceLP.AssignAudioLibraryClip(AudioType.Prisoner_Elevator);
             if (_killTriggers != null)
             {
                 for (int i = 0; i < _killTriggers.Length; i++)
@@ -76,15 +77,10 @@ namespace Jam5Entry
                 }
             }
         }
+
         private void Start()
         {
-            ChangePromptText(UITextType.ActivateLiftPrompt, true);
-            /*
-            if (DialogueConditionManager.SharedInstance.ConditionExists("AllKeysInserted"))
-                ResetInteractVolume(UITextType.ActivateLiftPrompt, true);
-            else
-                ResetInteractVolume(UITextType.RequLaunchCodePrompt, false);
-            */
+            _owAudioSourceLP.AssignAudioLibraryClip(AudioType.CageElevator_Loop_Winch);
         }
 
         public void ChangePromptText(UITextType promptID, bool showKeyCommandIcon)
@@ -121,8 +117,15 @@ namespace Jam5Entry
             StartElevator();
         }
 
+        public void ForceStartElevator()
+        {
+            StartElevator();
+        }
+
         private void StartElevator()
         {
+            if (_busy) return;
+            _busy = true;
             enabled = true;
             targetFloor = floor == Floor.Top ? Floor.Bottom : Floor.Top;
             _initElevatorTime = Time.time;
@@ -152,6 +155,7 @@ namespace Jam5Entry
             {
                 floor = targetFloor;
                 enabled = false;
+                _busy = false;
                 DetachPlayer();
                 if (_interactVolume != null)
                 {
@@ -181,6 +185,16 @@ namespace Jam5Entry
             {
                 _playerKillTriggerCount--;
             }
+        }
+
+        public void EnableElevator()
+        {
+            ChangePromptText((UITextType)TranslationHandler.AddUI("Use Elevator", false), true);
+        }
+
+        public void DisableElevator()
+        {
+            ChangePromptText((UITextType)TranslationHandler.AddUI("Elevator Not Activated", false), false);
         }
     }
 }

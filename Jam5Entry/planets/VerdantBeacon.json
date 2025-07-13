@@ -10,7 +10,22 @@
         "centerOfSolarSystem": true
     },
     "Star": {
-        "stellarDeathType": "none",
+        "stellarDeathType": "supernova",
+        "lifespan": 22,
+        "curve": [
+            {
+                "time": 0,
+                "value": 1
+            },
+            {
+                "time": 18,
+                "value": 1
+            },
+            {
+                "time": 22,
+                "value": 1.5
+            }
+        ],
         "size": 300,
         "solarLuminosity": 0.5,
         "lightTint": {
@@ -22,6 +37,11 @@
             "r": 70,
             "g": 250,
             "b": 100
+        },
+        "endTint": {
+            "r": 45,
+            "g": 191,
+            "b": 75
         }
     },
     "ShipLog": {

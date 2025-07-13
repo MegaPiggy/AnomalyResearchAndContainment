@@ -3,6 +3,8 @@ using System.Reflection;
 using Epic.OnlineServices;
 using HarmonyLib;
 using ModJam5;
+using NewHorizons.Builder.Atmosphere;
+using NewHorizons.Builder.Volumes;
 using OWML.Common;
 using OWML.ModHelper;
 using UnityEngine;
@@ -63,6 +65,13 @@ namespace Jam5Entry
                 var materialReplacer = ModJam5.ModJam5.Instance.GetComponent<StarshipCommunityHelper>();
                 materialReplacer.ReplaceMaterials(station);
                 materialReplacer.ReplaceMaterials(platform);
+
+                VolumeBuilder.MakeAndEnable<EndTimesHandler.CustomEndTimesVolume>(star, star.GetComponentInChildren<Sector>(true), new NewHorizons.External.Modules.Volumes.VolumeInfos.VolumeInfo
+                {
+                    radius = 2500,
+                    rename = "CustomEndTimesVolume",
+                    isRelativeToParent = true
+                });
             }
         }
 
