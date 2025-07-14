@@ -2,39 +2,17 @@
 
 namespace Jam5Entry
 {
-    public class EchoPressurePad : MonoBehaviour
+    public class EchoPressurePad : PressurePad
     {
         [SerializeField] private int _padIndex;
         [SerializeField] private EchoConsole _console;
-        [SerializeField] private OWTriggerVolume _triggerVolume;
         [SerializeField] private OWAudioSource _audioSource;
         [SerializeField] private AudioType _tone = AudioType.NomaiOrbStartDrag;
 
-        private bool _wasTriggered = false;
-
-        private void Awake()
+        protected override void OnStep(GameObject hitObj)
         {
-            _triggerVolume.OnEntry += OnStep;
-        }
-
-        private void OnDestroy()
-        {
-            _triggerVolume.OnEntry -= OnStep;
-        }
-
-        private void OnStep(GameObject hitObj)
-        {
-            if (_wasTriggered || !hitObj.CompareTag("PlayerDetector")) return;
-
-            _wasTriggered = true;
             _audioSource?.PlayOneShot(_tone);
             _console?.RegisterPadStep(_padIndex);
-            Invoke(nameof(ResetTrigger), 0.5f); // prevent multiple triggers
-        }
-
-        private void ResetTrigger()
-        {
-            _wasTriggered = false;
         }
     }
 }

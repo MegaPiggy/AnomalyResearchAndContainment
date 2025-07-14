@@ -93,7 +93,7 @@
     </ExploreFact>
     <ExploreFact>
       <ID>ARC_ECHO_CELL_X2</ID>
-      <Text>Solving the sound puzzle in this chamber unlocked an energy node. It appears to power part of the central station.</Text>
+      <Text>Solving the sound puzzle in this chamber unlocked an anomaly key.</Text>
     </ExploreFact>
   </Entry>
 
@@ -123,7 +123,7 @@
     </ExploreFact>
     <ExploreFact>
       <ID>ARC_RUNIC_WALL_X2</ID>
-      <Text>Solving the glyph puzzle triggered a release of another anomaly key.</Text>
+      <Text>Solving the glyph puzzle triggered a release of an anomaly key.</Text>
     </ExploreFact>
   </Entry>
 
@@ -153,37 +153,37 @@
     </ExploreFact>
     <ExploreFact>
       <ID>ARC_PRISM_BLOOM_X2</ID>
-      <Text>Aligning the prisms to redirect beams to all sensors unlocked another anomaly key.</Text>
+      <Text>Aligning the prisms to redirect beams to all sensors unlocked an anomaly key.</Text>
     </ExploreFact>
   </Entry>
 
-  <!-- Polarizer Lock -->
+  <!-- Memory Orb -->
   <Entry>
-    <ID>ARC_POLARIZER_LOCK</ID>
-    <Name>Polarizer Lock</Name>
+    <ID>ARC_MEMORY_ORB</ID>
+    <Name>Memory Orb</Name>
     <Curiosity>ARC_STATION</Curiosity>
 
     <RumorFact>
-      <ID>ARC_POLARIZER_LOCK_R1</ID>
+      <ID>ARC_MEMORY_ORB_R1</ID>
       <SourceID>ARC_OBSERVATION_DOME</SourceID>
-      <RumorName>Magnetic Lock Room</RumorName>
+      <RumorName>Ghost Playback Room</RumorName>
       <RumorNamePriority>1</RumorNamePriority>
-      <Text>Nomai records warn of magnetic interference disrupting normal instrumentation. They sealed the anomaly behind mechanical locks.</Text>
+      <Text>Nomai notes describe a strange orb that replays short bursts of movement like a phantom double.</Text>
     </RumorFact>
     <RumorFact>
-      <ID>ARC_POLARIZER_LOCK_R2</ID>
-      <RumorName>Polarizer Lock</RumorName>
+      <ID>ARC_MEMORY_ORB_R2</ID>
+      <RumorName>Memory Orb</RumorName>
       <RumorNamePriority>2</RumorNamePriority>
-      <Text>The Nomai referred to it as the Polarizer Lock.</Text>
+      <Text>The Nomai referred to it as the Memory Orb.</Text>
     </RumorFact>
 
     <ExploreFact>
-      <ID>ARC_POLARIZER_LOCK_X1</ID>
-      <Text>Magnetic fields interfere with probe signals in this room. I had to align rotating machines using only visual feedback.</Text>
+      <ID>ARC_MEMORY_ORB_X1</ID>
+      <Text>In this room, I can record a few seconds of movement, then play it back as a ghostly copy of myself. It's eerie but useful.</Text>
     </ExploreFact>
     <ExploreFact>
-      <ID>ARC_POLARIZER_LOCK_X2</ID>
-      <Text>Completing the sequence released the final anomaly key for the elevator pad.</Text>
+      <ID>ARC_MEMORY_ORB_X2</ID>
+      <Text>I used the playback to press two switches at once. When both were activated, it revealed an anomaly key.</Text>
     </ExploreFact>
   </Entry>
 

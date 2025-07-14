@@ -5,6 +5,7 @@ using HarmonyLib;
 using ModJam5;
 using NewHorizons.Builder.Atmosphere;
 using NewHorizons.Builder.Volumes;
+using NewHorizons.Handlers;
 using OWML.Common;
 using OWML.ModHelper;
 using UnityEngine;
@@ -16,12 +17,21 @@ namespace Jam5Entry
         public static Jam5Entry Instance;
         public INewHorizons NewHorizons;
 
+        public static AudioType TickUp;
+        public static AudioType TickDown;
+
         public void Awake()
         {
             Instance = this;
             // You won't be able to access OWML's mod helper in Awake.
             // So you probably don't want to do anything here.
             // Use Start() instead.
+        }
+
+        public static void LoadAudio()
+        {
+            TickUp = AudioTypeHandler.GetAudioType("planets/tick_up.wav", Jam5Entry.Instance);
+            TickDown = AudioTypeHandler.GetAudioType("planets/tick_down.wav", Jam5Entry.Instance);
         }
 
         public void Start()
@@ -46,6 +56,7 @@ namespace Jam5Entry
             if (name == ModJam5.ModJam5.SystemName)
             {
                 EndTimesHandler.Initialize();
+                LoadAudio();
 
                 var star = Jam5Entry.Instance.NewHorizons.GetPlanet("Verdant Beacon");
                 var planet = Jam5Entry.Instance.NewHorizons.GetPlanet("Emerald Reverie");
