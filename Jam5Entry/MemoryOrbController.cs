@@ -13,6 +13,7 @@ namespace Jam5Entry
         [SerializeField] private MemoryOrbRecorder _recorder;
         [SerializeField] private OWAudioSource _audioSource;
         [SerializeField] private AudioType _recordStartSFX = Jam5Entry.TickUp;
+        [SerializeField] private AudioType _recordStopSFX = AudioType.NonDiaUINegativeSFX;
         [SerializeField] private AudioType _playbackStartSFX = Jam5Entry.TickDown;
         [SerializeField] private KeyDropper _keyDropper;
         [SerializeField] private List<MemoryOrbPressurePad> _pads;
@@ -30,6 +31,12 @@ namespace Jam5Entry
             if (_puzzleComplete) return;
             _recorder.StartRecording();
             _audioSource.PlayOneShot(_recordStartSFX);
+        }
+
+        public void StopRecording()
+        {
+            _recorder.StopRecording();
+            _audioSource.PlayOneShot(_recordStopSFX);
         }
 
         public void StartPlayback()
