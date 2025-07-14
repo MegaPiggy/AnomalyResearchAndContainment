@@ -5,19 +5,55 @@ namespace Jam5Entry
     public class KeyDropper : MonoBehaviour
     {
         [SerializeField] private GameObject _keyObject;
-        [SerializeField] private Transform _dropPoint;
+
+        [Header("Pedestal Animation")]
+        [SerializeField] private Transform _pedestal;
+        [SerializeField] private Transform _raisedPosition;
+        [SerializeField] private float _raiseDuration = 2f;
+
+        private Vector3 _startPosition;
+        private bool _isRaising = false;
+        private float _raiseStartTime;
 
         public void Start()
         {
-            _keyObject.SetActive(false);
+            if (_keyObject != null)
+                _keyObject.SetActive(false);
+
+            if (_pedestal != null)
+                _startPosition = _pedestal.position;
         }
 
         public void DropKey()
         {
-            if (_keyObject != null && _dropPoint != null)
+            // Show key
+            if (_keyObject != null)
             {
-                _keyObject.transform.position = _dropPoint.position;
                 _keyObject.SetActive(true);
+            }
+
+            // Start pedestal animation
+            if (_pedestal != null && _raisedPosition != null)
+            {
+                _raiseStartTime = Time.time;
+                _isRaising = true;
+            }
+        }
+
+        private void Update()
+        {
+            if (_isRaising && _pedestal != null && _raisedPosition != null)
+            {
+                float t = (Time.time - _raiseStartTime) / _raiseDuration;
+                t = Mathf.SmoothStep(0f, 1f, t);
+
+                _pedestal.position = Vector3.Lerp(_startPosition, _raisedPosition.position, t);
+
+                if (t >= 1f)
+                {
+                    _pedestal.position = _raisedPosition.position;
+                    _isRaising = false;
+                }
             }
         }
     }

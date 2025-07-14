@@ -8,7 +8,7 @@ namespace Jam5Entry
         [SerializeField] private EchoConsole _console;
         [SerializeField] private OWTriggerVolume _triggerVolume;
         [SerializeField] private OWAudioSource _audioSource;
-        [SerializeField] private AudioType _tone;
+        [SerializeField] private AudioType _tone = AudioType.NomaiOrbStartDrag;
 
         private bool _wasTriggered = false;
 
@@ -22,9 +22,9 @@ namespace Jam5Entry
             _triggerVolume.OnEntry -= OnStep;
         }
 
-        private void OnStep(GameObject obj)
+        private void OnStep(GameObject hitObj)
         {
-            if (_wasTriggered || !obj.CompareTag("PlayerDetector")) return;
+            if (_wasTriggered || !hitObj.CompareTag("PlayerDetector")) return;
 
             _wasTriggered = true;
             _audioSource?.PlayOneShot(_tone);
