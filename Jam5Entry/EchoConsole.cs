@@ -9,10 +9,10 @@ namespace Jam5Entry
         [SerializeField] private float _timeout = 2f;
         [SerializeField] private KeyDropper _keyDropper;
         [SerializeField] private OWAudioSource _audioSource;
-        [SerializeField] private AudioType _successAudio; // AudioType.UI_Confirm
-        [SerializeField] private AudioType _failAudio; // AudioType.UI_Error
+        [SerializeField] private AudioType _successAudio = AudioType.NonDiaUIAffirmativeSFX;
+        [SerializeField] private AudioType _failAudio = AudioType.NonDiaUINegativeSFX;
         [SerializeField] private Renderer[] _indicatorRenderers;
-        [SerializeField] private Color _defaultColor = Color.grey;
+        [SerializeField] private Color _defaultColor = Color.black;
         [SerializeField] private Color _successColor = Color.green;
         [SerializeField] private Color _failColor = Color.red;
         [SerializeField] private float _flashDuration = 0.5f;
@@ -23,9 +23,12 @@ namespace Jam5Entry
 
         public void Start()
         {
-            foreach (var renderer in _indicatorRenderers)
+            if (_indicatorRenderers != null)
             {
-                renderer.material.SetColor("_EmissionColor", _defaultColor);
+                foreach (var renderer in _indicatorRenderers)
+                {
+                    SetFlashRendererColor(renderer, _defaultColor);
+                }
             }
         }
 
@@ -46,7 +49,7 @@ namespace Jam5Entry
                 if (IsCorrectSequence())
                 {
                     _completed = true;
-                    _keyDropper?.DropKey();
+                    if (_keyDropper != null) _keyDropper.DropKey();
                     PlaySuccessFeedback();
                 }
                 else
@@ -69,32 +72,40 @@ namespace Jam5Entry
 
         private void PlaySuccessFeedback()
         {
-            _audioSource?.PlayOneShot(_successAudio);
+            if (_audioSource != null) _audioSource.PlayOneShot(_successAudio);
             FlashIndicators(_successColor);
         }
 
         private void PlayFailFeedback()
         {
-            _audioSource?.PlayOneShot(_failAudio);
+            if (_audioSource != null) _audioSource.PlayOneShot(_failAudio);
             FlashIndicators(_failColor);
         }
 
         private void FlashIndicators(Color flashColor)
         {
-            foreach (var renderer in _indicatorRenderers)
+            if (_indicatorRenderers != null)
             {
-                StartCoroutine(FlashRendererColor(renderer, flashColor));
+                foreach (var renderer in _indicatorRenderers)
+                {
+                    StartCoroutine(Flash(renderer, flashColor));
+                }
             }
         }
 
-        private System.Collections.IEnumerator FlashRendererColor(Renderer rend, Color flashColor)
+        private System.Collections.IEnumerator Flash(Renderer renderer, Color flashColor)
         {
-            if (rend == null) yield break;
+            if (renderer == null) yield break;
 
-            rend.material.SetColor("_EmissionColor", flashColor);
+            SetFlashRendererColor(renderer, flashColor);
             yield return new WaitForSeconds(_flashDuration);
-            rend.material.SetColor("_EmissionColor", _defaultColor);
+            SetFlashRendererColor(renderer, _defaultColor);
         }
 
+        public static void SetFlashRendererColor(Renderer renderer, Color flashColor)
+        {
+            if (renderer == null) return;
+            renderer.material.SetColor("_EmissionColor", flashColor);
+        }
     }
 }

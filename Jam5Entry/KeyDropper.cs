@@ -7,6 +7,11 @@ namespace Jam5Entry
         [SerializeField] private GameObject _keyObject;
         [SerializeField] private Transform _dropPoint;
 
+        public void Start()
+        {
+            _keyObject.SetActive(false);
+        }
+
         public void DropKey()
         {
             if (_keyObject != null && _dropPoint != null)
