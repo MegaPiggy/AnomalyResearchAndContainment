@@ -1,4 +1,4 @@
-﻿{
+{
     "$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
     "name": "Verdant Beacon",
     "starSystem": "Jam5",
@@ -10,6 +10,8 @@
         "centerOfSolarSystem": true
     },
     "Star": {
+        "supernovaSize": 2500,
+        "supernovaSpeed": 50,
         "stellarDeathType": "supernova",
         "lifespan": 22,
         "curve": [
