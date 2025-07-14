@@ -178,6 +178,16 @@
                     "colliderRadius": 1,
                     "interactRange": 2
                 }
+            },
+            {
+                "rename": "EchoCell",
+                "path": "TimberHearth_Body/Sector_TH/Sector_RadioTower/RadioTower_DLC/Props_RadioTower/OtherComponentsGroup/Props_Grove/Cube",
+                "position": {
+                    "x": 0,
+                    "y": 31.5,
+                    "z": 72.53
+                },
+                "isRelativeToParent": true
             }
         ]
     },

@@ -66,6 +66,12 @@ namespace Jam5Entry
                 materialReplacer.ReplaceMaterials(station);
                 materialReplacer.ReplaceMaterials(platform);
 
+                var echoCell = station.transform.Find("Sector/EchoCell").gameObject;
+                var echoSource = new GameObject("EchoSource");
+                echoSource.transform.SetParent(echoCell.transform, false);
+                echoSource.AddComponent<AudioSource>();
+                echoCell.AddComponent<EchoCellController>().echoSourcePrefab = echoSource.AddComponent<OWAudioSource>();
+
                 VolumeBuilder.MakeAndEnable<EndTimesHandler.CustomEndTimesVolume>(star, star.GetComponentInChildren<Sector>(true), new NewHorizons.External.Modules.Volumes.VolumeInfos.VolumeInfo
                 {
                     radius = 2500,
