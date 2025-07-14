@@ -22,7 +22,23 @@ namespace Jam5Entry
         [SerializeField] private float randomPitchRange = 0.3f;
         [SerializeField] private float randomPosRadius = 2f;
 
-        private List<OWAudioType> recentSounds = new List<OWAudioType>();
+        [SerializeField] private List<Transform> echoPadPositions;
+        [SerializeField] private List<int> echoPattern = new(); // Indexes into echoPadPositions
+        [SerializeField] private float echoLoopDelay = 10f;
+        [SerializeField] private OWAudioType padEchoAudioType = OWAudioType.MovementFootstep;
+
+        private Coroutine _echoLoopCoroutine;
+        private bool _playerInteracted;
+
+        private List<OWAudioType> recentSounds = new();
+
+        private void Start()
+        {
+            if (echoPattern.Count > 0 && echoPadPositions.Count > 0)
+            {
+                _echoLoopCoroutine = StartCoroutine(PlayEchoPatternLoop());
+            }
+        }
 
         public void RegisterSound(OWAudioType audioType)
         {
@@ -37,6 +53,14 @@ namespace Jam5Entry
             };
 
             StartCoroutine(PlayEchoWithDelay(echo));
+
+            // Stop loop when player interacts
+            if (!_playerInteracted)
+            {
+                _playerInteracted = true;
+                if (_echoLoopCoroutine != null) StopCoroutine(_echoLoopCoroutine);
+                Invoke(nameof(RestartEchoLoop), echoLoopDelay);
+            }
         }
 
         private IEnumerator PlayEchoWithDelay(EchoEvent echo)
@@ -54,6 +78,36 @@ namespace Jam5Entry
             echoSource.spatialBlend = 1f;
             AudioClip clip = echoSource.PlayOneShot(echo.audioType);
             Destroy(echoSource.gameObject, clip.length / echo.pitch + 1f);
+        }
+
+        private IEnumerator PlayEchoPatternLoop()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(1f);
+
+                foreach (int padIndex in echoPattern)
+                {
+                    if (padIndex >= 0 && padIndex < echoPadPositions.Count)
+                    {
+                        Vector3 pos = echoPadPositions[padIndex].position;
+                        OWAudioSource echoSource = Instantiate(echoSourcePrefab, pos, Quaternion.identity, transform);
+                        echoSource.pitch = 1f;
+                        echoSource.spatialBlend = 1f;
+                        AudioClip clip = echoSource.PlayOneShot(padEchoAudioType);
+                        Destroy(echoSource.gameObject, clip.length + 1f);
+                        yield return new WaitForSeconds(1.2f);
+                    }
+                }
+
+                yield return new WaitForSeconds(echoLoopDelay);
+            }
+        }
+
+        private void RestartEchoLoop()
+        {
+            _playerInteracted = false;
+            _echoLoopCoroutine = StartCoroutine(PlayEchoPatternLoop());
         }
     }
 }
