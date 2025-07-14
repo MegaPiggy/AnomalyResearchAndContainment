@@ -127,32 +127,32 @@
     </ExploreFact>
   </Entry>
 
-  <!-- Prism Vault -->
+  <!-- Prism Bloom -->
   <Entry>
-    <ID>ARC_PRISM_VAULT</ID>
-    <Name>Prism Vault</Name>
+    <ID>ARC_PRISM_BLOOM</ID>
+    <Name>Prism Bloom</Name>
     <Curiosity>ARC_STATION</Curiosity>
 
     <RumorFact>
-      <ID>ARC_PRISM_VAULT_R1</ID>
+      <ID>ARC_PRISM_BLOOM_R1</ID>
       <SourceID>ARC_OBSERVATION_DOME</SourceID>
       <RumorName>Crystal Light Room</RumorName>
       <RumorNamePriority>1</RumorNamePriority>
       <Text>One chamber is said to contain crystals that bend light to reveal hidden truths.</Text>
     </RumorFact>
     <RumorFact>
-      <ID>ARC_PRISM_VAULT_R2</ID>
-      <RumorName>Prism Vault</RumorName>
+      <ID>ARC_PRISM_BLOOM_R2</ID>
+      <RumorName>Prism Bloom</RumorName>
       <RumorNamePriority>2</RumorNamePriority>
-      <Text>The Nomai referred to it as the Prism Vault.</Text>
+      <Text>The Nomai referred to it as the Prism Bloom.</Text>
     </RumorFact>
 
     <ExploreFact>
-      <ID>ARC_PRISM_VAULT_X1</ID>
+      <ID>ARC_PRISM_BLOOM_X1</ID>
       <Text>This chamber contains reflective crystals that redirect energy beams. Light and shadow interact with sensors in the room.</Text>
     </ExploreFact>
     <ExploreFact>
-      <ID>ARC_PRISM_VAULT_X2</ID>
+      <ID>ARC_PRISM_BLOOM_X2</ID>
       <Text>Aligning the prisms to redirect beams to all sensors unlocked another anomaly key.</Text>
     </ExploreFact>
   </Entry>
