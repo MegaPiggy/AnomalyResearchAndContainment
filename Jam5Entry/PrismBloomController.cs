@@ -12,7 +12,7 @@ namespace Jam5Entry
         [SerializeField] private List<BeamSensor> _sensors = new List<BeamSensor>();
         [SerializeField] private KeyDropper _keyDropper;
         [SerializeField] private OWAudioSource _audioSource;
-        [SerializeField] private AudioType _successSound = AudioType.NonDiaUIAffirmativeSFX;
+        private AudioType _successSound = AudioType.NonDiaUIAffirmativeSFX;
 
         private bool _completed;
 
@@ -79,30 +79,30 @@ namespace Jam5Entry
             }
             return true;
         }
+    }
 
-        public class BeamSensor : MonoBehaviour
+    public class BeamSensor : MonoBehaviour
+    {
+        private bool _triggered;
+
+        public void Trigger()
         {
-            private bool _triggered;
-
-            public void Trigger()
-            {
-                _triggered = true;
-                // Visual feedback here, e.g., glow
-            }
-
-            public void ResetTrigger()
-            {
-                _triggered = false;
-            }
-
-            public bool IsTriggered() => _triggered;
+            _triggered = true;
+            // Visual feedback here, e.g., glow
         }
 
-        /// <summary>
-        /// Marker component
-        /// </summary>
-        public class ReflectiveSurface : MonoBehaviour
+        public void ResetTrigger()
         {
+            _triggered = false;
         }
+
+        public bool IsTriggered() => _triggered;
+    }
+
+    /// <summary>
+    /// Marker component
+    /// </summary>
+    public class ReflectiveSurface : MonoBehaviour
+    {
     }
 }

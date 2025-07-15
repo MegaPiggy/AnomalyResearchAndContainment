@@ -1,24 +1,25 @@
-﻿using UnityEngine;
+﻿using NewHorizons.Components.Props;
+using UnityEngine;
 
 namespace Jam5Entry
 {
     public class KeyDropper : MonoBehaviour
     {
-        [SerializeField] private GameObject _keyObject;
-
         [Header("Pedestal Animation")]
         [SerializeField] private Transform _pedestal;
         [SerializeField] private Transform _raisedPosition;
         [SerializeField] private float _raiseDuration = 2f;
 
+        private OWItem _keyObject;
         private Vector3 _startPosition;
         private bool _isRaising = false;
         private float _raiseStartTime;
 
         public void Start()
         {
+            _keyObject = GetComponentInChildren<OWItem>(true);
             if (_keyObject != null)
-                _keyObject.SetActive(false);
+                _keyObject.gameObject.SetActive(false);
 
             if (_pedestal != null)
                 _startPosition = _pedestal.position;
@@ -29,7 +30,7 @@ namespace Jam5Entry
             // Show key
             if (_keyObject != null)
             {
-                _keyObject.SetActive(true);
+                _keyObject.gameObject.SetActive(true);
             }
 
             // Start pedestal animation

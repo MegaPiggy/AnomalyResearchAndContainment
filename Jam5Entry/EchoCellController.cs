@@ -25,7 +25,7 @@ namespace Jam5Entry
         [SerializeField] private List<Transform> echoPadPositions;
         [SerializeField] private List<int> echoPattern = new(); // Indexes into echoPadPositions
         [SerializeField] private float echoLoopDelay = 10f;
-        [SerializeField] private OWAudioType padEchoAudioType = OWAudioType.MovementFootstep;
+        private OWAudioType padEchoAudioType = OWAudioType.NonDiaUIAffirmativeSFX;
 
         private Coroutine _echoLoopCoroutine;
         private bool _playerInteracted;
@@ -47,7 +47,7 @@ namespace Jam5Entry
             recentSounds.SafeAdd(audioType);
             EchoEvent echo = new EchoEvent
             {
-                audioType = audioType,
+                audioType = OWAudioType.NonDiaUINegativeSFX,
                 delaySeconds = UnityEngine.Random.Range(randomDelaySecondsMin, randomDelaySecondsMax),
                 pitch = 1f + UnityEngine.Random.Range(-randomPitchRange, randomPitchRange)
             };

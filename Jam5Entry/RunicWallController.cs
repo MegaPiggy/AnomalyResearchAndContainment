@@ -5,41 +5,14 @@ namespace Jam5Entry
 {
     public class RunicWallController : MonoBehaviour
     {
-        public class RunePanel : MonoBehaviour
-        {
-            [SerializeField] public int id;
-            [SerializeField] public Renderer glowRenderer;
-            [SerializeField] public Color defaultColor = Color.white;
-            [SerializeField] public Color activeColor = Color.cyan;
-            [SerializeField] public bool isCorrect = false;
-            [SerializeField] public bool isVisible = true;
-
-            public void SetGlow(bool on)
-            {
-                if (glowRenderer != null)
-                {
-                    Color color = on ? activeColor : defaultColor;
-                    glowRenderer.material.SetColor("_EmissionColor", color);
-                }
-            }
-
-            public void CycleRuneVisibility()
-            {
-                bool visible = Random.value > 0.5f;
-                isVisible = visible;
-                gameObject.SetActive(visible);
-                SetGlow(false);
-            }
-        }
-
         [SerializeField] private List<RunePanel> _panels = new List<RunePanel>();
         [SerializeField] private List<int> _correctSequence = new List<int>();
         [SerializeField] private KeyDropper _keyDropper;
         [SerializeField] private float _cycleInterval = 5f;
         [SerializeField] private float _resetDelay = 2f;
         [SerializeField] private OWAudioSource _audioSource;
-        [SerializeField] private AudioType _successAudio = AudioType.NonDiaUIAffirmativeSFX;
-        [SerializeField] private AudioType _failAudio = AudioType.NonDiaUINegativeSFX;
+        private AudioType _successAudio = AudioType.NonDiaUIAffirmativeSFX;
+        private AudioType _failAudio = AudioType.NonDiaUINegativeSFX;
 
         private List<int> _playerSequence = new List<int>();
         private float _lastInputTime;
@@ -116,6 +89,31 @@ namespace Jam5Entry
             {
                 panel.SetGlow(false);
             }
+        }
+    }
+    public class RunePanel : MonoBehaviour
+    {
+        [SerializeField] public int id;
+        [SerializeField] public Renderer glowRenderer;
+        [SerializeField] public Color defaultColor = Color.gray;
+        [SerializeField] public Color activeColor = Color.cyan;
+        [SerializeField] public bool isVisible = true;
+
+        public void SetGlow(bool on)
+        {
+            if (glowRenderer != null)
+            {
+                Color color = on ? activeColor : defaultColor;
+                glowRenderer.material.SetColor("_EmissionColor", color);
+            }
+        }
+
+        public void CycleRuneVisibility()
+        {
+            bool visible = Random.value > 0.5f;
+            isVisible = visible;
+            gameObject.SetActive(visible);
+            SetGlow(false);
         }
     }
 }

@@ -12,9 +12,9 @@ namespace Jam5Entry
         [SerializeField] private Transform _spawnPoint;
         [SerializeField] private MemoryOrbRecorder _recorder;
         [SerializeField] private OWAudioSource _audioSource;
-        [SerializeField] private AudioType _recordStartSFX = Jam5Entry.TickUp;
-        [SerializeField] private AudioType _recordStopSFX = AudioType.NonDiaUINegativeSFX;
-        [SerializeField] private AudioType _playbackStartSFX = Jam5Entry.TickDown;
+        private AudioType _recordStartSFX = Jam5Entry.TickUp;
+        private AudioType _recordStopSFX = AudioType.NonDiaUINegativeSFX;
+        private AudioType _playbackStartSFX = Jam5Entry.TickDown;
         [SerializeField] private KeyDropper _keyDropper;
         [SerializeField] private List<MemoryOrbPressurePad> _pads;
 

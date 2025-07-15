@@ -9,8 +9,8 @@ namespace Jam5Entry
         [SerializeField] private float _timeout = 2f;
         [SerializeField] private KeyDropper _keyDropper;
         [SerializeField] private OWAudioSource _audioSource;
-        [SerializeField] private AudioType _successAudio = AudioType.NonDiaUIAffirmativeSFX;
-        [SerializeField] private AudioType _failAudio = AudioType.NonDiaUINegativeSFX;
+        private AudioType _successAudio = AudioType.NonDiaUIAffirmativeSFX;
+        private AudioType _failAudio = AudioType.NonDiaUINegativeSFX;
         [SerializeField] private Renderer[] _indicatorRenderers;
         [SerializeField] private Color _defaultColor = Color.black;
         [SerializeField] private Color _successColor = Color.green;

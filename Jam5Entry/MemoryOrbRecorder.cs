@@ -6,6 +6,7 @@ namespace Jam5Entry
 {
     public class MemoryOrbRecorder : MonoBehaviour
     {
+        [System.Serializable]
         public class ActionFrame
         {
             public float time;

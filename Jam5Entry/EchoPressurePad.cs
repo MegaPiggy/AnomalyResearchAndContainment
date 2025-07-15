@@ -7,7 +7,7 @@ namespace Jam5Entry
         [SerializeField] private int _padIndex;
         [SerializeField] private EchoConsole _console;
         [SerializeField] private OWAudioSource _audioSource;
-        [SerializeField] private AudioType _tone = AudioType.NomaiOrbStartDrag;
+        private AudioType _tone = AudioType.NomaiOrbStartDrag;
 
         protected override void OnStep(GameObject hitObj)
         {
