@@ -66,6 +66,7 @@ namespace Jam5Entry
             cube.transform.localPosition = Vector3.zero;
             cube.transform.localEulerAngles = Vector3.zero;
             cube.transform.localScale = Vector3.one;
+            Destroy(cube.GetComponentInChildren<Collider>());
             _activeGhost.Playback(_recorder.GetRecording());
             _audioSource.PlayOneShot(_playbackStartSFX);
 
