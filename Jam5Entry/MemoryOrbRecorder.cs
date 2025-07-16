@@ -10,8 +10,8 @@ namespace Jam5Entry
         public class ActionFrame
         {
             public float time;
-            public Vector3 position;
-            public Quaternion rotation;
+            public Vector3 localPosition;
+            public Quaternion localRotation;
         }
 
         private List<ActionFrame> _recordedFrames = new List<ActionFrame>();
@@ -39,11 +39,12 @@ namespace Jam5Entry
         {
             if (_isRecording)
             {
+                var playerTransform = Locator.GetPlayerBody().transform;
                 _recordedFrames.Add(new ActionFrame
                 {
                     time = Time.time - _startTime,
-                    position = transform.position,
-                    rotation = transform.rotation
+                    localPosition = transform.InverseTransformPoint(playerTransform.position),
+                    localRotation = transform.InverseTransformRotation(playerTransform.rotation)
                 });
             }
         }

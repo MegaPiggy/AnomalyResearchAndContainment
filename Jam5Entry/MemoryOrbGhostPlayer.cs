@@ -39,8 +39,8 @@ namespace Jam5Entry
 
             while (_currentIndex < _frames.Count && _frames[_currentIndex].time <= elapsed)
             {
-                transform.position = _frames[_currentIndex].position;
-                transform.rotation = _frames[_currentIndex].rotation;
+                transform.localPosition = _frames[_currentIndex].localPosition;
+                transform.localRotation = _frames[_currentIndex].localRotation;
                 _currentIndex++;
             }
         }

@@ -48,7 +48,7 @@ namespace Jam5Entry
                 Destroy(_activeGhost.gameObject);
             }
 
-            GameObject ghostObj = Instantiate(_ghostPlayerPrefab, _spawnPoint.position, _spawnPoint.rotation);
+            GameObject ghostObj = Instantiate(_ghostPlayerPrefab, _spawnPoint.position, _spawnPoint.rotation, _spawnPoint);
             _activeGhost = ghostObj.GetAddComponent<MemoryOrbGhostPlayer>();
             _activeGhost.Playback(_recorder.GetRecording());
             _audioSource.PlayOneShot(_playbackStartSFX);
