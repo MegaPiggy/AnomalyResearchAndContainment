@@ -57,10 +57,15 @@ namespace Jam5Entry
             }
 
             GameObject ghostObj = Instantiate(_ghostPlayerPrefab, _spawnPoint.position, _spawnPoint.rotation, _recorder.transform);
+            ghostObj.transform.localPosition = Vector3.zero;
+            ghostObj.transform.localEulerAngles = Vector3.zero;
+            ghostObj.transform.localScale = Vector3.one;
             _activeGhost = ghostObj.GetAddComponent<MemoryOrbGhostPlayer>();
             var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             cube.transform.SetParent(ghostObj.transform, false);
             cube.transform.localPosition = Vector3.zero;
+            cube.transform.localEulerAngles = Vector3.zero;
+            cube.transform.localScale = Vector3.one;
             _activeGhost.Playback(_recorder.GetRecording());
             _audioSource.PlayOneShot(_playbackStartSFX);
 
