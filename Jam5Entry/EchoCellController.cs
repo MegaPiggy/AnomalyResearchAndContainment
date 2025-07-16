@@ -8,6 +8,8 @@ namespace Jam5Entry
 {
     public class EchoCellController : MonoBehaviour
     {
+        public static EchoCellController Instance { get; private set; }
+
         [System.Serializable]
         public class EchoEvent
         {
@@ -17,20 +19,25 @@ namespace Jam5Entry
         }
 
         [SerializeField] public OWAudioSource echoSourcePrefab;
-        [SerializeField] private float randomDelaySecondsMin = 0.5f;
-        [SerializeField] private float randomDelaySecondsMax = 1.5f;
-        [SerializeField] private float randomPitchRange = 0.3f;
-        [SerializeField] private float randomPosRadius = 2f;
+        private float randomDelaySecondsMin = 0.5f;
+        private float randomDelaySecondsMax = 1.5f;
+        private float randomPitchRange = 0.3f;
+        private float randomPosRadius = 2f;
 
         [SerializeField] private List<Transform> echoPadPositions;
-        [SerializeField] private List<int> echoPattern = new(); // Indexes into echoPadPositions
-        [SerializeField] private float echoLoopDelay = 10f;
-        private OWAudioType padEchoAudioType = OWAudioType.NonDiaUIAffirmativeSFX;
+        private List<int> echoPattern = new List<int> { 3, 2, 0, 1 }; // Indexes into echoPadPositions
+        private float echoLoopDelay = 10f;
+        private OWAudioType padEchoAudioType = OWAudioType.NomaiOrbStartDrag;
 
         private Coroutine _echoLoopCoroutine;
         private bool _playerInteracted;
 
         private List<OWAudioType> recentSounds = new();
+
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         private void Start()
         {
@@ -47,7 +54,7 @@ namespace Jam5Entry
             recentSounds.SafeAdd(audioType);
             EchoEvent echo = new EchoEvent
             {
-                audioType = OWAudioType.NonDiaUINegativeSFX,
+                audioType = audioType,
                 delaySeconds = UnityEngine.Random.Range(randomDelaySecondsMin, randomDelaySecondsMax),
                 pitch = 1f + UnityEngine.Random.Range(-randomPitchRange, randomPitchRange)
             };
@@ -94,6 +101,8 @@ namespace Jam5Entry
                         OWAudioSource echoSource = Instantiate(echoSourcePrefab, pos, Quaternion.identity, transform);
                         echoSource.pitch = 1f;
                         echoSource.spatialBlend = 1f;
+                        echoSource.SetLocalVolume(10);
+                        echoSource.SetMaxVolume(10);
                         AudioClip clip = echoSource.PlayOneShot(padEchoAudioType);
                         Destroy(echoSource.gameObject, clip.length + 1f);
                         yield return new WaitForSeconds(1.2f);

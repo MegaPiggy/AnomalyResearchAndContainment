@@ -142,6 +142,7 @@
                 "isRelativeToParent": true,
                 "audio": "planets/TheNomai_Redone.wav",
                 "priority": 2,
+                "volume": 0.5,
                 "loop": true,
                 "track": "music",
                 "radius": 30,

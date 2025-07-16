@@ -120,27 +120,11 @@
                 }
             },
             {
-                "rename": "KeyPanel",
-                "assetBundle": "planets/anomalyresearch.rem",
-                "path": "Assets/AnomalyResearch/KeyPanel.prefab",
-                "parentPath": "Sector/Root",
-                "isRelativeToParent": true,
-                "position": {
-                    "x": -5,
-                    "y": 48.2,
-                    "z": 30
-                },
-                "rotation": { "y": 90 }
-            },
-            {
                 "rename": "AnomalyKey",
                 "assetBundle": "planets/anomalyresearch.rem",
                 "path": "Assets/AnomalyResearch/Key.prefab",
-                "position": {
-                    "x": -5,
-                    "y": 50,
-                    "z": 20
-                },
+                "isRelativeToParent": true,
+                "parentPath": "Sector/Root/NorthCorridor/AnomalyRoom/Center/EchoCell/PadRoot/Console/KeyDropper/Pedestal/KeyRoot",
                 "item": {
                     "name": "Key",
                     "itemType": "AnomalyKey",
@@ -167,8 +151,114 @@
                 }
             },
             {
+                "rename": "AnomalyKey",
+                "assetBundle": "planets/anomalyresearch.rem",
+                "path": "Assets/AnomalyResearch/Key.prefab",
+                "isRelativeToParent": true,
+                "parentPath": "Sector/Root/EastCorridor/AnomalyRoom/Center/RunicWall/Root/KeyDropper/Pedestal/KeyRoot",
+                "item": {
+                    "name": "Key",
+                    "itemType": "AnomalyKey",
+                    "colliderRadius": 0,
+                    "colliderIsTrigger": false,
+                    "droppable": true,
+                    "holdRotation": {
+                        "y": 90
+                    },
+                    "dropOffset": {
+                        "x": 0.125,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "dropNormal": {
+                        "x": 1,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "pickupAudio": "ToolItemSharedStonePickUp",
+                    "dropAudio": "ToolItemSharedStoneDrop",
+                    "socketAudio": "ToolItemSharedStoneInsert",
+                    "unsocketAudio": "ToolItemSharedStoneRemove"
+                }
+            },
+            {
+                "rename": "AnomalyKey",
+                "assetBundle": "planets/anomalyresearch.rem",
+                "path": "Assets/AnomalyResearch/Key.prefab",
+                "isRelativeToParent": true,
+                "parentPath": "Sector/Root/SouthCorridor/AnomalyRoom/Center/PrismBloom/Root/KeyDropper/Pedestal/KeyRoot",
+                "item": {
+                    "name": "Key",
+                    "itemType": "AnomalyKey",
+                    "colliderRadius": 0,
+                    "colliderIsTrigger": false,
+                    "droppable": true,
+                    "holdRotation": {
+                        "y": 90
+                    },
+                    "dropOffset": {
+                        "x": 0.125,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "dropNormal": {
+                        "x": 1,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "pickupAudio": "ToolItemSharedStonePickUp",
+                    "dropAudio": "ToolItemSharedStoneDrop",
+                    "socketAudio": "ToolItemSharedStoneInsert",
+                    "unsocketAudio": "ToolItemSharedStoneRemove"
+                }
+            },
+            {
+                "rename": "AnomalyKey",
+                "assetBundle": "planets/anomalyresearch.rem",
+                "path": "Assets/AnomalyResearch/Key.prefab",
+                "isRelativeToParent": true,
+                "parentPath": "Sector/Root/WestCorridor/AnomalyRoom/Center/MemoryOrb/Root/Console/KeyDropper/Pedestal/KeyRoot",
+                "item": {
+                    "name": "Key",
+                    "itemType": "AnomalyKey",
+                    "colliderRadius": 0,
+                    "colliderIsTrigger": false,
+                    "droppable": true,
+                    "holdRotation": {
+                        "y": 90
+                    },
+                    "dropOffset": {
+                        "x": 0.125,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "dropNormal": {
+                        "x": 1,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "pickupAudio": "ToolItemSharedStonePickUp",
+                    "dropAudio": "ToolItemSharedStoneDrop",
+                    "socketAudio": "ToolItemSharedStoneInsert",
+                    "unsocketAudio": "ToolItemSharedStoneRemove"
+                }
+            },
+            {
+                "rename": "KeyPanel1",
+                "assetBundle": "planets/anomalyresearch.rem",
+                "path": "Assets/AnomalyResearch/KeyPanel.prefab",
+                "parentPath": "Sector/Root",
+                "isRelativeToParent": true,
+                "position": {
+                    "x": -5,
+                    "y": 48.2,
+                    "z": 30
+                },
+                "rotation": { "y": 90 }
+            },
+            {
                 "rename": "ItemSocket",
-                "parentPath": "Sector/Root/KeyPanel/Slot",
+                "parentPath": "Sector/Root/KeyPanel1/Slot",
                 "isRelativeToParent": true,
                 "itemSocket": {
                     "itemType": "AnomalyKey",
@@ -180,14 +270,82 @@
                 }
             },
             {
-                "rename": "EchoCell",
-                "path": "TimberHearth_Body/Sector_TH/Sector_RadioTower/RadioTower_DLC/Props_RadioTower/OtherComponentsGroup/Props_Grove/Cube",
+                "rename": "KeyPanel2",
+                "assetBundle": "planets/anomalyresearch.rem",
+                "path": "Assets/AnomalyResearch/KeyPanel.prefab",
+                "parentPath": "Sector/Root",
+                "isRelativeToParent": true,
                 "position": {
-                    "x": 0,
-                    "y": 31.5,
-                    "z": 72.53
+                    "x": -10,
+                    "y": 48.2,
+                    "z": 30
                 },
-                "isRelativeToParent": true
+                "rotation": { "y": 90 }
+            },
+            {
+                "rename": "ItemSocket",
+                "parentPath": "Sector/Root/KeyPanel2/Slot",
+                "isRelativeToParent": true,
+                "itemSocket": {
+                    "itemType": "AnomalyKey",
+                    "insertCondition": "AnomalyKeyInserted",
+                    "clearInsertConditionOnRemoval": true,
+                    "isRelativeToParent": true,
+                    "colliderRadius": 1,
+                    "interactRange": 2
+                }
+            },
+            {
+                "rename": "KeyPanel3",
+                "assetBundle": "planets/anomalyresearch.rem",
+                "path": "Assets/AnomalyResearch/KeyPanel.prefab",
+                "parentPath": "Sector/Root",
+                "isRelativeToParent": true,
+                "position": {
+                    "x": -15,
+                    "y": 48.2,
+                    "z": 30
+                },
+                "rotation": { "y": 90 }
+            },
+            {
+                "rename": "ItemSocket",
+                "parentPath": "Sector/Root/KeyPanel3/Slot",
+                "isRelativeToParent": true,
+                "itemSocket": {
+                    "itemType": "AnomalyKey",
+                    "insertCondition": "AnomalyKeyInserted",
+                    "clearInsertConditionOnRemoval": true,
+                    "isRelativeToParent": true,
+                    "colliderRadius": 1,
+                    "interactRange": 2
+                }
+            },
+            {
+                "rename": "KeyPanel4",
+                "assetBundle": "planets/anomalyresearch.rem",
+                "path": "Assets/AnomalyResearch/KeyPanel.prefab",
+                "parentPath": "Sector/Root",
+                "isRelativeToParent": true,
+                "position": {
+                    "x": -20,
+                    "y": 48.2,
+                    "z": 30
+                },
+                "rotation": { "y": 90 }
+            },
+            {
+                "rename": "ItemSocket",
+                "parentPath": "Sector/Root/KeyPanel4/Slot",
+                "isRelativeToParent": true,
+                "itemSocket": {
+                    "itemType": "AnomalyKey",
+                    "insertCondition": "AnomalyKeyInserted",
+                    "clearInsertConditionOnRemoval": true,
+                    "isRelativeToParent": true,
+                    "colliderRadius": 1,
+                    "interactRange": 2
+                }
             }
         ]
     },
@@ -196,6 +354,7 @@
             {
                 "isRelativeToParent": true,
                 "audio": "planets/Castaways_Redone.wav",
+                "volume": 0.5,
                 "loop": true,
                 "track": "music",
                 "radius": 125
@@ -204,6 +363,7 @@
                 "isRelativeToParent": true,
                 "audio": "planets/TheNomai_Redone.wav",
                 "priority": 2,
+                "volume": 0.5,
                 "loop": true,
                 "track": "music",
                 "shape": {
@@ -221,6 +381,7 @@
                 "isRelativeToParent": true,
                 "audio": "planets/TheNomai_Redone.wav",
                 "priority": 2,
+                "volume": 0.5,
                 "loop": true,
                 "track": "music",
                 "shape": {
@@ -238,6 +399,7 @@
                 "isRelativeToParent": true,
                 "audio": "planets/TheNomai_Redone.wav",
                 "priority": 2,
+                "volume": 0.5,
                 "loop": true,
                 "track": "music",
                 "shape": {
@@ -255,6 +417,7 @@
                 "isRelativeToParent": true,
                 "audio": "planets/TheNomai_Redone.wav",
                 "priority": 2,
+                "volume": 0.5,
                 "loop": true,
                 "track": "music",
                 "shape": {
@@ -272,6 +435,7 @@
                 "isRelativeToParent": true,
                 "audio": "planets/TheNomai_Redone.wav",
                 "priority": 2,
+                "volume": 0.5,
                 "loop": true,
                 "track": "music",
                 "shape": {

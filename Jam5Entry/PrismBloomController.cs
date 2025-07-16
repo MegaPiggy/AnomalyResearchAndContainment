@@ -22,6 +22,8 @@ namespace Jam5Entry
 
             ResetSensors();
 
+            if (_beamEmitter == null) return;
+
             Vector3 origin = _beamEmitter.transform.position;
             Vector3 direction = _beamEmitter.transform.forward;
 

@@ -13,6 +13,14 @@ namespace Jam5Entry
         private float _startTime;
         private int _currentIndex;
         private bool _isPlaying;
+        private Animator _animator;
+        private RuntimeAnimatorController _baseAnimController;
+
+        private void Awake()
+        {
+            this._animator = base.GetComponent<Animator>();
+            this._baseAnimController = this._animator.runtimeAnimatorController;
+        }
 
         public void Playback(List<MemoryOrbRecorder.ActionFrame> frames)
         {
@@ -35,6 +43,21 @@ namespace Jam5Entry
                 transform.rotation = _frames[_currentIndex].rotation;
                 _currentIndex++;
             }
+        }
+
+        private void LateUpdate()
+        {
+            Vector3 vector = Vector3.zero;
+            if (Mathf.Abs(vector.x) < 0.05f)
+            {
+                vector.x = 0f;
+            }
+            if (Mathf.Abs(vector.z) < 0.05f)
+            {
+                vector.z = 0f;
+            }
+            this._animator.SetFloat("RunSpeedX", vector.x / 3f);
+            this._animator.SetFloat("RunSpeedY", vector.z / 3f);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Jam5Entry
 
         private Mode _mode = Mode.Idle;
 
-        private void Awake()
+        private void Start()
         {
             if (_interactVolume != null)
             {
@@ -79,6 +79,7 @@ namespace Jam5Entry
                     _interactVolume.SetPromptText((UITextType)TranslationHandler.AddUI("Start Playback", false)); // "Start Playback"
                     break;
             }
+            _interactVolume.ResetInteraction();
         }
     }
 }

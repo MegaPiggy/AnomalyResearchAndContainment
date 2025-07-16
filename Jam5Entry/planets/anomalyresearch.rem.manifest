@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2075181619
+CRC: 3617025969
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 54e0caf598cd0ac6af1f11c519e720e7
+    Hash: d538aaddaab353fbf9a704b40201b302
   TypeTreeHash:
     serializedVersion: 2
-    Hash: eb72faeb2c915a7b1223f4ba13428677
+    Hash: 725e5daeae3195cddd0cccfeefa89fa6
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -35,6 +35,8 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 82
   Script: {instanceID: 0}
+- Class: 89
+  Script: {instanceID: 0}
 - Class: 90
   Script: {instanceID: 0}
 - Class: 91
@@ -55,8 +57,6 @@ ClassTypes:
   Script: {fileID: 11500000, guid: dab2fbc1d63988697a57c20e75208116, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 4227d312e95a6b4250b8a26ac6c689ad, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 85531712e7615f2ea458f8c3fb738a4c, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 80818142ed7b755f9ecef4a391e63964, type: 3}
 - Class: 114
@@ -137,8 +137,6 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 199
   Script: {instanceID: 0}
-- Class: 221
-  Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/AnomalyResearch/Crate.prefab
@@ -147,6 +145,7 @@ Assets:
 - Assets/AnomalyResearch/LampArray.prefab
 - Assets/AnomalyResearch/Battery.prefab
 - Assets/AnomalyResearch/BatterySlot.prefab
+- Assets/AnomalyResearch/GhostPlayer.prefab
 - Assets/AnomalyResearch/AnomalyResearch.prefab
 - Assets/AnomalyResearch/Ruin.prefab
 - Assets/AnomalyResearch/Prefab_NOM_Lamp_Glow_Diamond_Wall_Blue.prefab

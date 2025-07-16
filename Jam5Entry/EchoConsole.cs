@@ -5,17 +5,17 @@ namespace Jam5Entry
 {
     public class EchoConsole : MonoBehaviour
     {
-        [SerializeField] private List<int> _correctSequence = new List<int>();
-        [SerializeField] private float _timeout = 2f;
         [SerializeField] private KeyDropper _keyDropper;
         [SerializeField] private OWAudioSource _audioSource;
+        [SerializeField] private Renderer[] _indicatorRenderers;
         private AudioType _successAudio = AudioType.NonDiaUIAffirmativeSFX;
         private AudioType _failAudio = AudioType.NonDiaUINegativeSFX;
-        [SerializeField] private Renderer[] _indicatorRenderers;
-        [SerializeField] private Color _defaultColor = Color.black;
-        [SerializeField] private Color _successColor = Color.green;
-        [SerializeField] private Color _failColor = Color.red;
-        [SerializeField] private float _flashDuration = 0.5f;
+        private Color _defaultColor = Color.black;
+        private Color _successColor = Color.green;
+        private Color _failColor = Color.red;
+        private float _flashDuration = 0.5f;
+        private float _timeout = 10f;
+        private List<int> _correctSequence = new List<int> { 3, 2, 0, 1 };
 
         private List<int> _inputSequence = new List<int>();
         private float _lastInputTime;
@@ -39,12 +39,13 @@ namespace Jam5Entry
             if (Time.time - _lastInputTime > _timeout)
             {
                 _inputSequence.Clear();
+                PlayFailFeedback();
             }
 
             _lastInputTime = Time.time;
             _inputSequence.Add(index);
 
-            if (_inputSequence.Count == _correctSequence.Count)
+            if (_inputSequence.Count >= _correctSequence.Count)
             {
                 if (IsCorrectSequence())
                 {

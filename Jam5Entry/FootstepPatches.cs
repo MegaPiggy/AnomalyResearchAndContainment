@@ -32,7 +32,7 @@ namespace Jam5Entry
                 footstepAudio.PlayOneShot(audioType, 0.7f);
 
                 // Send footstep to EchoCellController
-                var echoCell = Object.FindObjectOfType<EchoCellController>();
+                var echoCell = EchoCellController.Instance;
                 if (echoCell != null)
                 {
                     echoCell.RegisterSound(audioType);
