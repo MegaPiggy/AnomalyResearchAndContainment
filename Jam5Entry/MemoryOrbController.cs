@@ -29,12 +29,20 @@ namespace Jam5Entry
         public void StartRecording()
         {
             if (_puzzleComplete) return;
+            if (_activeGhost != null)
+            {
+                Destroy(_activeGhost.gameObject);
+            }
             _recorder.StartRecording();
             _audioSource.PlayOneShot(_recordStartSFX);
         }
 
         public void StopRecording()
         {
+            if (_activeGhost != null)
+            {
+                Destroy(_activeGhost.gameObject);
+            }
             _recorder.StopRecording();
             _audioSource.PlayOneShot(_recordStopSFX);
         }
@@ -48,8 +56,11 @@ namespace Jam5Entry
                 Destroy(_activeGhost.gameObject);
             }
 
-            GameObject ghostObj = Instantiate(_ghostPlayerPrefab, _spawnPoint.position, _spawnPoint.rotation, _spawnPoint);
+            GameObject ghostObj = Instantiate(_ghostPlayerPrefab, _spawnPoint.position, _spawnPoint.rotation, _recorder.transform);
             _activeGhost = ghostObj.GetAddComponent<MemoryOrbGhostPlayer>();
+            var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cube.transform.SetParent(ghostObj.transform, false);
+            cube.transform.localPosition = Vector3.zero;
             _activeGhost.Playback(_recorder.GetRecording());
             _audioSource.PlayOneShot(_playbackStartSFX);
 

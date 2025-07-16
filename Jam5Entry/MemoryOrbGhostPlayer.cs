@@ -32,7 +32,7 @@ namespace Jam5Entry
 
         private void Update()
         {
-            if (!_isPlaying || _frames == null || _currentIndex >= _frames.Count)
+            if (!OWTime.IsPaused() && !_isPlaying || _frames == null || _currentIndex >= _frames.Count)
                 return;
 
             float elapsed = Time.time - _startTime;
