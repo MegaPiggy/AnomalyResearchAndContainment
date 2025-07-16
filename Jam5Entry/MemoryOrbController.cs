@@ -49,7 +49,7 @@ namespace Jam5Entry
             }
 
             GameObject ghostObj = Instantiate(_ghostPlayerPrefab, _spawnPoint.position, _spawnPoint.rotation);
-            _activeGhost = ghostObj.GetComponent<MemoryOrbGhostPlayer>();
+            _activeGhost = ghostObj.GetAddComponent<MemoryOrbGhostPlayer>();
             _activeGhost.Playback(_recorder.GetRecording());
             _audioSource.PlayOneShot(_playbackStartSFX);
 
