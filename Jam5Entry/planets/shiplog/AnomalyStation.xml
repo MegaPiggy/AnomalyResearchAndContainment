@@ -59,11 +59,19 @@
 
     <ExploreFact>
       <ID>ARC_ELEVATOR_ROOM_X1</ID>
-      <Text>It seems to require four anomaly keys to function.</Text>
+      <Text>A Nomai log suggests that inserting four anomaly keys will activate the elevator to a lower chamber.</Text>
     </ExploreFact>
     <ExploreFact>
       <ID>ARC_ELEVATOR_ROOM_X2</ID>
-      <Text>Once the anomaly keys were gathered, the elevator activated and lowered me to a sealed chamber below the station.</Text>
+      <Text>Each of the four anomaly chambers contains a unique puzzle. Solving one causes a key to emerge, which may be part of the security system for this station.</Text>
+    </ExploreFact>
+    <ExploreFact>
+      <ID>ARC_ELEVATOR_ROOM_X3</ID>
+      <Text>The station must be powered for the elevator to work.</Text>
+    </ExploreFact>
+    <ExploreFact>
+      <ID>ARC_ELEVATOR_ROOM_X4</ID>
+      <Text>I used the elevator to descend to a sealed chamber below the station once the anomaly keys were gathered.</Text>
     </ExploreFact>
   </Entry>
 

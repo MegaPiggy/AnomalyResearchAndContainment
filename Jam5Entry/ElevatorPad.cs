@@ -130,6 +130,10 @@ namespace Jam5Entry
             _busy = true;
             enabled = true;
             targetFloor = floor == Floor.Top ? Floor.Bottom : Floor.Top;
+            if (targetFloor == Floor.Bottom)
+            {
+                Locator.GetShipLogManager().RevealFact("ARC_ELEVATOR_ROOM_X4", true, true);
+            }
             _initElevatorTime = Time.time;
             _owAudioSourceOneShot.PlayOneShot(AudioType.CageElevator_Start, 1f);
             _owAudioSourceLP.FadeIn(0.5f, false, false, 1f);

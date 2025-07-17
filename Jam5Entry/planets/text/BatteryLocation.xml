@@ -1,0 +1,23 @@
+﻿<NomaiObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/text_schema.xsd">
+  <TextBlock>
+    <ID>1</ID>
+    <Text>MENIS: If the station’s systems lose power again, we can retrieve the backup battery from the abandoned structure on <![CDATA[<color=orange>Emerald Reverie</color>]]>'s north pole.</Text>
+  </TextBlock>
+  <TextBlock>
+    <ID>2</ID>
+    <ParentID>1</ParentID>
+    <Text>ASTERA: That old site? The battery should still be functional. We left it behind intentionally.</Text>
+  </TextBlock>
+  <TextBlock>
+    <ID>3</ID>
+    <ParentID>2</ParentID>
+    <Text>CARYO: If this station ever falls dormant, the next arrival will know where to look.</Text>
+  </TextBlock>
+
+  <ShipLogConditions>
+    <RevealFact>
+      <FactID>EMERALD_REVERIE_STRUCTURE_R1</FactID>
+      <Condition>1</Condition>
+    </RevealFact>
+  </ShipLogConditions>
+</NomaiObject>

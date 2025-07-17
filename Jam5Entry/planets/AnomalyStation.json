@@ -396,6 +396,34 @@
                 },
                 "isRelativeToParent": true,
                 "parentPath": "Sector/Root/WestCorridor/AnomalyRoom/Center/MemoryOrb/Root"
+            },
+            {
+                "xmlFile": "planets/text/BatteryLocation.xml",
+                "seed": 313,
+                "position": {
+                    "x": 22,
+                    "y": 48.2,
+                    "z": 4
+                },
+                "rotation": {
+                    "x": -90,
+                    "y": 270,
+                    "z": 0
+                }
+            },
+            {
+                "xmlFile": "planets/text/ElevatorNote.xml",
+                "seed": 724,
+                "position": {
+                    "x": 0,
+                    "y": 22.10715,
+                    "z": 12
+                },
+                "rotation": {
+                    "x": -90,
+                    "y": 0,
+                    "z": 0
+                }
             }
         ]
     },
@@ -537,6 +565,17 @@
                     "ARC_WARP_PLATFORM_X1",
                     "ARC_STATION_R1",
                     "ARC_OBSERVATION_DOME_R1"
+                ]
+            },
+            {
+                "radius": 10,
+                "position": {
+                    "y": 30
+                },
+                "revealFor": "player",
+                "revealOn": "enter",
+                "reveals": [
+                    "ARC_ELEVATOR_ROOM_R1"
                 ]
             }
         ],

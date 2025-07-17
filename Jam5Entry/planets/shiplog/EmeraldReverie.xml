@@ -30,7 +30,7 @@
       <ID>EMERALD_REVERIE_STRUCTURE_R1</ID>
       <SourceID>EMERALD_REVERIE_ROOT</SourceID>
       <RumorName>Battery Location</RumorName>
-      <Text>A computer on the space station mentions there is an abandoned facility on the planet's surface that contains a battery.</Text>
+      <Text>A Nomai log on the space station mentions there is an abandoned facility on the planet's north pole that contains a battery.</Text>
     </RumorFact>
 
     <ExploreFact>

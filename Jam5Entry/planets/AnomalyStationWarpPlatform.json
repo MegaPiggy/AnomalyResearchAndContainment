@@ -29,6 +29,22 @@
                     "z": 0
                 }
             }
+        ],
+        "translatorText": [
+            {
+                "xmlFile": "planets/text/WarpStation.xml",
+                "seed": 6624,
+                "position": {
+                    "x": -2,
+                    "y": 0,
+                    "z": 52
+                },
+                "rotation": {
+                    "x": -90,
+                    "y": 150,
+                    "z": 0
+                }
+            }
         ]
     },
     "Volumes": {

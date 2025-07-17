@@ -134,6 +134,22 @@
                     "unsocketAudio": "ToolItemWarpCoreRemove"
                 }
             }
+        ],
+        "translatorText": [
+            {
+                "xmlFile": "planets/text/AbandonedFacility.xml",
+                "seed": 1211,
+                "position": {
+                    "x": 0,
+                    "y": 114.2,
+                    "z": 0
+                },
+                "rotation": {
+                    "x": -90,
+                    "y": 190,
+                    "z": 0
+                }
+            }
         ]
     },
     "Volumes": {
