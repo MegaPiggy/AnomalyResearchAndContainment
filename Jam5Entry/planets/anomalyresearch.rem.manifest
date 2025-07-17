@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3617025969
+CRC: 1924870732
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d538aaddaab353fbf9a704b40201b302
+    Hash: 0a6e34176a0b0f9750bf373c367106dc
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 725e5daeae3195cddd0cccfeefa89fa6
+    Hash: 888b56006b462ab6b18d88fc86ad1954
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -51,6 +51,8 @@ ClassTypes:
   Script: {fileID: 1056298365, guid: 15778464d8f29d14eab5bb1b103b6439, type: 3}
 - Class: 114
   Script: {fileID: 1441104377, guid: 15778464d8f29d14eab5bb1b103b6439, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6a141c70bb437499b1cd11009e59e0d9, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: fbb2498122f7e23a2e87544333cb528f, type: 3}
 - Class: 114
@@ -123,6 +125,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 7731bc3d30c8b009ac33fba6df6e72ae, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 1effb1bd669ff10873e29e11509c3d77, type: 3}
+- Class: 114
+  Script: {fileID: -71524134, guid: 15778464d8f29d14eab5bb1b103b6439, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 134
@@ -148,6 +152,7 @@ Assets:
 - Assets/AnomalyResearch/GhostPlayer.prefab
 - Assets/AnomalyResearch/AnomalyResearch.prefab
 - Assets/AnomalyResearch/Ruin.prefab
+- Assets/AnomalyResearch/RunePanel.prefab
 - Assets/AnomalyResearch/Prefab_NOM_Lamp_Glow_Diamond_Wall_Blue.prefab
 - Assets/AnomalyResearch/ElevatorPad.prefab
 - Assets/AnomalyResearch/KeyPanel.prefab

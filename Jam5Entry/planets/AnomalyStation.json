@@ -69,11 +69,11 @@
                 "parentPath": "Sector/Root",
                 "isRelativeToParent": true,
                 "position": {
-                    "x": 5,
-                    "y": 48.2,
-                    "z": 30
+                    "x": -25,
+                    "y": 49.2,
+                    "z": 0
                 },
-                "rotation": { "y": 90 }
+                "rotation": { "y": 0 }
             },
             {
                 "rename": "AnomalyBattery",
@@ -84,6 +84,7 @@
                     "y": 50,
                     "z": 20
                 },
+                "activationCondition": "AnomalyTest",
                 "item": {
                     "name": "Battery",
                     "itemType": "AnomalyBattery",
@@ -250,11 +251,11 @@
                 "parentPath": "Sector/Root",
                 "isRelativeToParent": true,
                 "position": {
-                    "x": -5,
+                    "x": 30,
                     "y": 48.2,
-                    "z": 30
+                    "z": 1
                 },
-                "rotation": { "y": 90 }
+                "rotation": { "y": 180 }
             },
             {
                 "rename": "ItemSocket",
@@ -276,11 +277,11 @@
                 "parentPath": "Sector/Root",
                 "isRelativeToParent": true,
                 "position": {
-                    "x": -10,
+                    "x": 30,
                     "y": 48.2,
-                    "z": 30
+                    "z": -1
                 },
-                "rotation": { "y": 90 }
+                "rotation": { "y": 180 }
             },
             {
                 "rename": "ItemSocket",
@@ -302,11 +303,11 @@
                 "parentPath": "Sector/Root",
                 "isRelativeToParent": true,
                 "position": {
-                    "x": -15,
+                    "x": 30,
                     "y": 48.2,
-                    "z": 30
+                    "z": 3
                 },
-                "rotation": { "y": 90 }
+                "rotation": { "y": 180 }
             },
             {
                 "rename": "ItemSocket",
@@ -328,11 +329,11 @@
                 "parentPath": "Sector/Root",
                 "isRelativeToParent": true,
                 "position": {
-                    "x": -20,
+                    "x": 30,
                     "y": 48.2,
-                    "z": 30
+                    "z": -3
                 },
-                "rotation": { "y": 90 }
+                "rotation": { "y": 180 }
             },
             {
                 "rename": "ItemSocket",
@@ -401,13 +402,13 @@
                 "xmlFile": "planets/text/BatteryLocation.xml",
                 "seed": 313,
                 "position": {
-                    "x": 22,
+                    "x": -22,
                     "y": 48.2,
-                    "z": 4
+                    "z": 0
                 },
                 "rotation": {
                     "x": -90,
-                    "y": 270,
+                    "y": 90,
                     "z": 0
                 }
             },

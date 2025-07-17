@@ -53,4 +53,8 @@
       <HintPath>$(ModsPath)/xen-42.ModJam5/ModJam5.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="Exists('$(UnityDllsDir)')">
+    <Exec Command="xcopy /y &quot;$(TargetPath)&quot; &quot;$(UnityDllsDir)&quot;" />
+    <Exec Command="xcopy /y &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;$(UnityDllsDir)&quot;" />
+  </Target>
 </Project>

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Jam5Entry
@@ -6,25 +7,24 @@ namespace Jam5Entry
     public class RunicWallController : MonoBehaviour
     {
         [SerializeField] private List<RunePanel> _panels = new List<RunePanel>();
-        [SerializeField] private List<int> _correctSequence = new List<int>();
         [SerializeField] private KeyDropper _keyDropper;
-        [SerializeField] private float _cycleInterval = 5f;
         [SerializeField] private float _resetDelay = 2f;
         [SerializeField] private OWAudioSource _audioSource;
-        [SerializeField] private ProbePhotoTarget[] _targets;
 
         private AudioType _successAudio = AudioType.NonDiaUIAffirmativeSFX;
         private AudioType _failAudio = AudioType.NonDiaUINegativeSFX;
 
+        private ProbePhotoTarget[] _targets;
+        private List<int> _correctSequence = [1, 2, 3, 4];
         private List<int> _playerSequence = new List<int>();
         private bool _completed = false;
 
         private void Start()
         {
             // Link probe targets to photo detection
-            foreach (var target in _targets)
+            foreach (var panel in _panels)
             {
-                target.OnPhotographedByProbe += OnTargetPhotographed;
+                panel.photoTarget.OnPhotographedByProbe += OnTargetPhotographed;
             }
         }
 
@@ -93,7 +93,7 @@ namespace Jam5Entry
         [SerializeField] public Renderer glowRenderer;
         [SerializeField] public Color defaultColor = Color.gray;
         [SerializeField] public Color activeColor = Color.cyan;
-        [SerializeField] private ProbePhotoTarget photoTarget;
+        [SerializeField] public ProbePhotoTarget photoTarget;
 
         [SerializeField] private float revealAngle = 30f; // degrees
         public bool isVisible { get; private set; }

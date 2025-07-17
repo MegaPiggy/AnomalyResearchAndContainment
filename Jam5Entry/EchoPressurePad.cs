@@ -11,7 +11,7 @@ namespace Jam5Entry
         private float _glowFraction;
         [SerializeField] private MeshRenderer _glowRenderer;
         private Color _glowBaseColor = new Color32(1, 1, 3, 255);
-        private Color _draggingGlowColor = new Color(1, 1, 1*3); // Color.white;
+        private Color _draggingGlowColor = new Color32(68, 208, 254, 255); // Color.white;
 
         private void Awake()
         {
