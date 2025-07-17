@@ -11,60 +11,55 @@ namespace Jam5Entry
         [SerializeField] private float _cycleInterval = 5f;
         [SerializeField] private float _resetDelay = 2f;
         [SerializeField] private OWAudioSource _audioSource;
+        [SerializeField] private ProbePhotoTarget[] _targets;
+
         private AudioType _successAudio = AudioType.NonDiaUIAffirmativeSFX;
         private AudioType _failAudio = AudioType.NonDiaUINegativeSFX;
 
         private List<int> _playerSequence = new List<int>();
-        private float _lastInputTime;
-        private int _currentStep = 0;
         private bool _completed = false;
 
         private void Start()
         {
-            CycleRuneVisibility();
-            InvokeRepeating(nameof(CycleRuneVisibility), _cycleInterval, _cycleInterval);
+            // Link probe targets to photo detection
+            foreach (var target in _targets)
+            {
+                target.OnPhotographedByProbe += OnTargetPhotographed;
+            }
         }
 
-        private void CycleRuneVisibility()
+        private void OnTargetPhotographed(ProbePhotoTarget target, float score)
         {
+            if (_completed) return;
+
             foreach (var panel in _panels)
             {
-                panel.CycleRuneVisibility();
-            }
-        }
-
-        public void OnPhotoTaken(List<int> panelIdsInPhoto)
-        {
-            if (_completed || panelIdsInPhoto == null || panelIdsInPhoto.Count == 0)
-                return;
-
-            foreach (var panelId in panelIdsInPhoto)
-            {
-                RunePanel panel = _panels.Find(p => p.id == panelId);
-                if (panel != null && panel.isVisible)
+                if (panel.MatchesTarget(target) && panel.isVisible)
                 {
-                    _playerSequence.Add(panelId);
+                    _playerSequence.Add(panel.id);
                     panel.SetGlow(true);
-                }
-            }
 
-            _lastInputTime = Time.time;
+                    if (_playerSequence.Count >= _correctSequence.Count)
+                    {
+                        if (IsCorrectSequence())
+                        {
+                            CompletePuzzle();
+                        }
+                        else
+                        {
+                            Invoke(nameof(ResetPuzzle), _resetDelay);
+                        }
+                    }
 
-            if (_playerSequence.Count >= _correctSequence.Count)
-            {
-                if (IsCorrectSequence())
-                {
-                    CompletePuzzle();
-                }
-                else
-                {
-                    Invoke(nameof(ResetPuzzle), _resetDelay);
+                    break;
                 }
             }
         }
 
         private bool IsCorrectSequence()
         {
+            if (_playerSequence.Count != _correctSequence.Count) return false;
+
             for (int i = 0; i < _correctSequence.Count; i++)
             {
                 if (_playerSequence[i] != _correctSequence[i])
@@ -83,21 +78,38 @@ namespace Jam5Entry
         private void ResetPuzzle()
         {
             _playerSequence.Clear();
-            if (_audioSource != null) _audioSource.PlayOneShot(_failAudio);
 
+            if (_audioSource != null) _audioSource.PlayOneShot(_failAudio);
             foreach (var panel in _panels)
             {
                 panel.SetGlow(false);
             }
         }
     }
+
     public class RunePanel : MonoBehaviour
     {
         [SerializeField] public int id;
         [SerializeField] public Renderer glowRenderer;
         [SerializeField] public Color defaultColor = Color.gray;
         [SerializeField] public Color activeColor = Color.cyan;
-        [SerializeField] public bool isVisible = true;
+        [SerializeField] private ProbePhotoTarget photoTarget;
+
+        [SerializeField] private float revealAngle = 30f; // degrees
+        public bool isVisible { get; private set; }
+
+        private void Update()
+        {
+            Vector3 toViewer = (Locator.GetPlayerTransform().position - transform.position).normalized;
+            float angle = Vector3.Angle(transform.forward, toViewer);
+
+            SetVisibility(angle <= revealAngle);
+        }
+
+        public bool MatchesTarget(ProbePhotoTarget target)
+        {
+            return target != null && photoTarget == target;
+        }
 
         public void SetGlow(bool on)
         {
@@ -108,12 +120,14 @@ namespace Jam5Entry
             }
         }
 
-        public void CycleRuneVisibility()
+        private void SetVisibility(bool visible)
         {
-            bool visible = Random.value > 0.5f;
-            isVisible = visible;
-            gameObject.SetActive(visible);
-            SetGlow(false);
+            if (isVisible != visible)
+            {
+                isVisible = visible;
+                gameObject.SetActive(visible);
+                SetGlow(false);
+            }
         }
     }
 }

@@ -39,7 +39,7 @@ namespace Jam5Entry
         {
             if (_isRecording)
             {
-                var playerTransform = Locator.GetPlayerBody().transform;
+                var playerTransform = Locator.GetPlayerTransform();
                 _recordedFrames.Add(new ActionFrame
                 {
                     time = Time.time - _startTime,

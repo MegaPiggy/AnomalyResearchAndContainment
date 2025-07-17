@@ -116,7 +116,7 @@
       <SourceID>ARC_OBSERVATION_DOME</SourceID>
       <RumorName>Wall of Symbols</RumorName>
       <RumorNamePriority>1</RumorNamePriority>
-      <Text>A log fragment refers to "shifting glyphs that hide the path to knowledge." The Nomai seemed fascinated with this anomaly.</Text>
+      <Text>Nomai logs describe symbols that respond to the observer. The glyphs appear to hide a sequence that must be photographed.</Text>
     </RumorFact>
     <RumorFact>
       <ID>ARC_RUNIC_WALL_R2</ID>
@@ -127,7 +127,7 @@
 
     <ExploreFact>
       <ID>ARC_RUNIC_WALL_X1</ID>
-      <Text>The walls are covered in shifting glyphs. Photographing certain symbols in order reveals hidden pathways.</Text>
+      <Text>The glyphs change when viewed from different angles. Photographing the correct sequence caused a section of the wall to open.</Text>
     </ExploreFact>
     <ExploreFact>
       <ID>ARC_RUNIC_WALL_X2</ID>
