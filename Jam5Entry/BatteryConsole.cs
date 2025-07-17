@@ -17,7 +17,11 @@ namespace Jam5Entry
             if (_button != null)
             {
                 _button.OnPressInteract += OnButtonPressed;
-                _button.SetPromptText((UITextType)TranslationHandler.AddUI("Check Power Status", false)); // "Check Power Status"
+                var text = (UITextType)TranslationHandler.AddUI("Check Power Status", false);
+                _button._textID = text;
+                _button.Awake();
+                _button.SetPromptText(text);
+                _button.ResetInteraction();
             }
 
             // Hide info at start

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Jam5Entry
@@ -58,6 +54,12 @@ namespace Jam5Entry
             }
             this._animator.SetFloat("RunSpeedX", vector.x / 3f);
             this._animator.SetFloat("RunSpeedY", vector.z / 3f);
+            this._animator.SetFloat("TurnSpeed", 0);
+            this._animator.SetBool("Grounded", true);
+            this._animator.SetLayerWeight(1, 0);
+            this._animator.SetFloat("FreefallSpeed", 0);
+            this._animator.SetBool("InZeroG", false);
+            this._animator.SetBool("UsingJetpack", true);
         }
     }
 }

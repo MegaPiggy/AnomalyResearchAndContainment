@@ -59,7 +59,7 @@ namespace Jam5Entry
             GameObject ghostObj = Instantiate(_ghostPlayerPrefab, _spawnPoint.position, _spawnPoint.rotation, _recorder.transform);
             ghostObj.transform.localPosition = Vector3.zero;
             ghostObj.transform.localEulerAngles = Vector3.zero;
-            ghostObj.transform.localScale = Vector3.one;
+            ghostObj.transform.localScale = Vector3.one * 0.1f;
             _activeGhost = ghostObj.GetAddComponent<MemoryOrbGhostPlayer>();
             var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             cube.transform.SetParent(ghostObj.transform, false);
