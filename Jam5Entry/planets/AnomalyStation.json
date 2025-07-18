@@ -402,7 +402,7 @@
                 "xmlFile": "planets/text/BatteryLocation.xml",
                 "seed": 313,
                 "position": {
-                    "x": -22,
+                    "x": -20,
                     "y": 48.2,
                     "z": 0
                 },
@@ -529,24 +529,6 @@
                 }
             }
         ],
-        "fluidVolumes": [
-            {
-                "radius": 125,
-                "type": "air",
-                "layer": 5,
-                "priority": 0,
-                "density": 1.2,
-                "allowShipAutoroll": false,
-                "disableOnStart": false
-            }
-        ],
-        "oxygenVolumes": [
-            {
-                "radius": 125,
-                "playRefillAudio": true,
-                "treeVolume": true
-            }
-        ],
         "revealVolumes": [
             {
                 "radius": 125,
@@ -593,17 +575,7 @@
                     "z": 0
                 }
             }
-        ],
-        "forces": {
-            "directionalVolumes": [
-                {
-                    "radius": 125,
-                    "force": -12,
-                    "inheritable": true,
-                    "playGravityCrystalAudio": false
-                }
-            ]
-        }
+        ]
     },
     "AmbientLights": [
         {
@@ -627,6 +599,9 @@
     },
     "MapMarker": {
         "enabled": true
+    },
+    "ReferenceFrame": {
+        "targetWhenClose": true
     },
     "Spawn": {
         "playerSpawnPoints": [

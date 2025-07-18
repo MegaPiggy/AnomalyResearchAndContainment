@@ -68,18 +68,17 @@ namespace Jam5Entry
             switch (_mode)
             {
                 case Mode.Idle:
-                    _interactVolume.SetPromptText((UITextType)TranslationHandler.AddUI("Start Recording", false)); // "Start Recording"
+                    _interactVolume.ChangePrompt((UITextType)TranslationHandler.AddUI("Start Recording", false)); // "Start Recording"
                     break;
 
                 case Mode.Recording:
-                    _interactVolume.SetPromptText((UITextType)TranslationHandler.AddUI("Stop Recording", false)); // "Stop Recording"
+                    _interactVolume.ChangePrompt((UITextType)TranslationHandler.AddUI("Stop Recording", false)); // "Stop Recording"
                     break;
 
                 case Mode.ReadyToPlay:
-                    _interactVolume.SetPromptText((UITextType)TranslationHandler.AddUI("Start Playback", false)); // "Start Playback"
+                    _interactVolume.ChangePrompt((UITextType)TranslationHandler.AddUI("Start Playback", false)); // "Start Playback"
                     break;
             }
-            _interactVolume.ResetInteraction();
         }
     }
 }

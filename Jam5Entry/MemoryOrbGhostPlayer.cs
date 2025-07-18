@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using OWML.Utils;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Jam5Entry
 {
-    public class MemoryOrbGhostPlayer : MonoBehaviour
+    public class MemoryOrbGhostPlayer : Detector
     {
+        private static readonly Detector.Name GhostPlayer = EnumUtils.Create<Detector.Name>("GhostPlayer");
         private List<MemoryOrbRecorder.ActionFrame> _frames;
         private float _startTime;
         private int _currentIndex;
@@ -12,8 +14,10 @@ namespace Jam5Entry
         private Animator _animator;
         private RuntimeAnimatorController _baseAnimController;
 
-        private void Awake()
+        public override void Awake()
         {
+            base.Awake();
+            this._name = GhostPlayer;
             this._animator = base.GetComponent<Animator>();
             this._baseAnimController = this._animator.runtimeAnimatorController;
         }
@@ -35,7 +39,7 @@ namespace Jam5Entry
 
             while (_currentIndex < _frames.Count && _frames[_currentIndex].time <= elapsed)
             {
-                transform.localPosition = _frames[_currentIndex].localPosition;
+                transform.localPosition = _frames[_currentIndex].localPosition - Vector3.up;
                 transform.localRotation = _frames[_currentIndex].localRotation;
                 _currentIndex++;
             }

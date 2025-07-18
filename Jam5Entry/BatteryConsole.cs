@@ -6,28 +6,29 @@ namespace Jam5Entry
 {
     public class BatteryConsole : MonoBehaviour
     {
-        [SerializeField] private MeshRenderer _screen;
-        [SerializeField] private MeshRenderer _info;
-        [SerializeField] private Material _battery;
-        [SerializeField] private Material _noBattery;
+        [SerializeField] private MeshRenderer _battery;
+        [SerializeField] private MeshRenderer _noBattery;
         [SerializeField] private SingleInteractionVolume _button;
 
         private void Start()
         {
+            _button = GetComponentInChildren<SingleInteractionVolume>();
             if (_button != null)
             {
                 _button.OnPressInteract += OnButtonPressed;
-                var text = (UITextType)TranslationHandler.AddUI("Check Power Status", false);
-                _button._textID = text;
-                _button.Awake();
-                _button.SetPromptText(text);
-                _button.ResetInteraction();
+                _button.ChangePrompt((UITextType)TranslationHandler.AddUI("Check Power Status", false));
             }
 
             // Hide info at start
-            if (_info != null)
-                _info.gameObject.SetActive(false);
-        }
+            if (_battery != null)
+            {
+                _battery.gameObject.SetActive(false);
+            }
+            if (_noBattery != null)
+            {
+                _noBattery.gameObject.SetActive(false);
+                }
+            }
 
         private void OnDestroy()
         {
@@ -39,12 +40,13 @@ namespace Jam5Entry
 
         private void OnButtonPressed()
         {
-            if (_info != null)
-                _info.gameObject.SetActive(true);
-
-            if (_screen != null)
+            if (_battery != null)
             {
-                _screen.material = DialogueConditionManager.SharedInstance.GetConditionState("ActivateAnomalyStation") ? _battery : _noBattery;
+                _battery.gameObject.SetActive(DialogueConditionManager.SharedInstance.GetConditionState("ActivateAnomalyStation"));
+            }
+            if (_noBattery != null)
+            {
+                _noBattery.gameObject.SetActive(!DialogueConditionManager.SharedInstance.GetConditionState("ActivateAnomalyStation"));
             }
         }
     }

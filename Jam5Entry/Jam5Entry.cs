@@ -83,6 +83,15 @@ namespace Jam5Entry
                     rename = "CustomEndTimesVolume",
                     isRelativeToParent = true
                 });
+
+                var volumeController = station.GetComponentInChildren<StationVolumeController>();
+                volumeController.warpReceiver = station.GetComponentInChildren<NomaiWarpReceiver>();
+                volumeController.warpTransmitter = station.GetComponentInChildren<NomaiWarpTransmitter>();
+                volumeController.Initialize();
+
+#if DEBUG
+                DialogueConditionManager.SharedInstance.SetConditionState("AnomalyTest", true);
+#endif
             }
         }
 
