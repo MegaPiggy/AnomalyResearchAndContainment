@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -10,6 +11,10 @@ namespace Jam5Entry
         [SerializeField] private KeyDropper _keyDropper;
         [SerializeField] private float _resetDelay = 2f;
         [SerializeField] private OWAudioSource _audioSource;
+        [SerializeField] private float _swapCooldown = 1.5f;
+
+        private List<TransformData> _initialTransforms = new List<TransformData>();
+        private bool _canSwap = true;
 
         private AudioType _successAudio = AudioType.NonDiaUIAffirmativeSFX;
         private AudioType _failAudio = AudioType.NonDiaUINegativeSFX;
@@ -21,10 +26,29 @@ namespace Jam5Entry
 
         private void Start()
         {
-            // Link probe targets to photo detection
             foreach (var panel in _panels)
             {
+                // Record initial positions and rotations
+                _initialTransforms.Add(new TransformData
+                {
+                    position = panel.transform.localPosition,
+                    rotation = panel.transform.localRotation
+                });
+                // Link probe targets to photo detection
                 panel.photoTarget.OnPhotographedByProbe += OnTargetPhotographed;
+            }
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+            if (!_canSwap) return;
+
+            bool anyVisible = _panels.Any(p => p.isVisible);
+            if (!anyVisible)
+            {
+                _canSwap = false;
+                StartCoroutine(SwapPanelsRoutine());
             }
         }
 
@@ -95,6 +119,29 @@ namespace Jam5Entry
         public override void DeactivatePuzzle()
         {
         }
+
+        private IEnumerator SwapPanelsRoutine()
+        {
+            _canSwap = false;
+
+            // Shuffle the transform data
+            List<TransformData> shuffled = _initialTransforms.OrderBy(x => Random.value).ToList();
+
+            for (int i = 0; i < _panels.Count; i++)
+            {
+                _panels[i].transform.localPosition = shuffled[i].position;
+                _panels[i].transform.localRotation = shuffled[i].rotation;
+            }
+
+            yield return new WaitForSeconds(_swapCooldown);
+            _canSwap = true;
+        }
+
+        private struct TransformData
+        {
+            public Vector3 position;
+            public Quaternion rotation;
+        }
     }
 
     public class RunePanel : MonoBehaviour
@@ -104,19 +151,44 @@ namespace Jam5Entry
         [SerializeField] public Renderer glowRenderer;
         [SerializeField] public ProbePhotoTarget photoTarget;
 
-        public static float revealAngle = 90f; // degrees
+        public static float revealAngle = 20f; // degrees
         public bool isVisible { get; private set; }
 
         private void Update()
         {
             Vector3 origin = transform.position + (-transform.forward * 0.1f); // slightly in front
-            Vector3 toViewer = (Locator.GetPlayerTransform().position - origin).normalized;
-            float dot = Vector3.Dot(-transform.forward, toViewer); // closer to 1 = head-on
             float threshold = Mathf.Cos(revealAngle * Mathf.Deg2Rad); // 60 degrees = 0.5
-            Jam5Entry.Instance.ModHelper.Console.WriteLine(id + " | " + dot + " >= " + threshold);
 
-            SetVisibility(dot >= threshold);
+            bool isVisibleToPlayer = IsViewerLooking(origin, -transform.forward, Locator.GetPlayerTransform(), threshold, Locator.GetPlayerCamera().mainCamera);
+            bool isVisibleToProbe = false;
+
+            var probe = Locator.GetProbe();
+            if (probe != null && probe.IsLaunched())
+            {
+                var probeCam = probe.IsAnchored() ? probe.GetRotatingCamera() : probe.GetForwardCamera();
+                if (probeCam != null)
+                {
+                    isVisibleToProbe = IsViewerLooking(origin, -transform.forward, probeCam.transform, threshold, probeCam.GetOWCamera().mainCamera);
+                }
+            }
+
+            SetVisibility(isVisibleToPlayer || isVisibleToProbe);
         }
+
+        private bool IsViewerLooking(Vector3 origin, Vector3 normal, Transform viewer, float dotThreshold, Camera cam)
+        {
+            if (viewer == null || cam == null) return false;
+
+            Vector3 toViewer = (viewer.position - origin).normalized;
+            float dot = Vector3.Dot(normal, toViewer); // closer to 1 = head-on
+
+            if (dot < dotThreshold) return false;
+
+            // Viewport check
+            Vector3 viewportPos = cam.WorldToViewportPoint(origin);
+            return viewportPos.z > 0f && viewportPos.x is > 0f and < 1f && viewportPos.y is > 0f and < 1f;
+        }
+
 
         public bool MatchesTarget(ProbePhotoTarget target)
         {
