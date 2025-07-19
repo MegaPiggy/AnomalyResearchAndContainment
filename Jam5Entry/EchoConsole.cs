@@ -5,6 +5,7 @@ namespace Jam5Entry
 {
     public class EchoConsole : MonoBehaviour
     {
+        [SerializeField] public readonly EchoCellController controller;
         [SerializeField] private KeyDropper _keyDropper;
         [SerializeField] private OWAudioSource _audioSource;
         [SerializeField] private Renderer[] _indicatorRenderers;
@@ -15,7 +16,6 @@ namespace Jam5Entry
         private Color _failColor = Color.red;
         private float _flashDuration = 0.5f;
         private float _timeout = 10f;
-        private List<int> _correctSequence = new List<int> { 3, 2, 0, 1 };
 
         private List<int> _inputSequence = new List<int>();
         private float _lastInputTime;
@@ -34,7 +34,7 @@ namespace Jam5Entry
 
         public void RegisterPadStep(int index)
         {
-            if (_completed) return;
+            if (!controller.IsActive || _completed) return;
 
             if (Time.time - _lastInputTime > _timeout)
             {
@@ -45,7 +45,7 @@ namespace Jam5Entry
             _lastInputTime = Time.time;
             _inputSequence.Add(index);
 
-            if (_inputSequence.Count >= _correctSequence.Count)
+            if (_inputSequence.Count >= controller.correctSequence.Count)
             {
                 if (IsCorrectSequence())
                 {
@@ -63,9 +63,9 @@ namespace Jam5Entry
 
         private bool IsCorrectSequence()
         {
-            for (int i = 0; i < _correctSequence.Count; i++)
+            for (int i = 0; i < controller.correctSequence.Count; i++)
             {
-                if (_correctSequence[i] != _inputSequence[i])
+                if (controller.correctSequence[i] != _inputSequence[i])
                     return false;
             }
             return true;

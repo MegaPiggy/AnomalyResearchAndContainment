@@ -6,7 +6,7 @@ using OWAudioType = global::AudioType;
 
 namespace Jam5Entry
 {
-    public class EchoCellController : MonoBehaviour
+    public class EchoCellController : AnomalyController
     {
         public static EchoCellController Instance { get; private set; }
 
@@ -19,13 +19,13 @@ namespace Jam5Entry
         }
 
         [SerializeField] public OWAudioSource echoSourcePrefab;
+        [NonSerialized] public List<int> correctSequence = new List<int> { 3, 2, 0, 1 };
         private float randomDelaySecondsMin = 0.5f;
         private float randomDelaySecondsMax = 1.5f;
         private float randomPitchRange = 0.3f;
         private float randomPosRadius = 2f;
 
         [SerializeField] private List<Transform> echoPadPositions;
-        private List<int> echoPattern = new List<int> { 3, 2, 0, 1 }; // Indexes into echoPadPositions
         private float echoLoopDelay = 10f;
         private OWAudioType padEchoAudioType = OWAudioType.NomaiOrbStartDrag;
 
@@ -41,7 +41,7 @@ namespace Jam5Entry
 
         private void Start()
         {
-            if (echoPattern.Count > 0 && echoPadPositions.Count > 0)
+            if (correctSequence.Count > 0 && echoPadPositions.Count > 0)
             {
                 _echoLoopCoroutine = StartCoroutine(PlayEchoPatternLoop());
             }
@@ -49,7 +49,7 @@ namespace Jam5Entry
 
         public void RegisterSound(OWAudioType audioType)
         {
-            if (audioType == OWAudioType.None) return;
+            if (!IsActive || audioType == OWAudioType.None) return;
 
             recentSounds.SafeAdd(audioType);
             EchoEvent echo = new EchoEvent
@@ -93,19 +93,22 @@ namespace Jam5Entry
             {
                 yield return new WaitForSeconds(1f);
 
-                foreach (int padIndex in echoPattern)
+                if (IsActive)
                 {
-                    if (padIndex >= 0 && padIndex < echoPadPositions.Count)
+                    foreach (int padIndex in correctSequence)
                     {
-                        Vector3 pos = echoPadPositions[padIndex].position;
-                        OWAudioSource echoSource = Instantiate(echoSourcePrefab, pos, Quaternion.identity, transform);
-                        echoSource.pitch = 1f;
-                        echoSource.spatialBlend = 1f;
-                        echoSource.SetLocalVolume(10);
-                        echoSource.SetMaxVolume(10);
-                        AudioClip clip = echoSource.PlayOneShot(padEchoAudioType);
-                        Destroy(echoSource.gameObject, clip.length + 1f);
-                        yield return new WaitForSeconds(1.2f);
+                        if (padIndex >= 0 && padIndex < echoPadPositions.Count)
+                        {
+                            Vector3 pos = echoPadPositions[padIndex].position;
+                            OWAudioSource echoSource = Instantiate(echoSourcePrefab, pos, Quaternion.identity, transform);
+                            echoSource.pitch = 1f;
+                            echoSource.spatialBlend = 1f;
+                            echoSource.SetLocalVolume(10);
+                            echoSource.SetMaxVolume(10);
+                            AudioClip clip = echoSource.PlayOneShot(padEchoAudioType);
+                            Destroy(echoSource.gameObject, clip.length + 1f);
+                            yield return new WaitForSeconds(1.2f);
+                        }
                     }
                 }
 
@@ -117,6 +120,14 @@ namespace Jam5Entry
         {
             _playerInteracted = false;
             _echoLoopCoroutine = StartCoroutine(PlayEchoPatternLoop());
+        }
+
+        public override void ActivatePuzzle()
+        {
+        }
+
+        public override void DeactivatePuzzle()
+        {
         }
     }
 }

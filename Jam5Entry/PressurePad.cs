@@ -10,6 +10,7 @@ namespace Jam5Entry
     public abstract class PressurePad : MonoBehaviour
     {
         [SerializeField] private OWTriggerVolume _triggerVolume;
+        [SerializeField] private AnomalyController _controller;
         private bool _wasTriggered = false;
 
         private void Awake()
@@ -29,7 +30,7 @@ namespace Jam5Entry
 
         private void OnEntry(GameObject hitObj)
         {
-            if (_wasTriggered || !CheckForDetector(hitObj)) return;
+            if ((_controller != null && !_controller.IsActive) || _wasTriggered || !CheckForDetector(hitObj)) return;
 
             _wasTriggered = true;
             OnStep(hitObj);

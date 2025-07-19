@@ -27,8 +27,8 @@ namespace Jam5Entry
             if (_noBattery != null)
             {
                 _noBattery.gameObject.SetActive(false);
-                }
             }
+        }
 
         private void OnDestroy()
         {

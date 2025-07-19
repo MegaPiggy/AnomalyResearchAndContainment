@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Jam5Entry
 {
-    public class MemoryOrbController : MonoBehaviour
+    public class MemoryOrbController : AnomalyController
     {
         [SerializeField] private GameObject _ghostPlayerPrefab;
         [SerializeField] private Transform _spawnPoint;
@@ -28,7 +28,7 @@ namespace Jam5Entry
 
         public void StartRecording()
         {
-            if (_puzzleComplete) return;
+            if (!IsActive || _puzzleComplete) return;
             if (_activeGhost != null)
             {
                 Destroy(_activeGhost.gameObject);
@@ -39,6 +39,7 @@ namespace Jam5Entry
 
         public void StopRecording()
         {
+            if (!IsActive || _puzzleComplete) return;
             if (_activeGhost != null)
             {
                 Destroy(_activeGhost.gameObject);
@@ -49,7 +50,7 @@ namespace Jam5Entry
 
         public void StartPlayback()
         {
-            if (_puzzleComplete) return;
+            if (!IsActive || _puzzleComplete) return;
 
             if (_activeGhost != null)
             {
@@ -61,12 +62,14 @@ namespace Jam5Entry
             ghostObj.transform.localEulerAngles = Vector3.zero;
             ghostObj.transform.localScale = Vector3.one * 0.1f;
             _activeGhost = ghostObj.GetAddComponent<MemoryOrbGhostPlayer>();
+#if DEBUG
             var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             cube.transform.SetParent(ghostObj.transform, false);
             cube.transform.localPosition = Vector3.zero;
             cube.transform.localEulerAngles = Vector3.zero;
             cube.transform.localScale = Vector3.one;
             Destroy(cube.GetComponentInChildren<Collider>());
+#endif
             _activeGhost.Playback(_recorder.GetRecording());
             _audioSource.PlayOneShot(_playbackStartSFX);
 
@@ -91,6 +94,13 @@ namespace Jam5Entry
             if (_keyDropper != null)
                 _keyDropper.DropKey();
         }
-    }
 
+        public override void ActivatePuzzle()
+        {
+        }
+
+        public override void DeactivatePuzzle()
+        {
+        }
+    }
 }

@@ -90,7 +90,7 @@ namespace Jam5Entry
                 volumeController.Initialize();
 
 #if DEBUG
-                DialogueConditionManager.SharedInstance.SetConditionState("AnomalyTest", true);
+                ModHelper.Events.Unity.FireInNUpdates(() => DialogueConditionManager.SharedInstance.SetConditionState("AnomalyTest", true), 1000);
 #endif
             }
         }

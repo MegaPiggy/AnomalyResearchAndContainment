@@ -193,6 +193,8 @@ namespace Jam5Entry
             }
         }
 
+        public bool IsDeactivated => _deactivated;
+
         public void EnableElevator()
         {
             _deactivated = false;

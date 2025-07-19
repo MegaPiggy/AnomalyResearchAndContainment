@@ -84,6 +84,7 @@
                     "y": 50,
                     "z": 20
                 },
+                "blinkWhenActiveChanged": false,
                 "activationCondition": "AnomalyTest",
                 "item": {
                     "name": "Battery",

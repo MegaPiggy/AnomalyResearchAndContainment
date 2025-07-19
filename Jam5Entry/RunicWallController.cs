@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Jam5Entry
 {
-    public class RunicWallController : MonoBehaviour
+    public class RunicWallController : AnomalyController
     {
         [SerializeField] private List<RunePanel> _panels = new List<RunePanel>();
         [SerializeField] private KeyDropper _keyDropper;
@@ -15,7 +15,7 @@ namespace Jam5Entry
         private AudioType _failAudio = AudioType.NonDiaUINegativeSFX;
 
         private ProbePhotoTarget[] _targets;
-        private List<int> _correctSequence = [1, 2, 3, 4];
+        private List<int> _correctSequence = [5, 2, 4, 1];
         private List<int> _playerSequence = new List<int>();
         private bool _completed = false;
 
@@ -30,7 +30,7 @@ namespace Jam5Entry
 
         private void OnTargetPhotographed(ProbePhotoTarget target, float score)
         {
-            if (_completed) return;
+            if (!IsActive || _completed) return;
 
             foreach (var panel in _panels)
             {
@@ -84,6 +84,14 @@ namespace Jam5Entry
             {
                 panel.SetGlow(false);
             }
+        }
+
+        public override void ActivatePuzzle()
+        {
+        }
+
+        public override void DeactivatePuzzle()
+        {
         }
     }
 

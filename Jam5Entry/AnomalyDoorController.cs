@@ -22,6 +22,10 @@ namespace Jam5Entry
         private bool _isOpen = false;
         private Coroutine _tweenRoutine;
 
+        public bool IsOpen => _isOpen;
+        public event System.Action OnFullyOpen;
+        public event System.Action OnFullyClosed;
+
         public void Open() => StartTween(true);
         public void Close() => StartTween(false);
         public void Toggle() => StartTween(!_isOpen);
@@ -35,10 +39,11 @@ namespace Jam5Entry
             _isOpen = open;
             _tweenRoutine = StartCoroutine(TweenDoors(
                 open ? _leftDoorOpen : _leftDoorClosed,
-                open ? _rightDoorOpen : _rightDoorClosed));
+                open ? _rightDoorOpen : _rightDoorClosed,
+                open));
         }
 
-        private IEnumerator TweenDoors(Transform leftTarget, Transform rightTarget)
+        private IEnumerator TweenDoors(Transform leftTarget, Transform rightTarget, bool opening)
         {
             Vector3 lStartPos = _leftDoor.localPosition;
             Quaternion lStartRot = _leftDoor.localRotation;
@@ -85,6 +90,11 @@ namespace Jam5Entry
             _rightDoor.localScale = rEndScale;
 
             _tweenRoutine = null;
+
+            if (opening)
+                OnFullyOpen?.Invoke();
+            else
+                OnFullyClosed?.Invoke();
         }
     }
 }

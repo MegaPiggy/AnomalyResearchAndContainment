@@ -14,6 +14,8 @@ namespace Jam5Entry
         public KeyPanel[] keyPanels = new KeyPanel[0];
 
         public int keysInserted => keyPanels.Count(panel => panel.IsKeyInserted());
+        public bool allKeysInserted => keysInserted >= 4;
+        public bool powered => DialogueConditionManager.SharedInstance.GetConditionState("ActivateAnomalyStation");
 
         private void Start()
         {
@@ -24,17 +26,28 @@ namespace Jam5Entry
 
         private void Update()
         {
-            if (keysInserted < 4) return;
-
-            // All keys are inserted!
-            UnlockElevator();
+            if (allKeysInserted && powered)
+                UnlockElevator();
+            else
+                LockElevator();
         }
 
         private void UnlockElevator()
         {
+            if (!_elevatorPad.IsDeactivated) return;
+
             _elevatorPad.EnableElevator();
 
             Jam5Entry.Instance.ModHelper.Console.WriteLine("All keys inserted. Elevator unlocked.");
+        }
+
+        private void LockElevator()
+        {
+            if (_elevatorPad.IsDeactivated) return;
+
+            _elevatorPad.DisableElevator();
+
+            Jam5Entry.Instance.ModHelper.Console.WriteLine($"{(allKeysInserted ? "Keys inserted" : "Keys not inserted")} and {(powered ? "power on" : "power not on")}. Elevator locked.");
         }
     }
 }

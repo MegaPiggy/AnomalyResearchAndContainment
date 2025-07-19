@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Jam5Entry
 {
-    public class PrismBloomController : MonoBehaviour
+    public class PrismBloomController : AnomalyController
     {
         [SerializeField] private Light _beamEmitter;
         [SerializeField] private float _beamLength = 20f;
@@ -16,9 +16,10 @@ namespace Jam5Entry
 
         private bool _completed;
 
-        private void Update()
+        protected override void Update()
         {
-            if (_completed) return;
+            base.Update();
+            if (!IsActive || _completed) return;
 
             ResetSensors();
 
@@ -80,6 +81,14 @@ namespace Jam5Entry
                 if (!sensor.IsTriggered()) return false;
             }
             return true;
+        }
+
+        public override void ActivatePuzzle()
+        {
+        }
+
+        public override void DeactivatePuzzle()
+        {
         }
     }
 
