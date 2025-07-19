@@ -109,11 +109,13 @@ namespace Jam5Entry
 
         private void Update()
         {
-            Vector3 toViewer = (Locator.GetPlayerTransform().position - transform.position).normalized;
-            float angle = Vector3.Angle(-transform.forward, toViewer);
-            Jam5Entry.Instance.ModHelper.Console.WriteLine(id + " | " + angle  + " <= " + revealAngle);
+            Vector3 origin = transform.position + (-transform.forward * 0.1f); // slightly in front
+            Vector3 toViewer = (Locator.GetPlayerTransform().position - origin).normalized;
+            float dot = Vector3.Dot(-transform.forward, toViewer); // closer to 1 = head-on
+            float threshold = Mathf.Cos(revealAngle * Mathf.Deg2Rad); // 60 degrees = 0.5
+            Jam5Entry.Instance.ModHelper.Console.WriteLine(id + " | " + dot + " >= " + threshold);
 
-            SetVisibility(angle <= revealAngle);
+            SetVisibility(dot >= threshold);
         }
 
         public bool MatchesTarget(ProbePhotoTarget target)
