@@ -104,13 +104,13 @@ namespace Jam5Entry
         [SerializeField] public Renderer glowRenderer;
         [SerializeField] public ProbePhotoTarget photoTarget;
 
-        [SerializeField] private float revealAngle = 30f; // degrees
+        private float revealAngle = 90f; // degrees
         public bool isVisible { get; private set; }
 
         private void Update()
         {
             Vector3 toViewer = (Locator.GetPlayerTransform().position - transform.position).normalized;
-            float angle = Vector3.Angle(transform.forward, toViewer);
+            float angle = Vector3.Angle(-transform.forward, toViewer);
 
             SetVisibility(angle <= revealAngle);
         }

@@ -11,6 +11,7 @@ namespace Jam5Entry
     {
         [SerializeField] private GameObject _ghostPlayerPrefab;
         [SerializeField] private Transform _spawnPoint;
+        [SerializeField] private MemoryOrbConsole _console;
         [SerializeField] private MemoryOrbRecorder _recorder;
         [SerializeField] private OWAudioSource _audioSource;
         private AudioType _recordStartSFX => Jam5Entry.TickUp;
@@ -30,10 +31,13 @@ namespace Jam5Entry
         public void StartRecording()
         {
             if (!IsActive || _puzzleComplete) return;
+
             if (_activeGhost != null)
             {
-                Destroy(_activeGhost.gameObject);
+                _activeGhost.ReturnToSpawn();
+                _activeGhost = null;
             }
+
             _recorder.StartRecording();
             _audioSource.PlayOneShot(_recordStartSFX);
         }
@@ -41,13 +45,17 @@ namespace Jam5Entry
         public void StopRecording()
         {
             if (!IsActive || _puzzleComplete) return;
+
             if (_activeGhost != null)
             {
-                Destroy(_activeGhost.gameObject);
+                _activeGhost.ReturnToSpawn();
+                _activeGhost = null;
             }
+
             _recorder.StopRecording();
             _audioSource.PlayOneShot(_recordStopSFX);
         }
+
 
         public void StartPlayback()
         {
@@ -55,11 +63,12 @@ namespace Jam5Entry
 
             if (_activeGhost != null)
             {
-                Destroy(_activeGhost.gameObject);
+                _activeGhost.ReturnToSpawn();
+                _activeGhost = null;
             }
 
             GameObject ghostObj = Instantiate(_ghostPlayerPrefab, _spawnPoint.position, _spawnPoint.rotation, _recorder.transform);
-            ghostObj.transform.localPosition = Vector3.zero;
+            ghostObj.transform.position = _spawnPoint.position;
             ghostObj.transform.localEulerAngles = Vector3.zero;
             ghostObj.transform.localScale = Vector3.one * 0.1f;
             _activeGhost = ghostObj.GetAddComponent<MemoryOrbGhostPlayer>();
@@ -73,15 +82,13 @@ namespace Jam5Entry
 #endif
             _activeGhost.Playback(_recorder.GetRecording());
             _audioSource.PlayOneShot(_playbackStartSFX);
-
-            StartCoroutine(CheckPadsAfterDelay());
         }
 
-        private IEnumerator CheckPadsAfterDelay()
+        protected override void Update()
         {
-            yield return new WaitForSeconds(2f);
+            base.Update();
 
-            if (_pads.All(pad => pad.WasTriggered()))
+            if (_pads.All(pad => pad.IsTriggered))
             {
                 CompletePuzzle();
             }
@@ -99,10 +106,12 @@ namespace Jam5Entry
 
         public override void ActivatePuzzle()
         {
+            _console.ActivateInteraction();
         }
 
         public override void DeactivatePuzzle()
         {
+            _console.DeactivateInteraction();
         }
     }
 }

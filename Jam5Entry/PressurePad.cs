@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Jam5Entry
@@ -13,14 +10,22 @@ namespace Jam5Entry
         [SerializeField] private AnomalyController _controller;
         private bool _wasTriggered = false;
 
+        // Track all valid colliders currently on the pad
+        private readonly HashSet<GameObject> _currentObjects = new HashSet<GameObject>();
+
+        public bool IsTriggered => _currentObjects.Count > 0;
+        public bool WasTriggered => _wasTriggered;
+
         private void Start()
         {
             _triggerVolume.OnEntry += OnEntry;
+            _triggerVolume.OnExit += OnExit;
         }
 
         private void OnDestroy()
         {
             _triggerVolume.OnEntry -= OnEntry;
+            _triggerVolume.OnExit -= OnExit;
         }
 
         protected virtual bool CheckForDetector(GameObject hitObj)
@@ -30,26 +35,35 @@ namespace Jam5Entry
 
         private void OnEntry(GameObject hitObj)
         {
-            Jam5Entry.Instance.ModHelper.Console.WriteLine(hitObj.tag);
+            Jam5Entry.Instance.ModHelper.Console.WriteLine("Entry: " + hitObj.name + " | " + hitObj.tag);
             if (_controller != null && !_controller.IsActive) return;
-            if (_wasTriggered || !CheckForDetector(hitObj)) return;
+            if (!CheckForDetector(hitObj)) return;
+
+            _currentObjects.Add(hitObj);
+
+            if (_wasTriggered) return;
 
             _wasTriggered = true;
             OnStep(hitObj);
-            Invoke(nameof(ResetTrigger), 0.5f); // prevent multiple triggers
+            Invoke(nameof(ResetWasTriggered), 0.5f); // prevent multiple rapid triggers
+        }
+
+        private void OnExit(GameObject hitObj)
+        {
+            Jam5Entry.Instance.ModHelper.Console.WriteLine("Exit: " + hitObj.name + " | " + hitObj.tag);
+            _currentObjects.Remove(hitObj);
+
+            if (_currentObjects.Count == 0)
+            {
+                ResetWasTriggered();
+            }
         }
 
         protected virtual void OnStep(GameObject hitObj)
         {
-
         }
 
-        public bool WasTriggered()
-        {
-            return _wasTriggered;
-        }
-
-        private void ResetTrigger()
+        private void ResetWasTriggered()
         {
             _wasTriggered = false;
         }

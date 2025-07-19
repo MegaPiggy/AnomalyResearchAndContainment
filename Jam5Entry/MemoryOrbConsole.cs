@@ -29,6 +29,7 @@ namespace Jam5Entry
                 _interactVolume.OnPressInteract += OnPressInteract;
             }
             SetPromptText();
+            DeactivateInteraction();
         }
 
         private void OnDestroy()
@@ -39,7 +40,7 @@ namespace Jam5Entry
 
         private void OnPressInteract()
         {
-            if (_memoryOrbController == null) return;
+            if (_memoryOrbController == null || !_memoryOrbController.IsActive) return;
             switch (_mode)
             {
                 case Mode.Idle:
@@ -79,6 +80,16 @@ namespace Jam5Entry
                     _interactVolume.ChangePrompt((UITextType)TranslationHandler.AddUI("Start Playback", false)); // "Start Playback"
                     break;
             }
+        }
+
+        public void ActivateInteraction()
+        {
+            _interactVolume.EnableInteraction();
+        }
+
+        public void DeactivateInteraction()
+        {
+            _interactVolume.DisableInteraction();
         }
     }
 }

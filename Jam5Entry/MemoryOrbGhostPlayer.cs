@@ -1,4 +1,5 @@
 ﻿using OWML.Utils;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ namespace Jam5Entry
     public class MemoryOrbGhostPlayer : Detector
     {
         private static readonly Detector.Name GhostPlayer = EnumUtils.Create<Detector.Name>("GhostPlayer");
+        private Vector3 spawnPosition;
+        private Quaternion spawnRotation;
         private List<MemoryOrbRecorder.ActionFrame> _frames;
         private float _startTime;
         private int _currentIndex;
@@ -25,15 +28,87 @@ namespace Jam5Entry
         public void Playback(List<MemoryOrbRecorder.ActionFrame> frames)
         {
             _frames = frames;
-            _startTime = Time.time;
             _currentIndex = 0;
+            _isPlaying = false;
+
+            if (_frames != null && _frames.Count > 0)
+            {
+                StartCoroutine(MoveToFirstFrame());
+            }
+        }
+
+        private IEnumerator MoveToFirstFrame()
+        {
+            spawnPosition = transform.localPosition;
+            spawnRotation = transform.localRotation;
+            Vector3 startPos = transform.localPosition;
+            Quaternion startRot = transform.localRotation;
+
+            Vector3 endPos = _frames[0].localPosition - Vector3.up;
+            Quaternion endRot = _frames[0].localRotation;
+
+            float duration = 0.5f;
+            float elapsed = 0f;
+
+            while (elapsed < duration)
+            {
+                float t = elapsed / duration;
+                transform.localPosition = Vector3.Lerp(startPos, endPos, t);
+                transform.localRotation = Quaternion.Slerp(startRot, endRot, t);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            transform.localPosition = endPos;
+            transform.localRotation = endRot;
+
+            _startTime = Time.time;
             _isPlaying = true;
         }
 
+        public void ReturnToSpawn()
+        {
+            StartCoroutine(ReturnToSpawnAndDestroy());
+        }
+
+        private IEnumerator ReturnToSpawnAndDestroy()
+        {
+            _isPlaying = false;
+
+            Vector3 startPos = transform.localPosition;
+            Quaternion startRot = transform.localRotation;
+            Vector3 endPos = spawnPosition;
+            Quaternion endRot = spawnRotation;
+
+            float duration = 0.5f;
+            float elapsed = 0f;
+
+            while (elapsed < duration)
+            {
+                float t = elapsed / duration;
+                transform.localPosition = Vector3.Lerp(startPos, endPos, t);
+                transform.localRotation = Quaternion.Slerp(startRot, endRot, t);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            transform.localPosition = endPos;
+            transform.localRotation = endRot;
+
+            Destroy(gameObject);
+        }
+
+
         private void Update()
         {
-            if (!OWTime.IsPaused() && !_isPlaying || _frames == null || _currentIndex >= _frames.Count)
+            if (!OWTime.IsPaused() && !_isPlaying || _frames == null)
                 return;
+
+            if (_currentIndex >= _frames.Count)
+            {
+                ReturnToSpawn();
+                return;
+            }
 
             float elapsed = Time.time - _startTime;
 
@@ -48,22 +123,17 @@ namespace Jam5Entry
         private void LateUpdate()
         {
             Vector3 vector = Vector3.zero;
-            if (Mathf.Abs(vector.x) < 0.05f)
-            {
-                vector.x = 0f;
-            }
-            if (Mathf.Abs(vector.z) < 0.05f)
-            {
-                vector.z = 0f;
-            }
-            this._animator.SetFloat("RunSpeedX", vector.x / 3f);
-            this._animator.SetFloat("RunSpeedY", vector.z / 3f);
-            this._animator.SetFloat("TurnSpeed", 0);
-            this._animator.SetBool("Grounded", true);
-            this._animator.SetLayerWeight(1, 0);
-            this._animator.SetFloat("FreefallSpeed", 0);
-            this._animator.SetBool("InZeroG", false);
-            this._animator.SetBool("UsingJetpack", true);
+            if (Mathf.Abs(vector.x) < 0.05f) vector.x = 0f;
+            if (Mathf.Abs(vector.z) < 0.05f) vector.z = 0f;
+
+            _animator.SetFloat("RunSpeedX", vector.x / 3f);
+            _animator.SetFloat("RunSpeedY", vector.z / 3f);
+            _animator.SetFloat("TurnSpeed", 0);
+            _animator.SetBool("Grounded", true);
+            _animator.SetLayerWeight(1, 0);
+            _animator.SetFloat("FreefallSpeed", 0);
+            _animator.SetBool("InZeroG", false);
+            _animator.SetBool("UsingJetpack", true);
         }
     }
 }

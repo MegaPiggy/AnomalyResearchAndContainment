@@ -27,7 +27,7 @@ namespace Jam5Entry
 
         private void Update()
         {
-            float target = (WasTriggered() ? 1f : 0f);
+            float target = (IsTriggered ? 1f : 0f);
             _glowFraction = Mathf.MoveTowards(_glowFraction, target, Time.deltaTime * 3f);
             if (_glowRenderer != null)
             {
