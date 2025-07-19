@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 namespace Jam5Entry
 {
     public class EchoConsole : MonoBehaviour
     {
-        [SerializeField] public readonly EchoCellController controller;
+        [SerializeField] public EchoCellController controller;
         [SerializeField] private KeyDropper _keyDropper;
         [SerializeField] private OWAudioSource _audioSource;
         [SerializeField] private Renderer[] _indicatorRenderers;
@@ -51,6 +52,8 @@ namespace Jam5Entry
                 {
                     _completed = true;
                     if (_keyDropper != null) _keyDropper.DropKey();
+                    controller.SetActivation(false);
+                    controller.OpenDoor();
                     PlaySuccessFeedback();
                 }
                 else

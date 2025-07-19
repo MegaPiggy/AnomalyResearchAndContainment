@@ -13,7 +13,7 @@ namespace Jam5Entry
         [SerializeField] private AnomalyController _controller;
         private bool _wasTriggered = false;
 
-        private void Awake()
+        private void Start()
         {
             _triggerVolume.OnEntry += OnEntry;
         }
@@ -30,7 +30,9 @@ namespace Jam5Entry
 
         private void OnEntry(GameObject hitObj)
         {
-            if ((_controller != null && !_controller.IsActive) || _wasTriggered || !CheckForDetector(hitObj)) return;
+            Jam5Entry.Instance.ModHelper.Console.WriteLine(hitObj.tag);
+            if (_controller != null && !_controller.IsActive) return;
+            if (_wasTriggered || !CheckForDetector(hitObj)) return;
 
             _wasTriggered = true;
             OnStep(hitObj);

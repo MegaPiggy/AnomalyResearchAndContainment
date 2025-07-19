@@ -8,7 +8,7 @@ namespace Jam5Entry
         [SerializeField] private int _padIndex;
         [SerializeField] private EchoConsole _console;
         [SerializeField] private OWAudioSource _audioSource;
-        private AudioType _tone = AudioType.NomaiOrbStartDrag;
+        private AudioType _tone = AudioType.NomaiOrbSlotActivated;
         private float _glowFraction;
         [SerializeField] private MeshRenderer _glowRenderer;
         private Color _glowBaseColor = new Color32(1, 1, 3, 255);

@@ -62,6 +62,8 @@ namespace Jam5Entry
             {
                 _completed = true;
                 if (_keyDropper != null) _keyDropper.DropKey();
+                SetActivation(false);
+                OpenDoor();
                 if (_audioSource != null) _audioSource.PlayOneShot(_successSound);
             }
         }

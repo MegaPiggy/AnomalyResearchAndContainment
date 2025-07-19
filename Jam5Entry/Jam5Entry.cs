@@ -86,7 +86,7 @@ namespace Jam5Entry
 
                 var volumeController = station.GetComponentInChildren<StationVolumeController>();
                 volumeController.warpReceiver = station.GetComponentInChildren<NomaiWarpReceiver>();
-                volumeController.warpTransmitter = station.GetComponentInChildren<NomaiWarpTransmitter>();
+                volumeController.warpTransmitter = platform.GetComponentInChildren<NomaiWarpTransmitter>();
                 volumeController.Initialize();
 
 #if DEBUG

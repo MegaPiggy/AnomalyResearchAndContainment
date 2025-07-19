@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 namespace Jam5Entry
 {
@@ -91,8 +92,9 @@ namespace Jam5Entry
             if (_puzzleComplete) return;
 
             _puzzleComplete = true;
-            if (_keyDropper != null)
-                _keyDropper.DropKey();
+            if (_keyDropper != null) _keyDropper.DropKey();
+            SetActivation(false);
+            OpenDoor();
         }
 
         public override void ActivatePuzzle()

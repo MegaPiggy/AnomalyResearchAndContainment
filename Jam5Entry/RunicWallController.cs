@@ -37,7 +37,7 @@ namespace Jam5Entry
                 if (panel.MatchesTarget(target) && panel.isVisible)
                 {
                     _playerSequence.Add(panel.id);
-                    panel.SetGlow(true);
+                    panel.SetVisibility(false);
 
                     if (_playerSequence.Count >= _correctSequence.Count)
                     {
@@ -73,6 +73,8 @@ namespace Jam5Entry
             _completed = true;
             if (_audioSource != null) _audioSource.PlayOneShot(_successAudio);
             if (_keyDropper != null) _keyDropper.DropKey();
+            SetActivation(false);
+            OpenDoor();
         }
 
         private void ResetPuzzle()
@@ -82,7 +84,7 @@ namespace Jam5Entry
             if (_audioSource != null) _audioSource.PlayOneShot(_failAudio);
             foreach (var panel in _panels)
             {
-                panel.SetGlow(false);
+                panel.SetVisibility(false);
             }
         }
 
@@ -98,9 +100,8 @@ namespace Jam5Entry
     public class RunePanel : MonoBehaviour
     {
         [SerializeField] public int id;
+        [SerializeField] public GameObject wall;
         [SerializeField] public Renderer glowRenderer;
-        [SerializeField] public Color defaultColor = Color.gray;
-        [SerializeField] public Color activeColor = Color.cyan;
         [SerializeField] public ProbePhotoTarget photoTarget;
 
         [SerializeField] private float revealAngle = 30f; // degrees
@@ -119,22 +120,12 @@ namespace Jam5Entry
             return target != null && photoTarget == target;
         }
 
-        public void SetGlow(bool on)
-        {
-            if (glowRenderer != null)
-            {
-                Color color = on ? activeColor : defaultColor;
-                glowRenderer.material.SetColor("_EmissionColor", color);
-            }
-        }
-
-        private void SetVisibility(bool visible)
+        public void SetVisibility(bool visible)
         {
             if (isVisible != visible)
             {
                 isVisible = visible;
-                gameObject.SetActive(visible);
-                SetGlow(false);
+                wall.SetActive(visible);
             }
         }
     }
