@@ -10,12 +10,17 @@ namespace Jam5Entry
         private float _maxPhotoDistance = 200f;
         [SerializeField]
         private float _raycastOffset = 10f;
+        [SerializeField]
+        private ShapeVisibilityTracker _shapeVisibilityTracker;
+        [SerializeField]
+        private RendererVisibilityTracker _rendererVisibilityTracker;
 
         public event PhotoEvent OnPhotographed;
 
         public override void Awake()
         {
             base.Awake();
+            GlobalMessenger<ProbeCamera>.AddListener("ProbeSnapshot", new Callback<ProbeCamera>(OnProbeSnapshot));
         }
 
         public override void OnDestroy()
@@ -24,34 +29,17 @@ namespace Jam5Entry
             GlobalMessenger<ProbeCamera>.RemoveListener("ProbeSnapshot", new Callback<ProbeCamera>(OnProbeSnapshot));
         }
 
-        public override void OnSectorOccupantAdded(SectorDetector sectorDetector)
-        {
-            if (sectorDetector.GetOccupantType() == DynamicOccupant.Probe)
-            {
-                GlobalMessenger<ProbeCamera>.AddListener("ProbeSnapshot", new Callback<ProbeCamera>(OnProbeSnapshot));
-            }
-        }
-
-        public override void OnSectorOccupantRemoved(SectorDetector sectorDetector)
-        {
-            if (sectorDetector.GetOccupantType() == DynamicOccupant.Probe)
-            {
-                GlobalMessenger<ProbeCamera>.RemoveListener("ProbeSnapshot", new Callback<ProbeCamera>(OnProbeSnapshot));
-            }
-        }
-
         public override void Update()
         {
             base.Update();
-            Jam5Entry.Instance.ModHelper.Console.WriteLine($"Visible: {(CheckVisibilityFromProbe(Locator.GetProbe().GetForwardCamera().GetOWCamera()) || CheckVisibilityFromProbe(Locator.GetProbe().GetReverseCamera().GetOWCamera()) || CheckVisibilityFromProbe(Locator.GetProbe().GetRotatingCamera().GetOWCamera()))}");
+            _rendererVisibilityTracker.transform.localEulerAngles = Vector3.zero;
+            _rendererVisibilityTracker._worldRotation = _rendererVisibilityTracker.transform.rotation;
         }
 
         private void OnProbeSnapshot(ProbeCamera camera)
         {
-            Jam5Entry.Instance.ModHelper.Console.WriteLine("probe snapshot " + camera.transform.GetPath());
             if (CheckVisibilityFromProbe(camera.GetOWCamera()))
             {
-                Jam5Entry.Instance.ModHelper.Console.WriteLine("visibility");
                 Vector3 vector = transform.position - camera.transform.position;
                 float magnitude = vector.magnitude;
                 if (magnitude > _maxPhotoDistance)
@@ -68,10 +56,6 @@ namespace Jam5Entry
                 {
                     OnPhotographed(this);
                 }
-            }
-            else
-            {
-                Jam5Entry.Instance.ModHelper.Console.WriteLine("no visibility");
             }
         }
 

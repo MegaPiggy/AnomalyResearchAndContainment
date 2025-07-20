@@ -9,7 +9,7 @@ namespace Jam5Entry
     {
         [SerializeField] private List<RunePanel> _panels = new List<RunePanel>();
         [SerializeField] private KeyDropper _keyDropper;
-        [SerializeField] private float _resetDelay = 2f;
+        [SerializeField] private float _resetDelay = 0.5f;
         [SerializeField] private OWAudioSource _audioSource;
         [SerializeField] private float _swapCooldown = 1.5f;
 
@@ -37,6 +37,7 @@ namespace Jam5Entry
                 // Link probe targets to photo detection
                 panel.photoTarget.OnPhotographed += OnTargetPhotographed;
             }
+            _targets = _panels.Select(panel => panel.photoTarget).ToArray();
         }
 
         protected override void Update()
@@ -56,13 +57,12 @@ namespace Jam5Entry
         {
             if (!IsActive || _completed) return;
 
-            Jam5Entry.Instance.ModHelper.Console.WriteLine("Probe: " + target.GetComponent<RunePanel>().id);
+            Jam5Entry.Instance.ModHelper.Console.WriteLine("Photographed: " + target.GetComponent<RunePanel>().id);
             foreach (var panel in _panels)
             {
                 if (panel.MatchesTarget(target) && panel.isVisible)
                 {
-                    _playerSequence.Add(panel.id);
-                    panel.SetVisibility(false);
+                    _playerSequence.SafeAdd(panel.id);
 
                     if (_playerSequence.Count >= _correctSequence.Count)
                     {
@@ -72,6 +72,7 @@ namespace Jam5Entry
                         }
                         else
                         {
+                            ResetPuzzle();
                             Invoke(nameof(ResetPuzzle), _resetDelay);
                         }
                     }
@@ -107,10 +108,6 @@ namespace Jam5Entry
             _playerSequence.Clear();
 
             if (_audioSource != null) _audioSource.PlayOneShot(_failAudio);
-            foreach (var panel in _panels)
-            {
-                panel.SetVisibility(false);
-            }
         }
 
         public override void ActivatePuzzle()
