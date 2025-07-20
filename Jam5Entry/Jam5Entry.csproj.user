@@ -1,7 +1,0 @@
-﻿<Project>
-  <PropertyGroup>
-    <ModsPath>$(AppData)/OuterWildsModManager/OWML/Mods</ModsPath>
-    <OutputPath>$(ModsPath)/MegaPiggy.Jam5Entry</OutputPath>
-    <UnityDllsDir>S:\OuterWilds\ExportedProject\Assets\Plugins</UnityDllsDir>
-  </PropertyGroup>
-</Project>
