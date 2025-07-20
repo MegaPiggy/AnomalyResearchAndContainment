@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NewHorizons.Utility;
+using System;
 using UnityEngine;
 
 namespace Jam5Entry
@@ -39,11 +40,18 @@ namespace Jam5Entry
             }
         }
 
+        public override void Update()
+        {
+            base.Update();
+            Jam5Entry.Instance.ModHelper.Console.WriteLine($"Visible: {(CheckVisibilityFromProbe(Locator.GetProbe().GetForwardCamera().GetOWCamera()) || CheckVisibilityFromProbe(Locator.GetProbe().GetReverseCamera().GetOWCamera()) || CheckVisibilityFromProbe(Locator.GetProbe().GetRotatingCamera().GetOWCamera()))}");
+        }
+
         private void OnProbeSnapshot(ProbeCamera camera)
         {
-            Jam5Entry.Instance.ModHelper.Console.WriteLine("probe snapshot");
+            Jam5Entry.Instance.ModHelper.Console.WriteLine("probe snapshot " + camera.transform.GetPath());
             if (CheckVisibilityFromProbe(camera.GetOWCamera()))
             {
+                Jam5Entry.Instance.ModHelper.Console.WriteLine("visibility");
                 Vector3 vector = transform.position - camera.transform.position;
                 float magnitude = vector.magnitude;
                 if (magnitude > _maxPhotoDistance)
@@ -60,6 +68,10 @@ namespace Jam5Entry
                 {
                     OnPhotographed(this);
                 }
+            }
+            else
+            {
+                Jam5Entry.Instance.ModHelper.Console.WriteLine("no visibility");
             }
         }
 
