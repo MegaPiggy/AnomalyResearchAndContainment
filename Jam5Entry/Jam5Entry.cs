@@ -89,6 +89,11 @@ namespace Jam5Entry
                 volumeController.warpTransmitter = platform.GetComponentInChildren<NomaiWarpTransmitter>();
                 volumeController.Initialize();
 
+                var box = station.transform.Find("Sector/Root/HiddenRoom/Center/Floor/BoxRoot/Box");
+                var door = box.transform.Find("Door");
+                var interact = box.transform.Find("Button/Interact");
+                interact.gameObject.AddComponent<Button>().door = door;
+
 #if DEBUG
                 ModHelper.Events.Unity.FireInNUpdates(() => DialogueConditionManager.SharedInstance.SetConditionState("AnomalyTest", true), 1000);
 #endif

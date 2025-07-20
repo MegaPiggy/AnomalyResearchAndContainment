@@ -348,6 +348,15 @@
                     "colliderRadius": 1,
                     "interactRange": 2
                 }
+            },
+            {
+                "rename": "Box",
+                "assetBundle": "planets/room",
+                "path": "Assets/Room.prefab",
+                "parentPath": "Sector/Root/HiddenRoom/Center/Floor/BoxRoot",
+                "isRelativeToParent": true,
+                "keepLoaded": true,
+                "scale": 0.5
             }
         ],
         "translatorText": [

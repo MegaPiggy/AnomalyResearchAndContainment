@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Jam4JokeEntry
+namespace Jam5Entry
 {
     public class Button : MonoBehaviour
     {

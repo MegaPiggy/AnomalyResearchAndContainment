@@ -26,10 +26,15 @@ namespace Jam5Entry
 
         private void Update()
         {
+#if DEBUG
+            UnlockElevator();
+            return;
+#else
             if (allKeysInserted && powered)
                 UnlockElevator();
             else
                 LockElevator();
+#endif
         }
 
         private void UnlockElevator()
