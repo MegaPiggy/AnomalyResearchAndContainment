@@ -14,12 +14,12 @@ namespace Jam5Entry
 
         public override void Awake()
         {
-            Awake();
+            base.Awake();
         }
 
         public override void OnDestroy()
         {
-            OnDestroy();
+            base.OnDestroy();
             GlobalMessenger<ProbeCamera>.RemoveListener("ProbeSnapshot", new Callback<ProbeCamera>(OnProbeSnapshot));
         }
 
@@ -65,7 +65,7 @@ namespace Jam5Entry
 
         private new void OnDrawGizmosSelected()
         {
-            OnDrawGizmosSelected();
+            base.OnDrawGizmosSelected();
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, _raycastOffset);
         }
