@@ -353,8 +353,8 @@
         "translatorText": [
             {
                 "rename": "EchoCellComputer",
-                "xmlFile": "planets/text/EchoCell_Computer.xml",
-                "type": "preCrashComputer",
+                "xmlFile": "planets/text/EchoCell.xml",
+                "type": "preCrashRecorder",
                 "position": {
                     "x": 0,
                     "y": 0,
@@ -365,20 +365,20 @@
             },
             {
                 "rename": "RunicWallComputer",
-                "xmlFile": "planets/text/RunicWall_Computer.xml",
-                "type": "preCrashComputer",
+                "xmlFile": "planets/text/RunicWall.xml",
+                "type": "preCrashRecorder",
                 "position": {
                     "x": 0,
                     "y": 0,
-                    "z": 8
+                    "z": -12
                 },
                 "isRelativeToParent": true,
                 "parentPath": "Sector/Root/EastCorridor/AnomalyRoom/Center/RunicWall/Root"
             },
             {
                 "rename": "PrismBloomComputer",
-                "xmlFile": "planets/text/PrismBloom_Computer.xml",
-                "type": "preCrashComputer",
+                "xmlFile": "planets/text/PrismBloom.xml",
+                "type": "preCrashRecorder",
                 "position": {
                     "x": 0,
                     "y": 0,
@@ -389,8 +389,8 @@
             },
             {
                 "rename": "MemoryOrbComputer",
-                "xmlFile": "planets/text/MemoryOrb_Computer.xml",
-                "type": "preCrashComputer",
+                "xmlFile": "planets/text/MemoryOrb.xml",
+                "type": "preCrashRecorder",
                 "position": {
                     "x": 0,
                     "y": 0,

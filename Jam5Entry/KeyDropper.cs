@@ -22,7 +22,7 @@ namespace Jam5Entry
                 _keyObject.gameObject.SetActive(false);
 
             if (_pedestal != null)
-                _startPosition = _pedestal.position;
+                _startPosition = _pedestal.localPosition;
         }
 
         public void DropKey()
@@ -48,11 +48,11 @@ namespace Jam5Entry
                 float t = (Time.time - _raiseStartTime) / _raiseDuration;
                 t = Mathf.SmoothStep(0f, 1f, t);
 
-                _pedestal.position = Vector3.Lerp(_startPosition, _raisedPosition.position, t);
+                _pedestal.localPosition = Vector3.Lerp(_startPosition, _raisedPosition.localPosition, t);
 
                 if (t >= 1f)
                 {
-                    _pedestal.position = _raisedPosition.position;
+                    _pedestal.localPosition = _raisedPosition.localPosition;
                     _isRaising = false;
                 }
             }

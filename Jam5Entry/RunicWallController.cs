@@ -19,8 +19,8 @@ namespace Jam5Entry
         private AudioType _successAudio = AudioType.NonDiaUIAffirmativeSFX;
         private AudioType _failAudio = AudioType.NonDiaUINegativeSFX;
 
-        private ProbePhotoTarget[] _targets;
-        private List<int> _correctSequence = [5, 2, 4, 1];
+        private PhotoTarget[] _targets;
+        private List<int> _correctSequence = [5, 2, 4, 0];
         private List<int> _playerSequence = new List<int>();
         private bool _completed = false;
 
@@ -35,7 +35,7 @@ namespace Jam5Entry
                     rotation = panel.transform.localRotation
                 });
                 // Link probe targets to photo detection
-                panel.photoTarget.OnPhotographedByProbe += OnTargetPhotographed;
+                panel.photoTarget.OnPhotographed += OnTargetPhotographed;
             }
         }
 
@@ -52,10 +52,11 @@ namespace Jam5Entry
             }
         }
 
-        private void OnTargetPhotographed(ProbePhotoTarget target, float score)
+        private void OnTargetPhotographed(PhotoTarget target)
         {
             if (!IsActive || _completed) return;
 
+            Jam5Entry.Instance.ModHelper.Console.WriteLine("Probe: " + target.GetComponent<RunePanel>().id);
             foreach (var panel in _panels)
             {
                 if (panel.MatchesTarget(target) && panel.isVisible)
@@ -149,7 +150,7 @@ namespace Jam5Entry
         [SerializeField] public int id;
         [SerializeField] public GameObject wall;
         [SerializeField] public Renderer glowRenderer;
-        [SerializeField] public ProbePhotoTarget photoTarget;
+        [SerializeField] public PhotoTarget photoTarget;
 
         public static float revealAngle = 20f; // degrees
         public bool isVisible { get; private set; }
@@ -190,7 +191,7 @@ namespace Jam5Entry
         }
 
 
-        public bool MatchesTarget(ProbePhotoTarget target)
+        public bool MatchesTarget(PhotoTarget target)
         {
             return target != null && photoTarget == target;
         }
