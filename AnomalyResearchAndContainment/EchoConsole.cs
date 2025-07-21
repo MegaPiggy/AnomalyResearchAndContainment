@@ -16,7 +16,7 @@ namespace AnomalyResearchAndContainment
         private Color _successColor = Color.green;
         private Color _failColor = Color.red;
         private float _flashDuration = 0.5f;
-        private float _timeout = 10f;
+        //private float _timeout = 10f;
 
         private List<int> _inputSequence = new List<int>();
         private float _lastInputTime;
@@ -37,11 +37,11 @@ namespace AnomalyResearchAndContainment
         {
             if (!controller.IsActive || _completed) return;
 
-            if (Time.time - _lastInputTime > _timeout)
-            {
-                _inputSequence.Clear();
-                PlayFailFeedback();
-            }
+            //if (Time.time - _lastInputTime > _timeout)
+            //{
+            //    _inputSequence.Clear();
+            //    PlayFailFeedback();
+            //}
 
             _lastInputTime = Time.time;
             _inputSequence.Add(index);
