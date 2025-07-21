@@ -10,8 +10,8 @@
         "centerOfSolarSystem": true
     },
     "Star": {
-        "supernovaSize": 2500,
-        "supernovaSpeed": 50,
+        "supernovaSize": 2300,
+        "supernovaSpeed": 150, // workaround
         "stellarDeathType": "supernova",
         "lifespan": 22,
         "curve": [
