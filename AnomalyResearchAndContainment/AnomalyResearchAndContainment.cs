@@ -63,7 +63,7 @@ namespace AnomalyResearchAndContainment
                 var station = AnomalyResearchAndContainment.Instance.NewHorizons.GetPlanet("Anomaly Station");
                 var platform = AnomalyResearchAndContainment.Instance.NewHorizons.GetPlanet("Anomaly Station Warp Platform");
 
-                var alignment = planet.AddComponent<AlignWithTargetBody>();
+                var alignment = planet.GetAddComponent<AlignWithTargetBody>();
                 alignment.SetTargetBody(station.GetComponent<OWRigidbody>());
                 alignment._localAlignmentAxis = Vector3.down;
                 alignment._owRigidbody = planet.GetComponent<OWRigidbody>();
@@ -84,15 +84,15 @@ namespace AnomalyResearchAndContainment
                     isRelativeToParent = true
                 });
 
-                var volumeController = station.GetComponentInChildren<StationVolumeController>();
-                volumeController.warpReceiver = station.GetComponentInChildren<NomaiWarpReceiver>();
-                volumeController.warpTransmitter = platform.GetComponentInChildren<NomaiWarpTransmitter>();
+                var volumeController = station.GetComponentInChildren<StationVolumeController>(true);
+                volumeController.warpReceiver = station.GetComponentInChildren<NomaiWarpReceiver>(true);
+                volumeController.warpTransmitter = platform.GetComponentInChildren<NomaiWarpTransmitter>(true);
                 volumeController.Initialize();
 
                 var box = station.transform.Find("Sector/Root/HiddenRoom/Center/Floor/BoxRoot/Box");
                 var door = box.transform.Find("Door");
                 var interact = box.transform.Find("Button/Interact");
-                interact.gameObject.AddComponent<Button>().door = door;
+                interact.gameObject.GetAddComponent<Button>().door = door;
 
 #if DEBUG
                 ModHelper.Events.Unity.FireInNUpdates(() => DialogueConditionManager.SharedInstance.SetConditionState("AnomalyTest", true), 1000);
