@@ -10,14 +10,11 @@ namespace AnomalyResearchAndContainment
         [SerializeField] private List<RunePanel> _panels = new List<RunePanel>();
         [SerializeField] private KeyDropper _keyDropper;
         [SerializeField] private float _resetDelay = 0.5f;
-        [SerializeField] private OWAudioSource _audioSource;
+        [SerializeField] private Indicator _indicator;
         [SerializeField] private float _swapCooldown = 1.5f;
 
         private List<TransformData> _initialTransforms = new List<TransformData>();
         private bool _canSwap = true;
-
-        private AudioType _successAudio = AudioType.NonDiaUIAffirmativeSFX;
-        private AudioType _failAudio = AudioType.NonDiaUINegativeSFX;
 
         private PhotoTarget[] _targets;
         private List<int> _correctSequence = [5, 2, 4, 0];
@@ -97,7 +94,7 @@ namespace AnomalyResearchAndContainment
         private void CompletePuzzle()
         {
             _completed = true;
-            if (_audioSource != null) _audioSource.PlayOneShot(_successAudio);
+            _indicator.PlaySuccessFeedback();
             if (_keyDropper != null) _keyDropper.DropKey();
             SetActivation(false);
             OpenDoor();
@@ -107,7 +104,7 @@ namespace AnomalyResearchAndContainment
         {
             _playerSequence.Clear();
 
-            if (_audioSource != null) _audioSource.PlayOneShot(_failAudio);
+            _indicator.PlayFailFeedback();
         }
 
         public override void ActivatePuzzle()

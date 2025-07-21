@@ -8,30 +8,12 @@ namespace AnomalyResearchAndContainment
     {
         [SerializeField] public EchoCellController controller;
         [SerializeField] private KeyDropper _keyDropper;
-        [SerializeField] private OWAudioSource _audioSource;
-        [SerializeField] private Renderer[] _indicatorRenderers;
-        private AudioType _successAudio = AudioType.NonDiaUIAffirmativeSFX;
-        private AudioType _failAudio = AudioType.NonDiaUINegativeSFX;
-        private Color _defaultColor = Color.black;
-        private Color _successColor = Color.green;
-        private Color _failColor = Color.red;
-        private float _flashDuration = 0.5f;
+        [SerializeField] private Indicator _indicator;
         //private float _timeout = 10f;
 
         private List<int> _inputSequence = new List<int>();
         private float _lastInputTime;
         private bool _completed = false;
-
-        public void Start()
-        {
-            if (_indicatorRenderers != null)
-            {
-                foreach (var renderer in _indicatorRenderers)
-                {
-                    SetFlashRendererColor(renderer, _defaultColor);
-                }
-            }
-        }
 
         public void RegisterPadStep(int index)
         {
@@ -54,12 +36,12 @@ namespace AnomalyResearchAndContainment
                     if (_keyDropper != null) _keyDropper.DropKey();
                     controller.SetActivation(false);
                     controller.OpenDoor();
-                    PlaySuccessFeedback();
+                    _indicator.PlaySuccessFeedback();
                 }
                 else
                 {
                     _inputSequence.Clear();
-                    PlayFailFeedback();
+                    _indicator.PlayFailFeedback();
                 }
             }
         }
@@ -72,44 +54,6 @@ namespace AnomalyResearchAndContainment
                     return false;
             }
             return true;
-        }
-
-        private void PlaySuccessFeedback()
-        {
-            if (_audioSource != null) _audioSource.PlayOneShot(_successAudio);
-            FlashIndicators(_successColor);
-        }
-
-        private void PlayFailFeedback()
-        {
-            if (_audioSource != null) _audioSource.PlayOneShot(_failAudio);
-            FlashIndicators(_failColor);
-        }
-
-        private void FlashIndicators(Color flashColor)
-        {
-            if (_indicatorRenderers != null)
-            {
-                foreach (var renderer in _indicatorRenderers)
-                {
-                    StartCoroutine(Flash(renderer, flashColor));
-                }
-            }
-        }
-
-        private System.Collections.IEnumerator Flash(Renderer renderer, Color flashColor)
-        {
-            if (renderer == null) yield break;
-
-            SetFlashRendererColor(renderer, flashColor);
-            yield return new WaitForSeconds(_flashDuration);
-            SetFlashRendererColor(renderer, _defaultColor);
-        }
-
-        public static void SetFlashRendererColor(Renderer renderer, Color flashColor)
-        {
-            if (renderer == null) return;
-            renderer.material.SetColor("_EmissionColor", flashColor);
         }
     }
 }

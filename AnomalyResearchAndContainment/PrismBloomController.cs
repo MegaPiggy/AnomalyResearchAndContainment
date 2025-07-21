@@ -11,8 +11,7 @@ namespace AnomalyResearchAndContainment
         [SerializeField] private int _maxReflections = 5;
         [SerializeField] private List<BeamSensor> _sensors = new List<BeamSensor>();
         [SerializeField] private KeyDropper _keyDropper;
-        [SerializeField] private OWAudioSource _audioSource;
-        private AudioType _successSound = AudioType.NonDiaUIAffirmativeSFX;
+        [SerializeField] private Indicator _indicator;
 
         private bool _completed;
 
@@ -61,10 +60,10 @@ namespace AnomalyResearchAndContainment
             if (AllSensorsActivated())
             {
                 _completed = true;
+                _indicator.PlaySuccessFeedback();
                 if (_keyDropper != null) _keyDropper.DropKey();
                 SetActivation(false);
                 OpenDoor();
-                if (_audioSource != null) _audioSource.PlayOneShot(_successSound);
             }
         }
 
