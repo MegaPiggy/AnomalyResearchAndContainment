@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AnomalyResearchAndContainment
 {
@@ -7,13 +8,21 @@ namespace AnomalyResearchAndContainment
     {
         [SerializeField] private Light _beamEmitter;
         [SerializeField] private float _beamLength = 20f;
-        [SerializeField] private LayerMask _reflectionLayer;
+        [SerializeField] private LayerMask _reflectionLayer = OWLayerMask.blockableInteractMask;
         [SerializeField] private int _maxReflections = 5;
-        [SerializeField] private List<BeamSensor> _sensors = new List<BeamSensor>();
+        [SerializeField] private BeamSensor[] _sensors = new BeamSensor[0];
+        [SerializeField] private ReflectiveSurface[] _reflectiveSurfaces = new ReflectiveSurface[0];
         [SerializeField] private KeyDropper _keyDropper;
         [SerializeField] private Indicator _indicator;
 
         private bool _completed;
+
+        public void OnValidate()
+        {
+            _reflectionLayer = ((1 << LayerMask.NameToLayer("Default")) | (1 << LayerMask.NameToLayer("Primitive")) | (1 << LayerMask.NameToLayer("IgnoreSun")) | (1 << LayerMask.NameToLayer("PhysicalDetector")) | (1 << LayerMask.NameToLayer("ShipInterior")) | (1 << LayerMask.NameToLayer("IgnoreOrbRaycast")) | (1 << LayerMask.NameToLayer("Interactible"))) & ~(1 << LayerMask.NameToLayer("IgnoreOrbRaycast"));
+            _sensors = GetComponentsInChildren<BeamSensor>();
+            _reflectiveSurfaces = GetComponentsInChildren<ReflectiveSurface>();
+        }
 
         protected override void Update()
         {
@@ -30,6 +39,7 @@ namespace AnomalyResearchAndContainment
             // Simulate beam
             for (int i = 0; i < _maxReflections; i++)
             {
+                Debug.DrawRay(origin, direction * _beamLength, Color.cyan, 0.1f);
                 if (Physics.Raycast(origin, direction, out RaycastHit hit, _beamLength, _reflectionLayer))
                 {
                     // Check for sensor
