@@ -8,29 +8,23 @@
   <TextBlock>
     <ID>2</ID>
     <Text>
-      STATUS: Elevator system offline. Power routed to anomaly containment systems.
+      STATUS: Elevator system offline. Residual power routed to anomaly containment systems. Full power required to open doors.
     </Text>
   </TextBlock>
   <TextBlock>
     <ID>3</ID>
     <Text>
-      REQUIREMENT: Four anomaly keys required to unlock elevator access to lower chamber.
+      REQUIREMENT: Four anomaly keys required to unlock elevator access to lower chamber. Key insertion slots detected adjacent to terminal.
     </Text>
   </TextBlock>
   <TextBlock>
     <ID>4</ID>
     <Text>
-      NOTE: Key insertion slots detected adjacent to terminal. Keys must be inserted manually.
-    </Text>
-  </TextBlock>
-  <TextBlock>
-    <ID>5</ID>
-    <Text>
       DIRECTORY: Four anomaly chambers registered in ring corridor. Descriptions follow:
     </Text>
   </TextBlock>
   <TextBlock>
-    <ID>6</ID>
+    <ID>5</ID>
     <Text>
       - Chamber where sound loops back unnaturally<br/>
       - Chamber containing crystals that bend light<br/>
@@ -41,19 +35,19 @@
   <ShipLogConditions>
     <RevealFact>
       <FactID>ARC_ECHO_CELL_R1</FactID>
-      <Condition>6</Condition>
+      <Condition>5</Condition>
     </RevealFact>
     <RevealFact>
       <FactID>ARC_RUNIC_WALL_R1</FactID>
-      <Condition>6</Condition>
+      <Condition>5</Condition>
     </RevealFact>
     <RevealFact>
       <FactID>ARC_PRISM_BLOOM_R1</FactID>
-      <Condition>6</Condition>
+      <Condition>5</Condition>
     </RevealFact>
     <RevealFact>
       <FactID>ARC_MEMORY_ORB_R1</FactID>
-      <Condition>6</Condition>
+      <Condition>5</Condition>
     </RevealFact>
   </ShipLogConditions>
 </NomaiObject>
