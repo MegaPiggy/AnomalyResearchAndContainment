@@ -500,7 +500,7 @@
                 "position": {
                     "x": 0,
                     "y": 0,
-                    "z": 8
+                    "z": -14
                 },
                 "isRelativeToParent": true,
                 "parentPath": "Sector/Root/NorthCorridor/AnomalyRoom/Center/EchoCell/PadRoot"
@@ -512,7 +512,7 @@
                 "position": {
                     "x": 0,
                     "y": 0,
-                    "z": -12
+                    "z": -14
                 },
                 "isRelativeToParent": true,
                 "parentPath": "Sector/Root/EastCorridor/AnomalyRoom/Center/RunicWall/Root"
@@ -524,7 +524,7 @@
                 "position": {
                     "x": 0,
                     "y": 0,
-                    "z": 8
+                    "z": -14
                 },
                 "isRelativeToParent": true,
                 "parentPath": "Sector/Root/SouthCorridor/AnomalyRoom/Center/PrismBloom/Root"
@@ -536,7 +536,7 @@
                 "position": {
                     "x": 0,
                     "y": 0,
-                    "z": 8
+                    "z": -14
                 },
                 "isRelativeToParent": true,
                 "parentPath": "Sector/Root/WestCorridor/AnomalyRoom/Center/MemoryOrb/Root"

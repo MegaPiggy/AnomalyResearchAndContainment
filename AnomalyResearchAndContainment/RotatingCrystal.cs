@@ -11,8 +11,10 @@ namespace AnomalyResearchAndContainment
         [SerializeField] private float _rotationAmount = 45; // degrees per press
         [SerializeField] private bool _rotateClockwise = true;
         [SerializeField] private AnimationCurve _tweenCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+        [SerializeField] private OWAudioSource _audioSource;
 
         private float _tweenTime = 0.5f;
+        private AudioType _rotateSound = AudioType.ToolItemSharedStoneInsert;
         private Coroutine _rotateRoutine;
 
         public void Start()
@@ -41,6 +43,7 @@ namespace AnomalyResearchAndContainment
         public void RotateCrystal(float direction)
         {
             if (_rotateRoutine != null) return; // prevent spam while tweening
+            if (_audioSource != null) _audioSource.PlayOneShot(_rotateSound);
             _rotateRoutine = StartCoroutine(TweenRotation(direction));
         }
 

@@ -62,11 +62,11 @@ namespace AnomalyResearchAndContainment
                     var reflect = hit.collider.GetComponent<ReflectiveSurface>();
                     if (reflect != null)
                     {
-                        // Middle point (crystal center)
-                        beamPoints.Add(reflect.transform.position);
+                        // Root point
+                        beamPoints.Add(reflect.GetOutputRoot());
 
                         // Update origin/direction for next segment
-                        origin = reflect.transform.position; //hit.point;
+                        origin = reflect.GetOutputRoot(); //hit.point;
                         direction = reflect.GetOutputDirection(); //Vector3.Reflect(direction, hit.normal);
                         continue;
                     }
@@ -131,43 +131,41 @@ namespace AnomalyResearchAndContainment
     {
         [SerializeField] private Light _light;
         [SerializeField] private LineRenderer _lineRenderer;
+        [SerializeField] private GameObject _beamPointPrefab;
+
+        private readonly List<GameObject> _beamPoints = new();
+        private float _pointSpacing = 0.5f;
+        private int _maxPoints = 100;
 
         public void OnValidate()
         {
             _light = GetComponent<Light>();
             _lineRenderer = GetComponent<LineRenderer>();
-            _lineRenderer.startColor = Color.white;
-            _lineRenderer.endColor = new Color(_lineRenderer.startColor.r, _lineRenderer.startColor.g, _lineRenderer.startColor.b, 0f);
-            _lineRenderer.startWidth = 0.05f;
-            _lineRenderer.endWidth = 0.05f;
             SetPositionDefault();
         }
 
         public void Awake()
         {
+            for (int i = 0; i < _maxPoints; i++)
+            {
+                GameObject point = Instantiate(_beamPointPrefab, transform);
+                point.SetActive(false);
+                _beamPoints.Add(point);
+            }
             _light = GetComponent<Light>();
             _lineRenderer = GetComponent<LineRenderer>();
+            _lineRenderer.enabled = false;
+            /*
             _lineRenderer.startColor = Color.white;
             _lineRenderer.endColor = new Color(_lineRenderer.startColor.r, _lineRenderer.startColor.g, _lineRenderer.startColor.b, 0f);
             _lineRenderer.startWidth = 0.05f;
             _lineRenderer.endWidth = 0.05f;
+            */
             SetPositionDefault();
         }
 
         public void Start()
         {
-        }
-
-        private void OnEnable()
-        {
-            _light.enabled = true;
-            _lineRenderer.enabled = true;
-        }
-
-        private void OnDisable()
-        {
-            _light.enabled = false;
-            _lineRenderer.enabled = false;
         }
 
         private void SetPositionDefault()
@@ -181,9 +179,42 @@ namespace AnomalyResearchAndContainment
 
         public void SetPositions(List<Vector3> beamPoints)
         {
+            DrawBeamPoints(beamPoints);
+            /*
             if (_lineRenderer == null) return;
             _lineRenderer.positionCount = beamPoints.Count;
             _lineRenderer.SetPositions(beamPoints.ToArray());
+            */
+        }
+
+        public void ClearBeamPoints()
+        {
+            foreach (var point in _beamPoints)
+            {
+                point.SetActive(false);
+            }
+        }
+
+        public void DrawBeamPoints(List<Vector3> path)
+        {
+            ClearBeamPoints();
+            int poolIndex = 0;
+
+            for (int i = 0; i < path.Count - 1; i++)
+            {
+                Vector3 start = path[i];
+                Vector3 end = path[i + 1];
+                float distance = Vector3.Distance(start, end);
+                int steps = Mathf.CeilToInt(distance / _pointSpacing);
+
+                for (int j = 0; j <= steps && poolIndex < _beamPoints.Count; j++)
+                {
+                    Vector3 pos = Vector3.Lerp(start, end, j / (float)steps);
+                    _beamPoints[poolIndex].transform.position = pos;
+                    _beamPoints[poolIndex].SetActive(true);
+                    poolIndex++;
+                }
+            }
         }
     }
 
@@ -249,9 +280,16 @@ namespace AnomalyResearchAndContainment
     /// </summary>
     public class ReflectiveSurface : MonoBehaviour
     {
+        [SerializeField] private Transform _root;
+
+        public Vector3 GetOutputRoot()
+        {
+            return _root.position; // Or customize if needed
+        }
+
         public Vector3 GetOutputDirection()
         {
-            return transform.forward; // Or customize if needed
+            return _root.forward; // Or customize if needed
         }
     }
 }
