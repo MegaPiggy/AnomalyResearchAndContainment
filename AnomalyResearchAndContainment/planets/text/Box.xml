@@ -1,0 +1,27 @@
+﻿<NomaiObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/text_schema.xsd">
+  <TextBlock>
+    <ID>1</ID>
+    <Text>PHYLA: We have no classification for this object. It resists analysis. Mass fluctuates. Field containment is holding for now.</Text>
+  </TextBlock>
+  <TextBlock>
+    <ID>2</ID>
+    <ParentID>1</ParentID>
+    <Text>ASTERA: I’ve designated it as "The Box". Anything placed inside becomes inaccessible. Even light does not return.</Text>
+  </TextBlock>
+  <TextBlock>
+    <ID>3</ID>
+    <ParentID>2</ParentID>
+    <Text>ZOSTE: The stasis field is controlled manually from the upper platform. I urge caution. We do not fully understand what this thing does.</Text>
+  </TextBlock>
+  <TextBlock>
+    <ID>4</ID>
+    <ParentID>3</ParentID>
+    <Text>CARYO: If this ever destabilizes... the consequences might extend beyond this station.</Text>
+  </TextBlock>
+  <ShipLogConditions>
+    <RevealFact>
+      <FactID>ARC_FINAL_ROOM_X3</FactID>
+      <Condition>1</Condition>
+    </RevealFact>
+  </ShipLogConditions>
+</NomaiObject>

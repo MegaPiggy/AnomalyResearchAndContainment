@@ -517,6 +517,23 @@
                 "parentPath": "Sector/Root/NorthCorridor/AnomalyRoom/Center/EchoCell/PadRoot"
             },
             {
+                "rename": "EchoCellTrailmarker",
+                "xmlFile": "planets/text/EchoCellName.xml",
+                "type": "trailmarker",
+                "position": {
+                    "x": 6.8,
+                    "y": -9.1305,
+                    "z": 45.8
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 225,
+                    "z": 0
+                },
+                "isRelativeToParent": true,
+                "parentPath": "Sector/Root/NorthCorridor"
+            },
+            {
                 "rename": "RunicWallRecorder",
                 "xmlFile": "planets/text/RunicWall.xml",
                 "type": "preCrashRecorder",
@@ -527,6 +544,23 @@
                 },
                 "isRelativeToParent": true,
                 "parentPath": "Sector/Root/EastCorridor/AnomalyRoom/Center/RunicWall/Root"
+            },
+            {
+                "rename": "RunicWallTrailmarker",
+                "xmlFile": "planets/text/RunicWallName.xml",
+                "type": "trailmarker",
+                "position": {
+                    "x": 6.8,
+                    "y": -9.1305,
+                    "z": 45.8
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 225,
+                    "z": 0
+                },
+                "isRelativeToParent": true,
+                "parentPath": "Sector/Root/EastCorridor"
             },
             {
                 "rename": "PrismBloomRecorder",
@@ -541,6 +575,23 @@
                 "parentPath": "Sector/Root/SouthCorridor/AnomalyRoom/Center/PrismBloom/Root"
             },
             {
+                "rename": "PrismBloomTrailmarker",
+                "xmlFile": "planets/text/PrismBloomName.xml",
+                "type": "trailmarker",
+                "position": {
+                    "x": 6.8,
+                    "y": -9.1305,
+                    "z": 45.8
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 225,
+                    "z": 0
+                },
+                "isRelativeToParent": true,
+                "parentPath": "Sector/Root/SouthCorridor"
+            },
+            {
                 "rename": "MemoryOrbRecorder",
                 "xmlFile": "planets/text/MemoryOrb.xml",
                 "type": "preCrashRecorder",
@@ -551,6 +602,23 @@
                 },
                 "isRelativeToParent": true,
                 "parentPath": "Sector/Root/WestCorridor/AnomalyRoom/Center/MemoryOrb/Root"
+            },
+            {
+                "rename": "MemoryOrbTrailmarker",
+                "xmlFile": "planets/text/MemoryOrbName.xml",
+                "type": "trailmarker",
+                "position": {
+                    "x": 6.8,
+                    "y": -9.1305,
+                    "z": 45.8
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 225,
+                    "z": 0
+                },
+                "isRelativeToParent": true,
+                "parentPath": "Sector/Root/WestCorridor"
             },
             {
                 "xmlFile": "planets/text/BatteryLocation.xml",
@@ -579,6 +647,23 @@
                     "y": 0,
                     "z": 0
                 }
+            },
+            {
+                "rename": "BoxTrailmarker",
+                "xmlFile": "planets/text/BoxName.xml",
+                "type": "trailmarker",
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 180,
+                    "z": 0
+                },
+                "isRelativeToParent": true,
+                "parentPath": "Sector/Root/HiddenRoom/Center/Floor/BoxRoot"
             }
         ]
     },

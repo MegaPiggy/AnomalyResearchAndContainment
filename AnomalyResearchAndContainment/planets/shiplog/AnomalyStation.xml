@@ -231,10 +231,14 @@
     </ExploreFact>
     <ExploreFact>
       <ID>ARC_FINAL_ROOM_X2</ID>
-      <Text>A log left by a Nomai researcher warns of activating the containment field. They refer to it only as "Object 003 – The Box."</Text>
+      <Text>They refer to the cube only as "Object 003 – The Box"</Text>
     </ExploreFact>
     <ExploreFact>
       <ID>ARC_FINAL_ROOM_X3</ID>
+      <Text>A log left by a Nomai researcher warns of activating the containment field.</Text>
+    </ExploreFact>
+    <ExploreFact>
+      <ID>ARC_FINAL_ROOM_X4</ID>
       <Text>Interacting with the containment controls ends the loop early, returning me to the beginning of the cycle.</Text>
     </ExploreFact>
   </Entry>
