@@ -65,7 +65,7 @@
                 "detectionRadius": 26,
                 "onlyAudibleToScope": true,
                 "sourceRadius": 2,
-                "parentPath": "Sector/Root/HiddenRoom/Center/Floor/BoxRoot",
+                "parentPath": "Sector/Root/HiddenRoom/Center/Floor/UpperPlatform/BoxRoot",
                 "isRelativeToParent": true
             },
             {
@@ -652,18 +652,8 @@
                 "rename": "BoxTrailmarker",
                 "xmlFile": "planets/text/BoxName.xml",
                 "type": "trailmarker",
-                "position": {
-                    "x": 0,
-                    "y": 0,
-                    "z": 0
-                },
-                "rotation": {
-                    "x": 0,
-                    "y": 180,
-                    "z": 0
-                },
                 "isRelativeToParent": true,
-                "parentPath": "Sector/Root/HiddenRoom/Center/Floor/BoxRoot"
+                "parentPath": "Sector/Root/HiddenRoom/Center/Floor/UpperPlatform/TrailmarkerRoot"
             }
         ]
     },
@@ -758,7 +748,7 @@
                 "track": "music",
                 "shape": {
                     "type": "cylinder",
-                    "radius": 33.5,
+                    "radius": 27.5,
                     "height": 30
                 },
                 "position": {
@@ -817,7 +807,7 @@
             {
                 "shape": {
                     "type": "cylinder",
-                    "radius": 33.5,
+                    "radius": 27.5,
                     "height": 30
                 },
                 "position": {

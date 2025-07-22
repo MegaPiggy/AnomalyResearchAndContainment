@@ -37,6 +37,7 @@
             }
         ],
         "size": 300,
+        "lightRadius": 2500,
         "solarLuminosity": 0.5,
         "lightTint": {
             "r": 140,

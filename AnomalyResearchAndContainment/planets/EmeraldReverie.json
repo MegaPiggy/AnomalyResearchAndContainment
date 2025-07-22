@@ -3,7 +3,7 @@
     "name": "Emerald Reverie",
     "starSystem": "Jam5",
     "Base": {
-        "surfaceSize": 125,
+        "surfaceSize": 130,
         "surfaceGravity": 6
     },
     "Orbit": {
@@ -41,7 +41,7 @@
                     "y": 113,
                     "z": 0
                 },
-                "scale": 0.5
+                "scale": 1
             },
             {
                 "rename": "Crate",
@@ -55,7 +55,8 @@
                 },
                 "rotation": {
                     "y": 225
-                }
+                },
+                "scale": 1
             },
             {
                 "rename": "Crate",
@@ -69,7 +70,8 @@
                 },
                 "rotation": {
                     "y": 315
-                }
+                },
+                "scale": 1
             },
             {
                 "rename": "Crate",
@@ -83,7 +85,8 @@
                 },
                 "rotation": {
                     "y": 45
-                }
+                },
+                "scale": 1
             },
             {
                 "rename": "Crate",
@@ -97,7 +100,8 @@
                 },
                 "rotation": {
                     "y": 135
-                }
+                },
+                "scale": 1
             },
             {
                 "rename": "Crate",
@@ -111,7 +115,8 @@
                 },
                 "rotation": {
                     "y": 90
-                }
+                },
+                "scale": 1
             },
             {
                 "rename": "AnomalyBattery",
@@ -124,6 +129,7 @@
                     "z": 1
                 },
                 "rotation": { "z": 90 },
+                "scale": 1,
                 "item": {
                     "name": "Battery",
                     "itemType": "AnomalyBattery",
@@ -144,6 +150,23 @@
                     "dropAudio": "ToolItemWarpCoreDrop",
                     "socketAudio": "ToolItemWarpCoreInsert",
                     "unsocketAudio": "ToolItemWarpCoreRemove"
+                }
+            },
+            {
+                "rename": "Campfire",
+                "keepLoaded": true,
+                "assetBundle": "planets/anomalyresearch.rem",
+                "path": "Assets/AnomalyResearch/Prefab_Campfire_Off.prefab",
+                "isRelativeToParent": true,
+                "position": {
+                    "x": 0,
+                    "y": 112,
+                    "z": -20.325
+                },
+                "rotation": {
+                    "x": 5.225,
+                    "y": 180,
+                    "z": 0
                 }
             }
         ],
@@ -202,7 +225,7 @@
         ]
     },
     "Atmosphere": {
-        "size": 125,
+        "size": 130,
         "atmosphereSunIntensity": 0.5,
         "hasOxygen": true,
         "atmosphereTint": {
@@ -213,14 +236,14 @@
         "clouds": {
             "cloudsPrefab": "transparent",
             "texturePath": "planets/toxicclouds.png",
-            "innerCloudRadius": 125,
-            "outerCloudRadius": 130,
+            "innerCloudRadius": 130,
+            "outerCloudRadius": 135,
             "rotationSpeed": 5
         }
     },
     "AmbientLights": [
         {
-            "innerRadius": 130,
+            "innerRadius": 132,
             "outerRadius": 140,
             "tint": {
                 "r": 70,

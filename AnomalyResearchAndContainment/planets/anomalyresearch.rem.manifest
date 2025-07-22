@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 427139656
+CRC: 3584121772
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0307baa1892c2bde2899c6f14fafd860
+    Hash: c2f7d0e16ede65ecf8c068872ae7b958
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 9a615db71fa7f1db3975f67dfccc8a7f
+    Hash: 7dbdc71416080ca72cecfa7a48ef4379
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -66,6 +66,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 3e2cd530bcd6ab93471c4405ca1c5b6a, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: b3891590690609c69465a648b6c178e6, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 7aa0cb9068c0eedb41ed1be6853f5b19, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 0c9e68a0046b7a4445748ab89bb40221, type: 3}
@@ -106,6 +108,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 8a3f0f389341c132f21af676b0f2d74c, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 5b895e78b496f0b8d3aa4cd1fbe3ef9e, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: f913c288c393f80a7e923fc1c775f4fb, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 892a6b987a18588fe03a5937388e4a4d, type: 3}
@@ -120,11 +124,17 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 2145ed3a866d4bd5a94d98ee05d0fa4f, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 7b80504a0aa9946ddb29be5e95e7256c, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 0cfd736a3952486c93e9a5d8f58c79c3, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 82d6ff9ac3325b114213581627497e75, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 1f3014da1c89ce2573a27c371d8ccd9f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3764d89beefddfb963f973f9a1e29bad, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7aba6c2ce49844631cfc871c69533e25, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 7f2e3f7cc6baeb3499f9963353d7b458, type: 3}
 - Class: 114
@@ -132,7 +142,13 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 7731bc3d30c8b009ac33fba6df6e72ae, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 4d37ab8d4d1e425918e8172c84cb8288, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 1effb1bd669ff10873e29e11509c3d77, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 62389b8e30976189aff1020795052659, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 00b05c6f9a67b3a747736e91adf59f44, type: 3}
 - Class: 114
   Script: {fileID: -1596883265, guid: 82f70f8f6fca65e46a623372f815c2ec, type: 3}
 - Class: 114
@@ -196,10 +212,12 @@ Assets:
 - Assets/AnomalyResearch/Battery.prefab
 - Assets/AnomalyResearch/BatterySlot.prefab
 - Assets/AnomalyResearch/GhostPlayer.prefab
+- Assets/AnomalyResearch/Prefab_Campfire_Off.prefab
 - Assets/AnomalyResearch/AnomalyResearch.prefab
 - Assets/AnomalyResearch/Ruin.prefab
 - Assets/AnomalyResearch/RunePanel.prefab
 - Assets/AnomalyResearch/Prefab_NOM_Lamp_Glow_Diamond_Wall_Blue.prefab
+- Assets/AnomalyResearch/Prefab_Campfire_On.prefab
 - Assets/AnomalyResearch/ElevatorPad.prefab
 - Assets/AnomalyResearch/KeyPanel.prefab
 - Assets/AnomalyResearch/AnomalyRoom.prefab
