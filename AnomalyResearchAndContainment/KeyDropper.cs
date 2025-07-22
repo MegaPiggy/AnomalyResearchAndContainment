@@ -13,6 +13,7 @@ namespace AnomalyResearchAndContainment
         private OWItem _keyObject;
         private Vector3 _startPosition;
         private bool _isRaising = false;
+        private bool _isRaised = false;
         private float _raiseStartTime;
 
         public void Start()
@@ -27,6 +28,8 @@ namespace AnomalyResearchAndContainment
 
         public void DropKey()
         {
+            if (_isRaised) return;
+
             // Show key
             if (_keyObject != null)
             {
@@ -54,6 +57,7 @@ namespace AnomalyResearchAndContainment
                 {
                     _pedestal.localPosition = _raisedPosition.localPosition;
                     _isRaising = false;
+                    _isRaised = true;
                 }
             }
         }

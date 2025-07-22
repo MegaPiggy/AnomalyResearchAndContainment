@@ -10,6 +10,9 @@ namespace AnomalyResearchAndContainment
     public abstract class AnomalyController : MonoBehaviour
     {
         [SerializeField] protected AnomalyDoorController _doorController;
+        [SerializeField] protected AnomalyConsole _anomalyConsole;
+        [SerializeField] private KeyDropper _keyDropper;
+        [SerializeField] private Indicator _indicator;
 
         private bool IsDoorClosed => (_doorController == null || !_doorController.IsOpen);
         private bool IsPowered => DialogueConditionManager.SharedInstance.GetConditionState("ActivateAnomalyStation");
@@ -17,7 +20,9 @@ namespace AnomalyResearchAndContainment
 
         private bool _initialized = false;
         private bool _active = false;
+        private bool _completed = false;
         public bool IsActive => _active;
+        public bool Completed => _completed;
 
         protected virtual void Update()
         {
@@ -40,6 +45,27 @@ namespace AnomalyResearchAndContainment
                 _active = false;
                 DeactivatePuzzle();
             }
+        }
+
+        /// <summary>
+        /// Complete puzzle
+        /// </summary>
+        public virtual void CompletePuzzle()
+        {
+            _completed = true;
+            if (_indicator != null) _indicator.PlaySuccessFeedback();
+            if (_keyDropper != null) _keyDropper.DropKey();
+            SetActivation(false);
+            OpenDoor();
+            _anomalyConsole.DeactivateButton();
+        }
+
+        /// <summary>
+        /// Reset puzzle
+        /// </summary>
+        public virtual void ResetPuzzle()
+        {
+            if (_indicator != null) _indicator.PlayFailFeedback();
         }
 
         /// <summary>

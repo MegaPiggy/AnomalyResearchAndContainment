@@ -1,25 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.InputSystem;
 
 namespace AnomalyResearchAndContainment
 {
     public class PrismBloomController : AnomalyController
     {
-        [SerializeField] private Light _beamEmitter;
-        [SerializeField] private float _beamLength = 20f;
-        [SerializeField] private LayerMask _reflectionLayer = OWLayerMask.blockableInteractMask;
-        [SerializeField] private int _maxReflections = 5;
-        [SerializeField] private BeamSensor[] _sensors = new BeamSensor[0];
-        [SerializeField] private ReflectiveSurface[] _reflectiveSurfaces = new ReflectiveSurface[0];
-        [SerializeField] private KeyDropper _keyDropper;
-        [SerializeField] private Indicator _indicator;
+        [SerializeField] private BeamEmitter _beamEmitter;
 
-        private bool _completed;
+        private float _beamLength = 20f;
+        private int _maxReflections = 5;
+        private LayerMask _reflectionLayer;
 
-        public void OnValidate()
+        private BeamSensor[] _sensors = new BeamSensor[0];
+        private ReflectiveSurface[] _reflectiveSurfaces = new ReflectiveSurface[0];
+
+        public void Start()
         {
-            _reflectionLayer = ((1 << LayerMask.NameToLayer("Default")) | (1 << LayerMask.NameToLayer("Primitive")) | (1 << LayerMask.NameToLayer("IgnoreSun")) | (1 << LayerMask.NameToLayer("PhysicalDetector")) | (1 << LayerMask.NameToLayer("ShipInterior")) | (1 << LayerMask.NameToLayer("IgnoreOrbRaycast")) | (1 << LayerMask.NameToLayer("Interactible"))) & ~(1 << LayerMask.NameToLayer("IgnoreOrbRaycast"));
+            _reflectionLayer = OWLayerMask.blockableInteractMask;
+            _beamEmitter = GetComponentInChildren<BeamEmitter>();
             _sensors = GetComponentsInChildren<BeamSensor>();
             _reflectiveSurfaces = GetComponentsInChildren<ReflectiveSurface>();
         }
@@ -27,14 +27,24 @@ namespace AnomalyResearchAndContainment
         protected override void Update()
         {
             base.Update();
-            if (!IsActive || _completed) return;
+            if (!IsActive || Completed) return;
 
-            ResetSensors();
+            CastBeam();
 
-            if (_beamEmitter == null) return;
+            if (AllSensorsActivated())
+            {
+                CompletePuzzle();
+            }
+        }
 
+        public void CastBeam()
+        {
+            List<Vector3> beamPoints = new List<Vector3>();
             Vector3 origin = _beamEmitter.transform.position;
             Vector3 direction = _beamEmitter.transform.forward;
+            beamPoints.Add(origin);
+
+            ResetSensors();
 
             // Simulate beam
             for (int i = 0; i < _maxReflections; i++)
@@ -42,19 +52,22 @@ namespace AnomalyResearchAndContainment
                 Debug.DrawRay(origin, direction * _beamLength, Color.cyan, 0.1f);
                 if (Physics.Raycast(origin, direction, out RaycastHit hit, _beamLength, _reflectionLayer))
                 {
+                    beamPoints.Add(hit.point);
+
                     // Check for sensor
                     var sensor = hit.collider.GetComponent<BeamSensor>();
-                    if (sensor != null)
-                    {
-                        sensor.Trigger();
-                    }
+                    if (sensor != null) sensor.Trigger();
 
                     // Check for reflective object
                     var reflect = hit.collider.GetComponent<ReflectiveSurface>();
                     if (reflect != null)
                     {
-                        origin = hit.point;
-                        direction = Vector3.Reflect(direction, hit.normal);
+                        // Middle point (crystal center)
+                        beamPoints.Add(reflect.transform.position);
+
+                        // Update origin/direction for next segment
+                        origin = reflect.transform.position; //hit.point;
+                        direction = reflect.GetOutputDirection(); //Vector3.Reflect(direction, hit.normal);
                         continue;
                     }
 
@@ -63,21 +76,15 @@ namespace AnomalyResearchAndContainment
                 }
                 else
                 {
+                    beamPoints.Add(origin + direction * _beamLength);
                     break;
                 }
             }
 
-            if (AllSensorsActivated())
-            {
-                _completed = true;
-                _indicator.PlaySuccessFeedback();
-                if (_keyDropper != null) _keyDropper.DropKey();
-                SetActivation(false);
-                OpenDoor();
-            }
+            _beamEmitter.SetPositions(beamPoints);
         }
 
-        private void ResetSensors()
+        public void ResetSensors()
         {
             foreach (var sensor in _sensors)
             {
@@ -85,7 +92,7 @@ namespace AnomalyResearchAndContainment
             }
         }
 
-        private bool AllSensorsActivated()
+        public bool AllSensorsActivated()
         {
             foreach (var sensor in _sensors)
             {
@@ -94,31 +101,145 @@ namespace AnomalyResearchAndContainment
             return true;
         }
 
+        public override void CompletePuzzle()
+        {
+            base.CompletePuzzle();
+
+            ResetSensors();
+        }
+
+        public override void ResetPuzzle()
+        {
+            base.ResetPuzzle();
+
+            ResetSensors();
+        }
+
         public override void ActivatePuzzle()
         {
         }
 
         public override void DeactivatePuzzle()
         {
+            ResetSensors();
+        }
+    }
+
+    [RequireComponent(typeof(Light), typeof(LineRenderer))]
+    public class BeamEmitter : MonoBehaviour
+    {
+        [SerializeField] private Light _light;
+        [SerializeField] private LineRenderer _lineRenderer;
+
+        public void OnValidate()
+        {
+            _light = GetComponent<Light>();
+            _lineRenderer = GetComponent<LineRenderer>();
+            _lineRenderer.startColor = Color.white;
+            _lineRenderer.endColor = new Color(_lineRenderer.startColor.r, _lineRenderer.startColor.g, _lineRenderer.startColor.b, 0f);
+            _lineRenderer.startWidth = 0.05f;
+            _lineRenderer.endWidth = 0.05f;
+            SetPositionDefault();
+        }
+
+        public void Awake()
+        {
+            _light = GetComponent<Light>();
+            _lineRenderer = GetComponent<LineRenderer>();
+            _lineRenderer.startColor = Color.white;
+            _lineRenderer.endColor = new Color(_lineRenderer.startColor.r, _lineRenderer.startColor.g, _lineRenderer.startColor.b, 0f);
+            _lineRenderer.startWidth = 0.05f;
+            _lineRenderer.endWidth = 0.05f;
+            SetPositionDefault();
+        }
+
+        public void Start()
+        {
+        }
+
+        private void OnEnable()
+        {
+            _light.enabled = true;
+            _lineRenderer.enabled = true;
+        }
+
+        private void OnDisable()
+        {
+            _light.enabled = false;
+            _lineRenderer.enabled = false;
+        }
+
+        private void SetPositionDefault()
+        {
+            SetPositions(new List<Vector3>
+            {
+                Vector3.zero,
+                Vector3.forward
+            });
+        }
+
+        public void SetPositions(List<Vector3> beamPoints)
+        {
+            if (_lineRenderer == null) return;
+            _lineRenderer.positionCount = beamPoints.Count;
+            _lineRenderer.SetPositions(beamPoints.ToArray());
         }
     }
 
     public class BeamSensor : MonoBehaviour
     {
+        [SerializeField] private Renderer _sensorRenderer;
+        [SerializeField] private OWAudioSource _audioSource;
+
+        private AudioType _activationSFX = AudioType.NomaiOrbSlotActivated;
+        private Color _inactiveColor = Color.black;
+        private Color _activeColor = Color.cyan;
+        private float _glowIntensity = 1;
+
         private bool _triggered;
+        private bool _lastTriggered;
+
+        private void Start()
+        {
+            UpdateVisual();
+        }
+        
+        private void LateUpdate()
+        {
+            _lastTriggered = _triggered;
+        }
 
         public void Trigger()
         {
+            if (_triggered) return;
+
             _triggered = true;
-            // Visual feedback here, e.g., glow
+            UpdateVisual();
+
+            if (!_lastTriggered)
+            {
+                if (_audioSource != null) _audioSource.PlayOneShot(_activationSFX);
+            }
         }
 
         public void ResetTrigger()
         {
+            if (!_triggered) return;
+
             _triggered = false;
+            UpdateVisual();
         }
 
         public bool IsTriggered() => _triggered;
+
+        private void UpdateVisual()
+        {
+            if (_sensorRenderer == null || _sensorRenderer.material == null) return;
+
+            Color targetColor = _triggered ? _activeColor : _inactiveColor;
+            _sensorRenderer.material.SetColor("_EmissionColor", targetColor * _glowIntensity);
+            _sensorRenderer.material.color = targetColor;
+        }
     }
 
     /// <summary>
@@ -126,5 +247,9 @@ namespace AnomalyResearchAndContainment
     /// </summary>
     public class ReflectiveSurface : MonoBehaviour
     {
+        public Vector3 GetOutputDirection()
+        {
+            return transform.forward; // Or customize if needed
+        }
     }
 }

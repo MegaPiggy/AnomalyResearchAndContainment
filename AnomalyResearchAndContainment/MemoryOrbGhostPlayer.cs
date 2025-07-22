@@ -5,24 +5,30 @@ using UnityEngine;
 
 namespace AnomalyResearchAndContainment
 {
+    [RequireComponent(typeof(CapsuleCollider), typeof(CapsuleShape), typeof(Animator))]
     public class MemoryOrbGhostPlayer : Detector
     {
-        private static readonly Detector.Name GhostPlayer = EnumUtils.Create<Detector.Name>("GhostPlayer");
+        [SerializeField] private Animator _animator;
+        private RuntimeAnimatorController _baseAnimController;
+
         private Vector3 spawnPosition;
         private Quaternion spawnRotation;
         private List<MemoryOrbRecorder.ActionFrame> _frames;
         private float _startTime;
         private int _currentIndex;
         private bool _isPlaying;
-        private Animator _animator;
-        private RuntimeAnimatorController _baseAnimController;
+
+        private static readonly Detector.Name GhostPlayer = EnumUtils.Create<Detector.Name>("GhostPlayer");
 
         public override void Awake()
         {
             base.Awake();
-            this._name = GhostPlayer;
-            this._animator = base.GetComponent<Animator>();
-            this._baseAnimController = this._animator.runtimeAnimatorController;
+            _name = GhostPlayer;
+        }
+
+        public void Start()
+        {
+            _baseAnimController = _animator.runtimeAnimatorController;
         }
 
         public void Playback(List<MemoryOrbRecorder.ActionFrame> frames)

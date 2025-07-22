@@ -34,6 +34,35 @@ namespace AnomalyResearchAndContainment
 
         private List<OWAudioType> recentSounds = new();
 
+        private List<int> _inputSequence = new List<int>();
+        private float _lastInputTime;
+        //private float _timeout = 10f;
+
+        public void RegisterPadStep(int index)
+        {
+            if (!IsActive || Completed) return;
+
+            //if (Time.time - _lastInputTime > _timeout)
+            //{
+            //    ResetPuzzle();
+            //}
+
+            _lastInputTime = Time.time;
+            _inputSequence.Add(index);
+
+            if (_inputSequence.Count >= correctSequence.Count)
+            {
+                if (IsCorrectSequence())
+                {
+                    CompletePuzzle();
+                }
+                else
+                {
+                    ResetPuzzle();
+                }
+            }
+        }
+
         private void Awake()
         {
             Instance = this;
@@ -120,6 +149,23 @@ namespace AnomalyResearchAndContainment
         {
             _playerInteracted = false;
             _echoLoopCoroutine = StartCoroutine(PlayEchoPatternLoop());
+        }
+
+        private bool IsCorrectSequence()
+        {
+            for (int i = 0; i < correctSequence.Count; i++)
+            {
+                if (correctSequence[i] != _inputSequence[i])
+                    return false;
+            }
+            return true;
+        }
+
+        public override void ResetPuzzle()
+        {
+            base.ResetPuzzle();
+
+            _inputSequence.Clear();
         }
 
         public override void ActivatePuzzle()

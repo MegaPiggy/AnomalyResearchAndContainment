@@ -4,10 +4,20 @@ using UnityEngine;
 
 namespace AnomalyResearchAndContainment
 {
+    [RequireComponent(typeof(OWTriggerVolume), typeof(OWAudioSource))]
     public abstract class PressurePad : MonoBehaviour
     {
         [SerializeField] private OWTriggerVolume _triggerVolume;
         [SerializeField] private AnomalyController _controller;
+        [SerializeField] private OWAudioSource _audioSource;
+        [SerializeField] private MeshRenderer _glowRenderer;
+
+        private Color _inactiveColor = Color.black;
+        private Color _activeColor = Color.cyan;
+        private float _glowIntensity = 0.5f;
+        private AudioType _tone = AudioType.NomaiOrbSlotActivated;
+
+        private float _glowFraction;
         private bool _wasTriggered = false;
 
         // Track all valid colliders currently on the pad
@@ -18,6 +28,7 @@ namespace AnomalyResearchAndContainment
 
         private void Start()
         {
+            _glowRenderer = GetComponentInChildren<MeshRenderer>(true);
             _triggerVolume.OnEntry += OnEntry;
             _triggerVolume.OnExit += OnExit;
         }
@@ -26,6 +37,17 @@ namespace AnomalyResearchAndContainment
         {
             _triggerVolume.OnEntry -= OnEntry;
             _triggerVolume.OnExit -= OnExit;
+        }
+
+        private void Update()
+        {
+            float target = (IsTriggered ? 1f : 0f);
+            _glowFraction = Mathf.MoveTowards(_glowFraction, target, Time.deltaTime * 3f);
+            if (_glowRenderer != null)
+            {
+                var targetColor = Color.Lerp(_inactiveColor, _activeColor, _glowFraction);
+                _glowRenderer.material.SetColor("_EmissionColor", targetColor);
+            }
         }
 
         protected virtual bool CheckForDetector(GameObject hitObj)
@@ -44,6 +66,7 @@ namespace AnomalyResearchAndContainment
             if (_wasTriggered) return;
 
             _wasTriggered = true;
+            if (_audioSource != null) _audioSource.PlayOneShot(_tone);
             OnStep(hitObj);
             Invoke(nameof(ResetWasTriggered), 0.5f); // prevent multiple rapid triggers
         }

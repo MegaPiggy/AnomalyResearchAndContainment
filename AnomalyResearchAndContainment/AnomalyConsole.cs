@@ -7,7 +7,6 @@ namespace AnomalyResearchAndContainment
     {
         [SerializeField] private SingleInteractionVolume _button;
         [SerializeField] private AnomalyController _controller;
-        [SerializeField] private AnomalyDoorController _doorController;
 
         private void Start()
         {
@@ -32,6 +31,12 @@ namespace AnomalyResearchAndContainment
             if (_controller == null) return;
             _controller.CloseDoor();
             _controller.SetActivation(true);
+            DeactivateButton();
+        }
+
+        public void DeactivateButton()
+        {
+            _button.DisableInteraction();
         }
     }
 }

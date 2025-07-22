@@ -17,20 +17,13 @@ namespace AnomalyResearchAndContainment
         private AudioType _recordStartSFX => AnomalyResearchAndContainment.TickUp;
         private AudioType _recordStopSFX = AudioType.NonDiaUINegativeSFX;
         private AudioType _playbackStartSFX => AnomalyResearchAndContainment.TickDown;
-        [SerializeField] private KeyDropper _keyDropper;
         [SerializeField] private List<MemoryOrbPressurePad> _pads;
 
         private MemoryOrbGhostPlayer _activeGhost;
-        private bool _puzzleComplete;
-
-        private void Start()
-        {
-            _puzzleComplete = false;
-        }
 
         public void StartRecording()
         {
-            if (!IsActive || _puzzleComplete) return;
+            if (!IsActive || Completed) return;
 
             if (_activeGhost != null)
             {
@@ -44,7 +37,7 @@ namespace AnomalyResearchAndContainment
 
         public void StopRecording()
         {
-            if (!IsActive || _puzzleComplete) return;
+            if (!IsActive || Completed) return;
 
             if (_activeGhost != null)
             {
@@ -59,7 +52,7 @@ namespace AnomalyResearchAndContainment
 
         public void StartPlayback()
         {
-            if (!IsActive || _puzzleComplete) return;
+            if (!IsActive || Completed) return;
 
             if (_activeGhost != null)
             {
@@ -92,16 +85,6 @@ namespace AnomalyResearchAndContainment
             {
                 CompletePuzzle();
             }
-        }
-
-        public void CompletePuzzle()
-        {
-            if (_puzzleComplete) return;
-
-            _puzzleComplete = true;
-            if (_keyDropper != null) _keyDropper.DropKey();
-            SetActivation(false);
-            OpenDoor();
         }
 
         public override void ActivatePuzzle()

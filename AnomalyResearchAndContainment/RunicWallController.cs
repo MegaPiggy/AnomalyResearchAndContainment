@@ -8,9 +8,7 @@ namespace AnomalyResearchAndContainment
     public class RunicWallController : AnomalyController
     {
         [SerializeField] private List<RunePanel> _panels = new List<RunePanel>();
-        [SerializeField] private KeyDropper _keyDropper;
         [SerializeField] private float _resetDelay = 0.5f;
-        [SerializeField] private Indicator _indicator;
         [SerializeField] private float _swapCooldown = 1.5f;
 
         private List<TransformData> _initialTransforms = new List<TransformData>();
@@ -19,7 +17,6 @@ namespace AnomalyResearchAndContainment
         private PhotoTarget[] _targets;
         private List<int> _correctSequence = [5, 2, 4, 0];
         private List<int> _playerSequence = new List<int>();
-        private bool _completed = false;
 
         private void Start()
         {
@@ -52,7 +49,7 @@ namespace AnomalyResearchAndContainment
 
         private void OnTargetPhotographed(PhotoTarget target)
         {
-            if (!IsActive || _completed) return;
+            if (!IsActive || Completed) return;
 
             AnomalyResearchAndContainment.Instance.ModHelper.Console.WriteLine("Photographed: " + target.GetComponent<RunePanel>().id);
             foreach (var panel in _panels)
@@ -91,20 +88,11 @@ namespace AnomalyResearchAndContainment
             return true;
         }
 
-        private void CompletePuzzle()
+        public override void ResetPuzzle()
         {
-            _completed = true;
-            _indicator.PlaySuccessFeedback();
-            if (_keyDropper != null) _keyDropper.DropKey();
-            SetActivation(false);
-            OpenDoor();
-        }
+            base.ResetPuzzle();
 
-        private void ResetPuzzle()
-        {
             _playerSequence.Clear();
-
-            _indicator.PlayFailFeedback();
         }
 
         public override void ActivatePuzzle()

@@ -3,5 +3,6 @@
     <ModsPath>$(AppData)/OuterWildsModManager/OWML/Mods</ModsPath>
     <OutputPath>$(ModsPath)/MegaPiggy.AnomalyResearchAndContainment</OutputPath>
     <UnityDllsDir>S:\OuterWilds\ExportedProject\Assets\Plugins</UnityDllsDir>
+    <UnityBundlesDir>S:\OuterWilds\ExportedProject\Assets\StreamingAssets</UnityBundlesDir>
   </PropertyGroup>
 </Project>
