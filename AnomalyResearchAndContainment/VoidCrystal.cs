@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AnomalyResearchAndContainment
 {
-    public class VoidCrystal : ReflectiveSurface
+    public class VoidCrystal : SplitReflectiveSurface
     {
     }
 }

@@ -146,7 +146,7 @@
       <SourceID>ARC_OBSERVATION_DOME</SourceID>
       <RumorName>Crystal Light Room</RumorName>
       <RumorNamePriority>1</RumorNamePriority>
-      <Text>One chamber is said to contain crystals that bend light to reveal hidden truths.</Text>
+      <Text>One chamber is said to contain crystals that bend light.</Text>
     </RumorFact>
     <RumorFact>
       <ID>ARC_PRISM_BLOOM_R2</ID>

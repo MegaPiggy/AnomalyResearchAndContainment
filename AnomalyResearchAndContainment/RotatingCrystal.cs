@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace AnomalyResearchAndContainment
 {
-    public class RotatingCrystal : ReflectiveSurface
+    public class RotatingCrystal : MonoBehaviour
     {
         [SerializeField] private SingleInteractionVolume _interactionVolume;
         [SerializeField] private Vector3 _rotationAxis = Vector3.up;
