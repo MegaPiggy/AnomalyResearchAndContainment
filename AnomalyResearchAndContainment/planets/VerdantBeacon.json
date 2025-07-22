@@ -9,6 +9,14 @@
         "surfaceGravity": 15,
         "centerOfSolarSystem": true
     },
+    "Props": {
+        "entryLocation": [
+            {
+                "id": "VERDANT_BEACON_ROOT",
+                "isRelativeToParent": true
+            }
+        ]
+    },
     "Star": {
         "supernovaSize": 2300,
         "supernovaSpeed": 150, // workaround

@@ -86,14 +86,14 @@
             }
         },
         {
-            "id": "ARC_PRISM_VAULT",
+            "id": "ARC_PRISM_BLOOM",
             "position": {
                 "x": 250,
                 "y": -600
             }
         },
         {
-            "id": "ARC_POLARIZER_LOCK",
+            "id": "ARC_MEMORY_ORB",
             "position": {
                 "x": 500,
                 "y": -600

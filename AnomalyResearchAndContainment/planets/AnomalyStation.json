@@ -15,6 +15,47 @@
         "alignmentAxis": { "y": 1 }
     },
     "Props": {
+        "entryLocation": [
+            {
+                "id": "ARC_STATION",
+                "isRelativeToParent": true
+            },
+            {
+                "id": "ARC_OBSERVATION_DOME",
+                "parentPath": "Sector/Root/Dome/Center",
+                "isRelativeToParent": true
+            },
+            {
+                "id": "ARC_ELEVATOR_ROOM",
+                "parentPath": "Sector/Root/ElevatorRoom",
+                "isRelativeToParent": true
+            },
+            {
+                "id": "ARC_ECHO_CELL",
+                "parentPath": "Sector/Root/NorthCorridor/AnomalyRoom/Center",
+                "isRelativeToParent": true
+            },
+            {
+                "id": "ARC_RUNIC_WALL",
+                "parentPath": "Sector/Root/EastCorridor/AnomalyRoom/Center",
+                "isRelativeToParent": true
+            },
+            {
+                "id": "ARC_PRISM_BLOOM",
+                "parentPath": "Sector/Root/SouthCorridor/AnomalyRoom/Center",
+                "isRelativeToParent": true
+            },
+            {
+                "id": "ARC_MEMORY_ORB",
+                "parentPath": "Sector/Root/WestCorridor/AnomalyRoom/Center",
+                "isRelativeToParent": true
+            },
+            {
+                "id": "ARC_FINAL_ROOM",
+                "parentPath": "Sector/Root/HiddenRoom/Center",
+                "isRelativeToParent": true
+            }
+        ],
         "signals": [
             {
                 "frequency": "Anomaly Echoes",
@@ -23,7 +64,108 @@
                 "identificationRadius": 10,
                 "detectionRadius": 26,
                 "onlyAudibleToScope": true,
-                "sourceRadius": 2
+                "sourceRadius": 2,
+                "parentPath": "Sector/Root/HiddenRoom/Center/Floor/BoxRoot",
+                "isRelativeToParent": true
+            },
+            {
+                "frequency": "Anomaly Echoes",
+                "name": "Echo Cell",
+                "audio": "planets/Signal.wav",
+                "identificationRadius": 10,
+                "detectionRadius": 26,
+                "onlyAudibleToScope": true,
+                "sourceRadius": 2,
+                "parentPath": "Sector/Root/NorthCorridor/AnomalyRoom/Center",
+                "isRelativeToParent": true
+            },
+            {
+                "frequency": "Anomaly Echoes",
+                "name": "Runic Wall",
+                "audio": "planets/Signal.wav",
+                "identificationRadius": 10,
+                "detectionRadius": 26,
+                "onlyAudibleToScope": true,
+                "sourceRadius": 2,
+                "parentPath": "Sector/Root/EastCorridor/AnomalyRoom/Center/RunicWall/Root/RunePanel/Cube",
+                "isRelativeToParent": true
+            },
+            {
+                "frequency": "Anomaly Echoes",
+                "name": "Runic Wall",
+                "audio": "planets/Signal.wav",
+                "identificationRadius": 10,
+                "detectionRadius": 26,
+                "onlyAudibleToScope": true,
+                "sourceRadius": 2,
+                "parentPath": "Sector/Root/EastCorridor/AnomalyRoom/Center/RunicWall/Root/RunePanel (1)/Cube",
+                "isRelativeToParent": true
+            },
+            {
+                "frequency": "Anomaly Echoes",
+                "name": "Runic Wall",
+                "audio": "planets/Signal.wav",
+                "identificationRadius": 10,
+                "detectionRadius": 26,
+                "onlyAudibleToScope": true,
+                "sourceRadius": 2,
+                "parentPath": "Sector/Root/EastCorridor/AnomalyRoom/Center/RunicWall/Root/RunePanel (2)/Cube",
+                "isRelativeToParent": true
+            },
+            {
+                "frequency": "Anomaly Echoes",
+                "name": "Runic Wall",
+                "audio": "planets/Signal.wav",
+                "identificationRadius": 10,
+                "detectionRadius": 26,
+                "onlyAudibleToScope": true,
+                "sourceRadius": 2,
+                "parentPath": "Sector/Root/EastCorridor/AnomalyRoom/Center/RunicWall/Root/RunePanel (3)/Cube",
+                "isRelativeToParent": true
+            },
+            {
+                "frequency": "Anomaly Echoes",
+                "name": "Runic Wall",
+                "audio": "planets/Signal.wav",
+                "identificationRadius": 10,
+                "detectionRadius": 26,
+                "onlyAudibleToScope": true,
+                "sourceRadius": 2,
+                "parentPath": "Sector/Root/EastCorridor/AnomalyRoom/Center/RunicWall/Root/RunePanel (4)/Cube",
+                "isRelativeToParent": true
+            },
+            {
+                "frequency": "Anomaly Echoes",
+                "name": "Runic Wall",
+                "audio": "planets/Signal.wav",
+                "identificationRadius": 10,
+                "detectionRadius": 26,
+                "onlyAudibleToScope": true,
+                "sourceRadius": 2,
+                "parentPath": "Sector/Root/EastCorridor/AnomalyRoom/Center/RunicWall/Root/RunePanel (5)/Cube",
+                "isRelativeToParent": true
+            },
+            {
+                "frequency": "Anomaly Echoes",
+                "name": "Prism Bloom",
+                "audio": "planets/Signal.wav",
+                "identificationRadius": 10,
+                "detectionRadius": 26,
+                "onlyAudibleToScope": true,
+                "sourceRadius": 2,
+                "parentPath": "Sector/Root/SouthCorridor/AnomalyRoom/Center",
+                "isRelativeToParent": true
+            },
+            {
+                "frequency": "Anomaly Echoes",
+                "name": "Memory Orb",
+                "audio": "planets/Signal.wav",
+                "identificationRadius": 10,
+                "detectionRadius": 26,
+                "onlyAudibleToScope": true,
+                "sourceRadius": 2,
+                "parentPath": "Sector/Root/WestCorridor/AnomalyRoom/Center",
+                "isRelativeToParent": true
             }
         ],
         "warpReceivers": [

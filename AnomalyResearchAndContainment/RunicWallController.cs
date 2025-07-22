@@ -88,6 +88,13 @@ namespace AnomalyResearchAndContainment
             return true;
         }
 
+        public override void CompletePuzzle()
+        {
+            base.CompletePuzzle();
+
+            Locator.GetShipLogManager().RevealFact("ARC_RUNIC_WALL_X2", true, true);
+        }
+
         public override void ResetPuzzle()
         {
             base.ResetPuzzle();
@@ -155,6 +162,7 @@ namespace AnomalyResearchAndContainment
                 }
             }
 
+            if (isVisibleToPlayer) Locator.GetShipLogManager().RevealFact("ARC_RUNIC_WALL_X1", true, true);
             SetVisibility(isVisibleToPlayer || isVisibleToProbe);
         }
 

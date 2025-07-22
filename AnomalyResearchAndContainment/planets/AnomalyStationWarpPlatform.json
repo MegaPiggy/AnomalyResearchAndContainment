@@ -6,6 +6,13 @@
         "isPlatform": true
     },
     "Props": {
+        "entryLocation": [
+            {
+                "id": "ARC_WARP_PLATFORM",
+                "parentPath": "Sector/PlatformRoot",
+                "isRelativeToParent": true
+            }
+        ],
         "warpTransmitters": [
             {
                 "frequency": "AnomalyStation",
@@ -22,6 +29,25 @@
                     "x": 0,
                     "y": 0,
                     "z": 60
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                }
+            },
+            {
+                "rename": "Platform",
+                "keepLoaded": true,
+                "assetBundle": "planets/anomalyresearch.rem",
+                "path": "Assets/AnomalyResearch/Platform.prefab",
+                "removeChildren": [],
+                "parentPath": "Sector/PlatformRoot",
+                "isRelativeToParent": true,
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
                 },
                 "rotation": {
                     "x": 0,

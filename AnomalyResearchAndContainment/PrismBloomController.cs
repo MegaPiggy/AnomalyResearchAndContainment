@@ -18,7 +18,7 @@ namespace AnomalyResearchAndContainment
 
         public void Start()
         {
-            _reflectionLayer = OWLayerMask.blockableInteractMask;
+            _reflectionLayer = OWLayerMask.physicalMask;
             _beamEmitter = GetComponentInChildren<BeamEmitter>();
             _sensors = GetComponentsInChildren<BeamSensor>();
             _reflectiveSurfaces = GetComponentsInChildren<ReflectiveSurface>();
@@ -105,6 +105,7 @@ namespace AnomalyResearchAndContainment
         {
             base.CompletePuzzle();
 
+            Locator.GetShipLogManager().RevealFact("ARC_PRISM_BLOOM_X2", true, true);
             ResetSensors();
         }
 
@@ -219,6 +220,7 @@ namespace AnomalyResearchAndContainment
             if (!_lastTriggered)
             {
                 if (_audioSource != null) _audioSource.PlayOneShot(_activationSFX);
+                Locator.GetShipLogManager().RevealFact("ARC_PRISM_BLOOM_X1", true, true);
             }
         }
 

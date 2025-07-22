@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 349361826
+CRC: 2557148065
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 81b8472fcf7691b538deacb535922056
+    Hash: 2c952a79fbbd00ba778ee5ba8d4820ba
   TypeTreeHash:
     serializedVersion: 2
-    Hash: d5b07d5a840193086017d3c6a31f96a4
+    Hash: c88e60adfea721a50e23a9636d083b7a
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -202,4 +202,5 @@ Assets:
 - Assets/AnomalyResearch/KeyPanel.prefab
 - Assets/AnomalyResearch/AnomalyRoom.prefab
 - Assets/AnomalyResearch/Key.prefab
+- Assets/AnomalyResearch/Platform.prefab
 Dependencies: []

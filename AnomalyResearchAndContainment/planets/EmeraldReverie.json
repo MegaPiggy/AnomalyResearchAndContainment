@@ -18,6 +18,17 @@
         "textureMap": "planets/toxictexture.png"
     },
     "Props": {
+        "entryLocation": [
+            {
+                "id": "EMERALD_REVERIE_ROOT",
+                "isRelativeToParent": true
+            },
+            {
+                "id": "EMERALD_REVERIE_STRUCTURE",
+                "parentPath": "Sector/Ruin",
+                "isRelativeToParent": true
+            }
+        ],
         "details": [
             {
                 "rename": "Ruin",
@@ -36,7 +47,7 @@
                 "rename": "Crate",
                 "assetBundle": "planets/anomalyresearch.rem",
                 "path": "Assets/AnomalyResearch/Crate.prefab",
-                "isRelativeToParent": true,
+                "parentPath": "Sector/Ruin",
                 "position": {
                     "x": 5.772495,
                     "y": 114.2005,
@@ -50,7 +61,7 @@
                 "rename": "Crate",
                 "assetBundle": "planets/anomalyresearch.rem",
                 "path": "Assets/AnomalyResearch/Crate.prefab",
-                "isRelativeToParent": true,
+                "parentPath": "Sector/Ruin",
                 "position": {
                     "x": 5.487438,
                     "y": 114.2005,
@@ -64,7 +75,7 @@
                 "rename": "Crate",
                 "assetBundle": "planets/anomalyresearch.rem",
                 "path": "Assets/AnomalyResearch/Crate.prefab",
-                "isRelativeToParent": true,
+                "parentPath": "Sector/Ruin",
                 "position": {
                     "x": -5.302471,
                     "y": 114.2005,
@@ -78,7 +89,7 @@
                 "rename": "Crate",
                 "assetBundle": "planets/anomalyresearch.rem",
                 "path": "Assets/AnomalyResearch/Crate.prefab",
-                "isRelativeToParent": true,
+                "parentPath": "Sector/Ruin",
                 "position": {
                     "x": -4.095337,
                     "y": 114.2006,
@@ -92,7 +103,7 @@
                 "rename": "Crate",
                 "assetBundle": "planets/anomalyresearch.rem",
                 "path": "Assets/AnomalyResearch/Crate.prefab",
-                "isRelativeToParent": true,
+                "parentPath": "Sector/Ruin",
                 "position": {
                     "x": -1.113956,
                     "y": 114.2005,
@@ -106,6 +117,7 @@
                 "rename": "AnomalyBattery",
                 "assetBundle": "planets/anomalyresearch.rem",
                 "path": "Assets/AnomalyResearch/Battery.prefab",
+                "parentPath": "Sector/Ruin",
                 "position": {
                     "x": -5,
                     "y": 114.475,
@@ -138,6 +150,7 @@
         "translatorText": [
             {
                 "xmlFile": "planets/text/AbandonedFacility.xml",
+                "parentPath": "Sector/Ruin",
                 "seed": 1211,
                 "position": {
                     "x": 0,
@@ -155,6 +168,7 @@
     "Volumes": {
         "audioVolumes": [
             {
+                "parentPath": "Sector/Ruin",
                 "isRelativeToParent": true,
                 "audio": "planets/TheNomai_Redone.wav",
                 "priority": 2,
@@ -171,6 +185,7 @@
         ],
         "revealVolumes": [
             {
+                "parentPath": "Sector/Ruin",
                 "radius": 30,
                 "position": {
                     "x": 0,

@@ -97,7 +97,7 @@
 
     <ExploreFact>
       <ID>ARC_ECHO_CELL_X1</ID>
-      <Text>This room is acoustically engineered. I hear phantom sounds repeating my movements back at me, delayed and distorted.</Text>
+      <Text>I hear phantom sounds repeating my movements back at me, delayed and distorted.</Text>
     </ExploreFact>
     <ExploreFact>
       <ID>ARC_ECHO_CELL_X2</ID>
@@ -127,7 +127,7 @@
 
     <ExploreFact>
       <ID>ARC_RUNIC_WALL_X1</ID>
-      <Text>The glyphs change when viewed from different angles. Photographing the correct sequence caused a section of the wall to open.</Text>
+      <Text>The glyphs change when viewed from different angles.</Text>
     </ExploreFact>
     <ExploreFact>
       <ID>ARC_RUNIC_WALL_X2</ID>

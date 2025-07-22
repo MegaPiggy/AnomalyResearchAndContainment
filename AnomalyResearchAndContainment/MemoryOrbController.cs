@@ -75,6 +75,7 @@ namespace AnomalyResearchAndContainment
 #endif
             _activeGhost.Playback(_recorder.GetRecording());
             _audioSource.PlayOneShot(_playbackStartSFX);
+            Locator.GetShipLogManager().RevealFact("ARC_MEMORY_ORB_X1", true, true);
         }
 
         protected override void Update()
@@ -85,6 +86,13 @@ namespace AnomalyResearchAndContainment
             {
                 CompletePuzzle();
             }
+        }
+
+        public override void CompletePuzzle()
+        {
+            base.CompletePuzzle();
+
+            Locator.GetShipLogManager().RevealFact("ARC_MEMORY_ORB_X2", true, true);
         }
 
         public override void ActivatePuzzle()

@@ -114,6 +114,7 @@ namespace AnomalyResearchAndContainment
             echoSource.spatialBlend = 1f;
             AudioClip clip = echoSource.PlayOneShot(echo.audioType);
             Destroy(echoSource.gameObject, clip.length / echo.pitch + 1f);
+            Locator.GetShipLogManager().RevealFact("ARC_ECHO_CELL_X1", true, true);
         }
 
         private IEnumerator PlayEchoPatternLoop()
@@ -159,6 +160,13 @@ namespace AnomalyResearchAndContainment
                     return false;
             }
             return true;
+        }
+
+        public override void CompletePuzzle()
+        {
+            base.CompletePuzzle();
+
+            Locator.GetShipLogManager().RevealFact("ARC_ECHO_CELL_X2", true, true);
         }
 
         public override void ResetPuzzle()
