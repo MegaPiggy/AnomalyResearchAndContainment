@@ -13,5 +13,10 @@ namespace AnomalyResearchAndContainment
         {
             return base.CheckForDetector(hitObj) || hitObj.GetComponent<MemoryOrbGhostPlayer>() != null;
         }
+
+        protected override void OnStep(GameObject hitObj)
+        {
+            Locator.GetShipLogManager().RevealFact("ARC_MEMORY_ORB_X2", true, true);
+        }
     }
 }

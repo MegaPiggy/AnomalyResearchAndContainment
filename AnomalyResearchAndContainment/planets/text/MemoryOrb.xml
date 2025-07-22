@@ -1,16 +1,35 @@
 <NomaiObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/text_schema.xsd">
   <TextBlock>
     <ID>1</ID>
-    <Text>ZOSTE: This orb’s behavior is unlike any data recorder I've worked with. It mimics motion with surprising accuracy.</Text>
+    <Text>ASTERA: The Memory Orb responds to nearby life, capturing movement patterns in full detail. It feels similar to the hologram projectors we made, but less anchored.</Text>
   </TextBlock>
   <TextBlock>
     <ID>2</ID>
     <ParentID>1</ParentID>
-    <Text>ZOSTE: Useful, if eerie. Playback seems to recreate mass and momentum. We've tested it to press dual pressure plates.</Text>
+    <Text>ZOSTE: Once recorded, it can recreate a ghostly version of whoever activated it. The projection mirrors your past steps exactly, down to pressure and timing.</Text>
   </TextBlock>
   <TextBlock>
     <ID>3</ID>
     <ParentID>2</ParentID>
-    <Text>ASTERA: This will make a fitting trial. Synchronization with your ghost is essential to retrieve the key.</Text>
+    <Text>ZOSTE: We've rigged the room with two distant pressure plates. A single Nomai can trigger both using the orb if they plan their movements carefully.</Text>
   </TextBlock>
+  <TextBlock>
+    <ID>4</ID>
+    <ParentID>3</ParentID>
+    <Text>ZOSTE: Synchronization with your past self is the solution to revealing the key.</Text>
+  </TextBlock>
+  <ShipLogConditions>
+    <RevealFact>
+      <FactID>ARC_MEMORY_ORB_R1</FactID>
+      <Condition>1</Condition>
+    </RevealFact>
+    <RevealFact>
+      <FactID>ARC_MEMORY_ORB_R2</FactID>
+      <Condition>1</Condition>
+    </RevealFact>
+    <RevealFact>
+      <FactID>ARC_MEMORY_ORB_X1</FactID>
+      <Condition>2</Condition>
+    </RevealFact>
+  </ShipLogConditions>
 </NomaiObject>

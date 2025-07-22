@@ -37,11 +37,11 @@
 
     <ExploreFact>
       <ID>ARC_OBSERVATION_DOME_X1</ID>
-      <Text>A computer in the dome mentions a dormant elevator system requiring multiple anomaly keys to activate.</Text>
+      <Text>A computer in the dome mentions a dormant elevator system on the lower floor requiring multiple anomaly keys to activate. The key slots are right next to the computer.</Text>
     </ExploreFact>
     <ExploreFact>
       <ID>ARC_OBSERVATION_DOME_X2</ID>
-      <Text>A computer in the dome lists four anomaly chambers connected to the station’s ring corridor. Each chamber is said to contain a key that powers the elevator system.</Text>
+      <Text>A computer in the dome lists four anomaly chambers connected to the station’s ring corridor. Each chamber is said to contain a key that unlocks the elevator system.</Text>
     </ExploreFact>
   </Entry>
 
@@ -97,10 +97,14 @@
 
     <ExploreFact>
       <ID>ARC_ECHO_CELL_X1</ID>
-      <Text>I hear phantom sounds repeating my movements back at me, delayed and distorted.</Text>
+      <Text>The Echo Cell is a floating device that records and replays sounds it hears, often with eerie precision.</Text>
     </ExploreFact>
     <ExploreFact>
       <ID>ARC_ECHO_CELL_X2</ID>
+      <Text>When I remain still, it replays earlier noises from their original positions.</Text>
+    </ExploreFact>
+    <ExploreFact>
+      <ID>ARC_ECHO_CELL_X3</ID>
       <Text>Solving the sound puzzle in this chamber unlocked an anomaly key.</Text>
     </ExploreFact>
   </Entry>
@@ -116,7 +120,7 @@
       <SourceID>ARC_OBSERVATION_DOME</SourceID>
       <RumorName>Wall of Symbols</RumorName>
       <RumorNamePriority>1</RumorNamePriority>
-      <Text>Nomai logs describe symbols that respond to the observer. The glyphs appear to hide a sequence that must be photographed.</Text>
+      <Text>Nomai logs describe symbols that respond to the observer's position.</Text>
     </RumorFact>
     <RumorFact>
       <ID>ARC_RUNIC_WALL_R2</ID>
@@ -127,11 +131,19 @@
 
     <ExploreFact>
       <ID>ARC_RUNIC_WALL_X1</ID>
-      <Text>The glyphs change when viewed from different angles.</Text>
+      <Text>This chamber contains six uniquely colored rune panels arranged in a ring. Photographing four of them in the correct order unlocks the mechanism.</Text>
     </ExploreFact>
     <ExploreFact>
       <ID>ARC_RUNIC_WALL_X2</ID>
-      <Text>Solving the glyph puzzle triggered a release of an anomaly key.</Text>
+      <Text>If all six aren't visible at once, they swap positions.</Text>
+    </ExploreFact>
+    <ExploreFact>
+      <ID>ARC_RUNIC_WALL_X3</ID>
+      <Text>The solution is hidden in the room itself. Clues match the color of the runes and suggest the directional sequence to follow.</Text>
+    </ExploreFact>
+    <ExploreFact>
+      <ID>ARC_RUNIC_WALL_X4</ID>
+      <Text>Photographing four in the correct color sequence unlocked the key.</Text>
     </ExploreFact>
   </Entry>
 
@@ -157,7 +169,7 @@
 
     <ExploreFact>
       <ID>ARC_PRISM_BLOOM_X1</ID>
-      <Text>This chamber contains reflective crystals that redirect energy beams. Light and shadow interact with sensors in the room.</Text>
+      <Text>This chamber contains reflective crystals that redirect energy beams. Light interacts with sensors in the room.</Text>
     </ExploreFact>
     <ExploreFact>
       <ID>ARC_PRISM_BLOOM_X2</ID>
@@ -187,11 +199,15 @@
 
     <ExploreFact>
       <ID>ARC_MEMORY_ORB_X1</ID>
-      <Text>In this room, I can record a few seconds of movement, then play it back as a ghostly copy of myself. It's eerie but useful.</Text>
+      <Text>This orb records my actions and recreates them as a translucent clone.</Text>
     </ExploreFact>
     <ExploreFact>
       <ID>ARC_MEMORY_ORB_X2</ID>
-      <Text>I used the playback to press two switches at once. When both were activated, it revealed an anomaly key.</Text>
+      <Text>There are two pressure pads on opposite sides of the room, too far apart to activate alone.</Text>
+    </ExploreFact>
+    <ExploreFact>
+      <ID>ARC_MEMORY_ORB_X3</ID>
+      <Text>I used the playback to press two pressure pads at once. When both were activated, it revealed an anomaly key.</Text>
     </ExploreFact>
   </Entry>
 

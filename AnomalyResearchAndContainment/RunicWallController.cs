@@ -43,6 +43,7 @@ namespace AnomalyResearchAndContainment
             if (!anyVisible)
             {
                 _canSwap = false;
+                Locator.GetShipLogManager().RevealFact("ARC_RUNIC_WALL_X2", true, true);
                 StartCoroutine(SwapPanelsRoutine());
             }
         }
@@ -92,7 +93,7 @@ namespace AnomalyResearchAndContainment
         {
             base.CompletePuzzle();
 
-            Locator.GetShipLogManager().RevealFact("ARC_RUNIC_WALL_X2", true, true);
+            Locator.GetShipLogManager().RevealFact("ARC_RUNIC_WALL_X4", true, true);
         }
 
         public override void ResetPuzzle()

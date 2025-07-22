@@ -1,7 +1,7 @@
 <NomaiObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/text_schema.xsd">
   <TextBlock>
     <ID>1</ID>
-    <Text>PHYLA: These runic panels shift based on the observer’s location. They resist static capture but react to photos.</Text>
+    <Text>ASTERA: These Runic Walls shift based on the observer’s location. They resist static capture but react to photos.</Text>
   </TextBlock>
   <TextBlock>
     <ID>2</ID>
@@ -16,6 +16,20 @@
   <TextBlock>
     <ID>4</ID>
     <ParentID>3</ParentID>
-    <Text>ASTERA: The pattern is embedded within this room. Find the clues and you'll know the color pattern to follow.</Text>
+    <Text>PHYLA: The pattern is embedded within this room. Find the clues and you'll know the color pattern to follow.</Text>
   </TextBlock>
+  <ShipLogConditions>
+    <RevealFact>
+      <FactID>ARC_RUNIC_WALL_R1</FactID>
+      <Condition>1</Condition>
+    </RevealFact>
+    <RevealFact>
+      <FactID>ARC_RUNIC_WALL_R2</FactID>
+      <Condition>1</Condition>
+    </RevealFact>
+    <RevealFact>
+      <FactID>ARC_RUNIC_WALL_X1</FactID>
+      <Condition>3</Condition>
+    </RevealFact>
+  </ShipLogConditions>
 </NomaiObject>

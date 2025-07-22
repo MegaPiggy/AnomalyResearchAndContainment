@@ -494,7 +494,18 @@
         ],
         "translatorText": [
             {
-                "rename": "EchoCellComputer",
+                "rename": "ObservatoryDomeComputer",
+                "xmlFile": "planets/text/ObservationDome_Computer.xml",
+                "type": "preCrashComputer",
+                "position": {
+                    "x": 25,
+                    "y": 48.2,
+                    "z": 0
+                },
+                "rotation": { "y": -90 }
+            },
+            {
+                "rename": "EchoCellRecorder",
                 "xmlFile": "planets/text/EchoCell.xml",
                 "type": "preCrashRecorder",
                 "position": {
@@ -506,7 +517,7 @@
                 "parentPath": "Sector/Root/NorthCorridor/AnomalyRoom/Center/EchoCell/PadRoot"
             },
             {
-                "rename": "RunicWallComputer",
+                "rename": "RunicWallRecorder",
                 "xmlFile": "planets/text/RunicWall.xml",
                 "type": "preCrashRecorder",
                 "position": {
@@ -518,7 +529,7 @@
                 "parentPath": "Sector/Root/EastCorridor/AnomalyRoom/Center/RunicWall/Root"
             },
             {
-                "rename": "PrismBloomComputer",
+                "rename": "PrismBloomRecorder",
                 "xmlFile": "planets/text/PrismBloom.xml",
                 "type": "preCrashRecorder",
                 "position": {
@@ -530,7 +541,7 @@
                 "parentPath": "Sector/Root/SouthCorridor/AnomalyRoom/Center/PrismBloom/Root"
             },
             {
-                "rename": "MemoryOrbComputer",
+                "rename": "MemoryOrbRecorder",
                 "xmlFile": "planets/text/MemoryOrb.xml",
                 "type": "preCrashRecorder",
                 "position": {
@@ -702,6 +713,18 @@
                 "revealOn": "enter",
                 "reveals": [
                     "ARC_ELEVATOR_ROOM_R1"
+                ]
+            },
+            {
+                "radius": 2,
+                "parentPath": "Sector/Root/EastCorridor/AnomalyRoom/Center/RunicWall/SigilHint",
+                "isRelativeToParent": true,
+                "maxAngle": 60,
+                "maxDistance": 10,
+                "revealFor": "player",
+                "revealOn": "observe",
+                "reveals": [
+                    "ARC_RUNIC_WALL_X3"
                 ]
             }
         ],

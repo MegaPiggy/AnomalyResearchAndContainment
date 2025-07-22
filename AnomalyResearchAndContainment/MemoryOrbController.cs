@@ -92,7 +92,7 @@ namespace AnomalyResearchAndContainment
         {
             base.CompletePuzzle();
 
-            Locator.GetShipLogManager().RevealFact("ARC_MEMORY_ORB_X2", true, true);
+            Locator.GetShipLogManager().RevealFact("ARC_MEMORY_ORB_X3", true, true);
         }
 
         public override void ActivatePuzzle()

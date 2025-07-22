@@ -114,7 +114,6 @@ namespace AnomalyResearchAndContainment
             echoSource.spatialBlend = 1f;
             AudioClip clip = echoSource.PlayOneShot(echo.audioType);
             Destroy(echoSource.gameObject, clip.length / echo.pitch + 1f);
-            Locator.GetShipLogManager().RevealFact("ARC_ECHO_CELL_X1", true, true);
         }
 
         private IEnumerator PlayEchoPatternLoop()
@@ -129,6 +128,7 @@ namespace AnomalyResearchAndContainment
                     {
                         if (padIndex >= 0 && padIndex < echoPadPositions.Count)
                         {
+                            Locator.GetShipLogManager().RevealFact("ARC_ECHO_CELL_X2", true, true);
                             Vector3 pos = echoPadPositions[padIndex].position;
                             OWAudioSource echoSource = Instantiate(echoSourcePrefab, pos, Quaternion.identity, transform);
                             echoSource.pitch = 1f;
@@ -166,7 +166,7 @@ namespace AnomalyResearchAndContainment
         {
             base.CompletePuzzle();
 
-            Locator.GetShipLogManager().RevealFact("ARC_ECHO_CELL_X2", true, true);
+            Locator.GetShipLogManager().RevealFact("ARC_ECHO_CELL_X3", true, true);
         }
 
         public override void ResetPuzzle()
