@@ -26,7 +26,7 @@ namespace AnomalyResearchAndContainment
                 _door.Close();
 
                 Locator.GetShipLogManager().RevealFact("ARC_FINAL_ROOM_X4", true, true);
-                DialogueConditionManager.SharedInstance.SetConditionState("BoxEnding");
+                DialogueConditionManager.SharedInstance.SetConditionState("BoxEnding", true);
             }
             else
             {
