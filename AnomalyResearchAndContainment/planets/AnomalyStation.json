@@ -490,6 +490,12 @@
                     "colliderRadius": 1,
                     "interactRange": 2
                 }
+            },
+            {
+                "rename": "CreditsRoot",
+                "parentPath": "Sector/Root/HiddenRoom/Center/Floor/UpperPlatform/BoxRoot",
+                "isRelativeToParent": true,
+                "activationCondition": "BoxEnding"
             }
         ],
         "translatorText": [
@@ -654,6 +660,13 @@
                 "type": "trailmarker",
                 "isRelativeToParent": true,
                 "parentPath": "Sector/Root/HiddenRoom/Center/Floor/UpperPlatform/TrailmarkerRoot"
+            },
+            {
+                "rename": "BoxRecorder",
+                "xmlFile": "planets/text/Box.xml",
+                "type": "preCrashRecorder",
+                "isRelativeToParent": true,
+                "parentPath": "Sector/Root/HiddenRoom/Center/Floor/UpperPlatform/RecorderRoot"
             }
         ]
     },
@@ -758,7 +771,35 @@
                 }
             }
         ],
+        "creditsVolume": [
+            {
+                "radius": 12,
+                "parentPath": "Sector/Root/HiddenRoom/Center/Floor/UpperPlatform/BoxRoot/CreditsRoot",
+                "isRelativeToParent": true,
+                "deathType": "dream",
+                "gameOver": {
+                    "text": "",
+                    "colour": {
+                        "r": 0,
+                        "g": 255,
+                        "b": 0,
+                        "a": 255
+                    },
+                    "creditsType": "none"
+                }
+            }
+        ],
         "revealVolumes": [
+            {
+                "radius": 12,
+                "parentPath": "Sector/Root/HiddenRoom/Center/Floor/UpperPlatform/BoxRoot",
+                "isRelativeToParent": true,
+                "revealFor": "player",
+                "revealOn": "enter",
+                "reveals": [
+                    "ARC_FINAL_ROOM_X1"
+                ]
+            },
             {
                 "radius": 125,
                 "revealFor": "player",

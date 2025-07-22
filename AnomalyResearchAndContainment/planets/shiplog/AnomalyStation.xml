@@ -258,7 +258,7 @@
     </ExploreFact>
     <ExploreFact>
       <ID>ARC_FINAL_ROOM_X4</ID>
-      <Text>Interacting with the containment controls ends the loop early, returning me to the beginning of the cycle.</Text>
+      <Text>Interacting with the object ends the loop early, returning me to the beginning of the cycle.</Text>
     </ExploreFact>
   </Entry>
 </AstroObjectEntry>

@@ -11,6 +11,7 @@ namespace AnomalyResearchAndContainment
     {
         [SerializeField] private SingleInteractionVolume _interactVolume;
         [SerializeField] private BoxDoor _door;
+        [SerializeField] private bool _isInsideButton = false;
 
         public void Start()
         {
@@ -20,7 +21,19 @@ namespace AnomalyResearchAndContainment
 
         private void OnPressInteract()
         {
-            _door.Toggle();
+            if (_isInsideButton)
+            {
+                _door.Close();
+
+                Locator.GetShipLogManager().RevealFact("ARC_FINAL_ROOM_X4", true, true);
+                DialogueConditionManager.SharedInstance.SetConditionState("BoxEnding");
+            }
+            else
+            {
+                _door.Open();
+            }
+
+            _interactVolume.DisableInteraction(); // Optional: prevent repeat use
         }
     }
 }

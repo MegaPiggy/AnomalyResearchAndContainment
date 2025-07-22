@@ -18,6 +18,7 @@
     <ParentID>3</ParentID>
     <Text>CARYO: If this ever destabilizes... the consequences might extend beyond this station.</Text>
   </TextBlock>
+
   <ShipLogConditions>
     <RevealFact>
       <FactID>ARC_FINAL_ROOM_X3</FactID>
