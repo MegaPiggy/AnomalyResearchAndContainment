@@ -89,6 +89,10 @@ namespace AnomalyResearchAndContainment
                 volumeController.warpTransmitter = platform.GetComponentInChildren<NomaiWarpTransmitter>(true);
                 volumeController.Initialize();
 
+                foreach (var nav in station.GetComponentsInChildren<NomaiAudioVolume>(true))
+                {
+                    nav._sphereShape.radius = 2;
+                }
 #if DEBUG
                 ModHelper.Events.Unity.FireInNUpdates(() => DialogueConditionManager.SharedInstance.SetConditionState("AnomalyTest", true), 1000);
 #endif

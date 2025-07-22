@@ -8,7 +8,7 @@ namespace AnomalyResearchAndContainment
     {
         [SerializeField] private SingleInteractionVolume _interactionVolume;
         [SerializeField] private Vector3 _rotationAxis = Vector3.up;
-        [SerializeField] private float _rotationAmount = 45; // degrees per press
+        [SerializeField] private float _rotationAmount = 30; // degrees per press
         [SerializeField] private bool _rotateClockwise = true;
         [SerializeField] private AnimationCurve _tweenCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
         [SerializeField] private OWAudioSource _audioSource;

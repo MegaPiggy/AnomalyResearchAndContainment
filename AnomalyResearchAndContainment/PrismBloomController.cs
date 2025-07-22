@@ -84,6 +84,7 @@ namespace AnomalyResearchAndContainment
             _beamEmitter.SetPositions(beamPoints);
         }
 
+
         public void ResetSensors()
         {
             foreach (var sensor in _sensors)
@@ -134,8 +135,8 @@ namespace AnomalyResearchAndContainment
         [SerializeField] private GameObject _beamPointPrefab;
 
         private readonly List<GameObject> _beamPoints = new();
-        private float _pointSpacing = 0.5f;
-        private int _maxPoints = 100;
+        private float _pointSpacing = 1f;
+        private int _maxPoints = 200;
 
         public void OnValidate()
         {
@@ -197,7 +198,6 @@ namespace AnomalyResearchAndContainment
 
         public void DrawBeamPoints(List<Vector3> path)
         {
-            ClearBeamPoints();
             int poolIndex = 0;
 
             for (int i = 0; i < path.Count - 1; i++)
@@ -210,10 +210,18 @@ namespace AnomalyResearchAndContainment
                 for (int j = 0; j <= steps && poolIndex < _beamPoints.Count; j++)
                 {
                     Vector3 pos = Vector3.Lerp(start, end, j / (float)steps);
-                    _beamPoints[poolIndex].transform.position = pos;
-                    _beamPoints[poolIndex].SetActive(true);
+
+                    var point = _beamPoints[poolIndex];
+                    point.transform.position = pos;
+                    point.SetActive(true);
                     poolIndex++;
                 }
+            }
+
+            // Only deactivate unused points
+            for (int i = poolIndex; i < _beamPoints.Count; i++)
+            {
+                _beamPoints[i].SetActive(false);
             }
         }
     }
