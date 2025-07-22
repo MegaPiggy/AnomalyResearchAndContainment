@@ -94,6 +94,8 @@
         ]
     },
     "ShipLog": {
-        "xmlFile": "planets/shiplog/Platform.xml"
+        "mapMode": {
+            "remove": true
+        }
     }
 }
