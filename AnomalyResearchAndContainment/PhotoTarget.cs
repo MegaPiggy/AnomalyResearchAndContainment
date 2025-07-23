@@ -38,7 +38,7 @@ namespace AnomalyResearchAndContainment
 
         public bool CheckVisibilityFromProbe(ProbeCamera probeCamera) => base.CheckVisibilityFromProbe(probeCamera.GetOWCamera());
 
-        private void OnProbeSnapshot(ProbeCamera probeCamera)
+        public bool IsInProbeSnapshot(ProbeCamera probeCamera)
         {
             if (CheckVisibilityFromProbe(probeCamera))
             {
@@ -47,13 +47,22 @@ namespace AnomalyResearchAndContainment
                 if (magnitude > _maxPhotoDistance)
                 {
                     AnomalyResearchAndContainment.Instance.ModHelper.Console.WriteLine("photo max distance reached");
-                    return;
+                    return false;
                 }
                 if (Physics.Raycast(probeCamera.transform.position, vector.normalized, magnitude - _raycastOffset, OWLayerMask.physicalMask))
                 {
                     AnomalyResearchAndContainment.Instance.ModHelper.Console.WriteLine("photo blocked");
-                    return;
+                    return false;
                 }
+                return true;
+            }
+            return false;
+        }
+
+        private void OnProbeSnapshot(ProbeCamera probeCamera)
+        {
+            if (IsProbeInSnapshot(probeCamera))
+            {
                 if (OnPhotographed != null)
                 {
                     OnPhotographed(this);

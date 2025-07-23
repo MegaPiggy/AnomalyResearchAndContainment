@@ -14,7 +14,6 @@ namespace AnomalyResearchAndContainment
         private List<TransformData> _initialTransforms = new List<TransformData>();
         private bool _canSwap = true;
 
-        private PhotoTarget[] _targets;
         private List<int> _correctSequence = [5, 2, 4, 0];
         private List<int> _playerSequence = new List<int>();
 
@@ -28,10 +27,14 @@ namespace AnomalyResearchAndContainment
                     position = panel.transform.localPosition,
                     rotation = panel.transform.localRotation
                 });
-                // Link probe targets to photo detection
-                panel.photoTarget.OnPhotographed += OnTargetPhotographed;
             }
-            _targets = _panels.Select(panel => panel.photoTarget).ToArray();
+
+            GlobalMessenger<ProbeCamera>.AddListener("ProbeSnapshot", OnProbeSnapshot);
+        }
+
+        private void OnDestroy()
+        {
+            GlobalMessenger<ProbeCamera>.RemoveListener("ProbeSnapshot", OnProbeSnapshot);
         }
 
         protected override void Update()
@@ -48,15 +51,23 @@ namespace AnomalyResearchAndContainment
             }
         }
 
-        private void OnTargetPhotographed(PhotoTarget target)
+        private void OnProbeSnapshot(ProbeCamera probeCamera)
         {
             if (!IsActive || Completed) return;
 
-            var rune = target.GetComponent<RunePanel>();
-            int runeId = rune.id;
+            var photographed = _panels.Where(panel => panel.photoTarget.IsInProbeSnapshot(probeCamera)).ToList();
 
-            // Only process visible runes
-            if (!rune.isVisible) return;
+            if (photographed.Count == 0) return;
+
+            if (photographed.Count > 1)
+            {
+                AnomalyResearchAndContainment.Instance.ModHelper.Console.WriteLine("Invalid photo — must include exactly one rune.");
+                ResetPuzzle();
+                return;
+            }
+
+            var rune = photographed.First();
+            int runeId = rune.id;
 
             // Disallow duplicates in the sequence
             if (_playerSequence.Contains(runeId))
@@ -76,8 +87,7 @@ namespace AnomalyResearchAndContainment
                 }
                 else
                 {
-                    // reset after delay so that any photos taken during reset sound doesn't count. also to match audio.
-                    Invoke(nameof(ResetPuzzle), _resetDelay);
+                    ResetPuzzle();
                 }
             }
         }
@@ -99,6 +109,11 @@ namespace AnomalyResearchAndContainment
             base.CompletePuzzle();
 
             Locator.GetShipLogManager().RevealFact("ARC_RUNIC_WALL_X4", true, true);
+        }
+
+        public void ResetAfterDelay()
+        {
+            Invoke(nameof(ResetPuzzle), _resetDelay);
         }
 
         public override void ResetPuzzle()
