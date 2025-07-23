@@ -61,7 +61,7 @@ namespace AnomalyResearchAndContainment
 
         private void OnProbeSnapshot(ProbeCamera probeCamera)
         {
-            if (IsProbeInSnapshot(probeCamera))
+            if (IsInProbeSnapshot(probeCamera))
             {
                 if (OnPhotographed != null)
                 {

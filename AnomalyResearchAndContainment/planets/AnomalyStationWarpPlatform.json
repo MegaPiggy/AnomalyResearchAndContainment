@@ -59,6 +59,7 @@
         "translatorText": [
             {
                 "xmlFile": "planets/text/WarpStation.xml",
+                "type": "preCrashRecorder",
                 "seed": 6624,
                 "position": {
                     "x": -2,
@@ -66,7 +67,7 @@
                     "z": 52
                 },
                 "rotation": {
-                    "x": -90,
+                    "x": 0,
                     "y": 150,
                     "z": 0
                 }

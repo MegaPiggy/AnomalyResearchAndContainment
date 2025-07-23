@@ -26,7 +26,7 @@ namespace AnomalyResearchAndContainment
         private float randomPosRadius = 2f;
 
         [SerializeField] private List<Transform> echoPadPositions;
-        private float echoLoopDelay = 6f;
+        private float echoLoopDelay = 4f;
         private OWAudioType padEchoAudioType = OWAudioType.NomaiOrbStartDrag;
 
         private Coroutine _echoLoopCoroutine;
