@@ -26,7 +26,7 @@ namespace AnomalyResearchAndContainment
         private float randomPosRadius = 2f;
 
         [SerializeField] private List<Transform> echoPadPositions;
-        private float echoLoopDelay = 10f;
+        private float echoLoopDelay = 6f;
         private OWAudioType padEchoAudioType = OWAudioType.NomaiOrbStartDrag;
 
         private Coroutine _echoLoopCoroutine;
@@ -47,6 +47,7 @@ namespace AnomalyResearchAndContainment
             //    ResetPuzzle();
             //}
 
+            OnInteraction();
             _lastInputTime = Time.time;
             _inputSequence.Add(index);
 
@@ -90,13 +91,7 @@ namespace AnomalyResearchAndContainment
 
             StartCoroutine(PlayEchoWithDelay(echo));
 
-            // Stop loop when player interacts
-            if (!_playerInteracted)
-            {
-                _playerInteracted = true;
-                if (_echoLoopCoroutine != null) StopCoroutine(_echoLoopCoroutine);
-                Invoke(nameof(RestartEchoLoop), echoLoopDelay);
-            }
+            OnInteraction();
         }
 
         private IEnumerator PlayEchoWithDelay(EchoEvent echo)
@@ -145,9 +140,18 @@ namespace AnomalyResearchAndContainment
                 yield return new WaitForSeconds(echoLoopDelay);
             }
         }
+        
+        private void OnInteraction()
+        {
+            if (_echoLoopCoroutine != null) StopCoroutine(_echoLoopCoroutine);
+            CancelInvoke(nameof(RestartEchoLoop)); // cancel any previous restart timer
+            _playerInteracted = true;
+            Invoke(nameof(RestartEchoLoop), echoLoopDelay);
+        }
 
         private void RestartEchoLoop()
         {
+            if (_echoLoopCoroutine != null) StopCoroutine(_echoLoopCoroutine);
             _playerInteracted = false;
             _echoLoopCoroutine = StartCoroutine(PlayEchoPatternLoop());
         }
@@ -174,6 +178,7 @@ namespace AnomalyResearchAndContainment
             base.ResetPuzzle();
 
             _inputSequence.Clear();
+            OnInteraction();
         }
 
         public override void ActivatePuzzle()
