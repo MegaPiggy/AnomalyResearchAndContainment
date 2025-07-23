@@ -4,7 +4,7 @@
     "author": "MegaPiggy",
     "name": "Project ARC",
     "uniqueName": "MegaPiggy.AnomalyResearchAndContainment",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "owmlVersion": "2.15.1",
     "dependencies": [ "xen.NewHorizons", "xen-42.ModJam5" ]
 }
