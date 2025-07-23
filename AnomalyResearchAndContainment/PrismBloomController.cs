@@ -56,9 +56,6 @@ namespace AnomalyResearchAndContainment
                 {
                     if (Physics.Raycast(origin, direction, out RaycastHit hit, _beamLength, _reflectionLayer))
                     {
-                        AnomalyResearchAndContainment.Instance.ModHelper.Console.WriteLine(
-                            $"[Beam] Hit {hit.collider.transform.GetPath()}. ReflectiveSurface? {hit.collider.GetComponent<ReflectiveSurface>() != null}"
-                        );
                         segmentPoints.Add(hit.point);
 
                         // Check for sensor
