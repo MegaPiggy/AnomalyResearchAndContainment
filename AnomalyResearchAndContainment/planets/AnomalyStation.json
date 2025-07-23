@@ -805,6 +805,8 @@
                 "revealFor": "player",
                 "revealOn": "enter",
                 "reveals": [
+                    "VERDANT_BEACON_FACT",
+                    "EMERALD_REVERIE_R1",
                     "ARC_WARP_PLATFORM_X1",
                     "ARC_STATION_R1",
                     "ARC_OBSERVATION_DOME_R1"
@@ -815,6 +817,8 @@
                 "revealFor": "probe",
                 "revealOn": "snapshot",
                 "reveals": [
+                    "VERDANT_BEACON_FACT",
+                    "EMERALD_REVERIE_R1",
                     "ARC_WARP_PLATFORM_X1",
                     "ARC_STATION_R1",
                     "ARC_OBSERVATION_DOME_R1"
@@ -832,13 +836,11 @@
                 ]
             },
             {
-                "radius": 2,
+                "radius": 10,
                 "parentPath": "Sector/Root/EastCorridor/AnomalyRoom/Center/RunicWall/SigilHint",
                 "isRelativeToParent": true,
-                "maxAngle": 60,
-                "maxDistance": 10,
                 "revealFor": "player",
-                "revealOn": "observe",
+                "revealOn": "enter",
                 "reveals": [
                     "ARC_RUNIC_WALL_X3"
                 ]
