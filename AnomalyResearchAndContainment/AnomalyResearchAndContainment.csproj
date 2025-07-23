@@ -53,10 +53,4 @@
       <HintPath>$(ModsPath)/xen-42.ModJam5/ModJam5.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="Exists('$(UnityDllsDir)')">
-    <Exec Command="xcopy /y &quot;$(TargetPath)&quot; &quot;$(UnityDllsDir)&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;$(UnityDllsDir)&quot;" />
-  </Target>
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="xcopy /y &quot;$(UnityBundlesDir)\anomalyresearch.rem&quot; &quot;$(ProjectDir)planets&quot;&#xD;&#xA;xcopy /y &quot;$(UnityBundlesDir)\anomalyresearch.rem.manifest&quot; &quot;$(ProjectDir)planets&quot;" />
-  </Target>
 </Project>
