@@ -52,27 +52,32 @@ namespace AnomalyResearchAndContainment
         {
             if (!IsActive || Completed) return;
 
-            AnomalyResearchAndContainment.Instance.ModHelper.Console.WriteLine("Photographed: " + target.GetComponent<RunePanel>().id);
-            foreach (var panel in _panels)
+            var rune = target.GetComponent<RunePanel>();
+            int runeId = rune.id;
+
+            // Only process visible runes
+            if (!rune.isVisible) return;
+
+            // Disallow duplicates in the sequence
+            if (_playerSequence.Contains(runeId))
             {
-                if (panel.MatchesTarget(target) && panel.isVisible)
+                AnomalyResearchAndContainment.Instance.ModHelper.Console.WriteLine($"Duplicate rune {runeId} ignored.");
+                return;
+            }
+
+            _playerSequence.Add(runeId);
+            AnomalyResearchAndContainment.Instance.ModHelper.Console.WriteLine($"Photographed rune: {runeId}");
+
+            if (_playerSequence.Count >= _correctSequence.Count)
+            {
+                if (IsCorrectSequence())
                 {
-                    _playerSequence.SafeAdd(panel.id);
-
-                    if (_playerSequence.Count >= _correctSequence.Count)
-                    {
-                        if (IsCorrectSequence())
-                        {
-                            CompletePuzzle();
-                        }
-                        else
-                        {
-                            ResetPuzzle();
-                            Invoke(nameof(ResetPuzzle), _resetDelay);
-                        }
-                    }
-
-                    break;
+                    CompletePuzzle();
+                }
+                else
+                {
+                    // reset after delay so that any photos taken during reset sound doesn't count. also to match audio.
+                    Invoke(nameof(ResetPuzzle), _resetDelay);
                 }
             }
         }

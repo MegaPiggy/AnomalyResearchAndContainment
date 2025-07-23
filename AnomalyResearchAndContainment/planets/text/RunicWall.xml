@@ -6,17 +6,22 @@
   <TextBlock>
     <ID>2</ID>
     <ParentID>1</ParentID>
-    <Text>PHYLA: All six runes are marked with a color. Photograph four of the runes in the correct order to unlock the key.</Text>
+    <Text>PHYLA: All six runes are marked with a unique color. Photograph four of them in the correct order to unlock the key.</Text>
   </TextBlock>
   <TextBlock>
     <ID>3</ID>
     <ParentID>2</ParentID>
-    <Text>PHYLA: You must photograph them separately. Other runes cannot be in the same photo or the puzzle could fail.</Text>
+    <Text>PHYLA: You must photograph each one separately. If more than one rune is visible in a photo, it may reset the puzzle.</Text>
   </TextBlock>
   <TextBlock>
     <ID>4</ID>
     <ParentID>3</ParentID>
-    <Text>PHYLA: The pattern is embedded within this room. Find the clues and you'll know the color pattern to follow.</Text>
+    <Text>PHYLA: The pattern is embedded within this room. The sequence never includes the same color twice. Find the clues and you'll know the color pattern to follow.</Text>
+  </TextBlock>
+  <TextBlock>
+    <ID>5</ID>
+    <ParentID>4</ParentID>
+    <Text>PHYLA: The indicator in the center flashes red on failure/reset and green on success.</Text>
   </TextBlock>
   <ShipLogConditions>
     <RevealFact>

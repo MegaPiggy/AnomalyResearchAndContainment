@@ -36,18 +36,20 @@ namespace AnomalyResearchAndContainment
             _rendererVisibilityTracker._worldRotation = _rendererVisibilityTracker.transform.rotation;
         }
 
-        private void OnProbeSnapshot(ProbeCamera camera)
+        public bool CheckVisibilityFromProbe(ProbeCamera probeCamera) => base.CheckVisibilityFromProbe(probeCamera.GetOWCamera());
+
+        private void OnProbeSnapshot(ProbeCamera probeCamera)
         {
-            if (CheckVisibilityFromProbe(camera.GetOWCamera()))
+            if (CheckVisibilityFromProbe(probeCamera))
             {
-                Vector3 vector = transform.position - camera.transform.position;
+                Vector3 vector = transform.position - probeCamera.transform.position;
                 float magnitude = vector.magnitude;
                 if (magnitude > _maxPhotoDistance)
                 {
                     AnomalyResearchAndContainment.Instance.ModHelper.Console.WriteLine("photo max distance reached");
                     return;
                 }
-                if (Physics.Raycast(camera.transform.position, vector.normalized, magnitude - _raycastOffset, OWLayerMask.physicalMask))
+                if (Physics.Raycast(probeCamera.transform.position, vector.normalized, magnitude - _raycastOffset, OWLayerMask.physicalMask))
                 {
                     AnomalyResearchAndContainment.Instance.ModHelper.Console.WriteLine("photo blocked");
                     return;
