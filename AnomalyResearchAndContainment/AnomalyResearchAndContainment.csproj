@@ -9,6 +9,7 @@
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
     <NoWarn>MSB3270</NoWarn>
     <DebugType>portable</DebugType>
+    <ModsPath>$(ProjectDir)/Libs</ModsPath>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="OWML" Version="2.15.1" />
@@ -48,9 +49,11 @@
   <ItemGroup>
     <Reference Include="NewHorizons">
       <HintPath>$(ModsPath)/xen.NewHorizons/NewHorizons.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ModJam5">
       <HintPath>$(ModsPath)/xen-42.ModJam5/ModJam5.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
 </Project>
