@@ -14,8 +14,8 @@ permissions:
   contents: write
 
 env:
-  PROJ_USERNAME: SBtT
-  PROJ_NAME: MiniSystemTest
+  PROJ_USERNAME: MegaPiggy
+  PROJ_NAME: AnomalyResearchAndContainment
 
 jobs:
   pre_job:
