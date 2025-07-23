@@ -37,7 +37,7 @@ namespace AnomalyResearchAndContainment
         protected override void Update()
         {
             base.Update();
-            if (!_canSwap) return;
+            if (!_canSwap || !IsActive || Completed) return;
 
             bool anyVisible = _panels.Any(p => p.isVisible);
             if (!anyVisible)
