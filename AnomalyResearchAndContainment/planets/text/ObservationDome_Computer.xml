@@ -34,6 +34,10 @@
   </TextBlock>
   <ShipLogConditions>
     <RevealFact>
+      <FactID>ARC_STATION_X1</FactID>
+      <Condition>1</Condition>
+    </RevealFact>
+    <RevealFact>
       <FactID>ARC_OBSERVATION_DOME_X1</FactID>
       <Condition>2</Condition>
     </RevealFact>
